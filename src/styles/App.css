@@ -1,0 +1,21 @@
+:root {
+	font-family: 'Inter', sans-serif;
+  --fontSize: 15px;
+  --lineHeight: calc((var(--fontSize) * 1.5))
+}
+
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
+
+body {
+  font-size: var(--fontSize);
+  font-weight: 400;
+  letter-spacing: -0.004em;
+  line-height: var(--lineHeight);
+  font: 15px/22px var(--font-family), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+	background-color: #282A36;
+	color: #F8F8F2;
+}
