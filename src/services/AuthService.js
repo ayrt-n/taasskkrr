@@ -1,3 +1,5 @@
+import parseJwt from "./parseJwt";
+
 const API_URL = 'http://localhost:3001/api/v1'
 
 class AuthService {
@@ -16,10 +18,15 @@ class AuthService {
     .then(response => {
       // If Response includes Authorization token, add to localStorage
       if (response.headers.get('authorization')) {
+        const jsonPayload = parseJwt(response.headers.get('authorization'));
+
         localStorage.setItem(
           'user',
-          JSON.stringify({ authorization: response.headers.get('authorization') })
-        )
+          JSON.stringify({
+            authorization: response.headers.get('authorization'),
+            user_id: jsonPayload.id,
+          })
+        );
       }
       return response.json();
     })
