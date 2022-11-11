@@ -19,3 +19,8 @@ body {
 	background-color: #282A36;
 	color: #F8F8F2;
 }
+
+.App-main-content {
+  position: relative;
+  top: 3.25rem;
+}
