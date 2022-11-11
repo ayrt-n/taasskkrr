@@ -6,14 +6,25 @@ class AuthService {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: { email, password }
+      body: JSON.stringify({
+        'user': {
+          'email': email, 
+          'password': password
+        }
+      })
     })
     .then(response => {
+      // If Response includes Authorization token, add to localStorage
+      if (response.headers.get('authorization')) {
+        localStorage.setItem(
+          'user',
+          JSON.stringify({ authorization: response.headers.get('authorization') })
+        )
+      }
       return response.json();
     })
     .then(data => {
       console.log(data);
-
       return data
     });
   }
