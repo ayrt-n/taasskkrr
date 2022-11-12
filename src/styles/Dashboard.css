@@ -1,0 +1,8 @@
+.Dashboard-container {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.Dashboard-content {
+  padding: 2rem;
+}
