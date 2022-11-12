@@ -1,9 +1,11 @@
 import React from 'react';
+import '../../styles/Tasks.css';
 
 function Project() {
   return (
-    <div className="Project-container">
+    <div className="Tasks-container">
       <h1>Inbox</h1>
+      
     </div>
   );
 }
