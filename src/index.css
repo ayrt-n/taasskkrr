@@ -49,6 +49,11 @@ table {
 	border-spacing: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Set up fonts */
 @font-face {
   font-family: 'Inter';
