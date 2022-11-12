@@ -1,7 +1,16 @@
 :root {
 	font-family: 'Inter', sans-serif;
   --fontSize: 15px;
-  --lineHeight: calc((var(--fontSize) * 1.5))
+  --lineHeight: calc((var(--fontSize) * 1.5));
+  --bgColor: #282A36;
+  --fgColor: #F8F8F2;
+  --blue: #8be9fd;
+  --green: #50fa7b;
+  --red: #ff5555;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --yellow: #f1fa8c;
+  --purple: #bd93f9;
 }
 
 @supports (font-variation-settings: normal) {
@@ -16,8 +25,8 @@ body {
   font: 15px/22px var(--font-family), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
-	background-color: #282A36;
-	color: #F8F8F2;
+	background-color: var(--bgColor);
+	color: var(--fgColor);
   height: 100%;
 }
 
