@@ -1,11 +1,17 @@
 .Nav {
-  min-height: 3.25rem;
+  min-height: 60px;
   padding: 0.75rem 1rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   position: fixed;
   border-bottom: 2px solid #44475A;
   z-index: 1;
+}
+
+.Nav-logo {
+  height: 2rem;
+  width: auto;
 }
