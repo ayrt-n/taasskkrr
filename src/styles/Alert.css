@@ -1,0 +1,34 @@
+.Alert {
+  border: 1px solid var(--bgLightLayerColor);
+  border-radius: 4px;
+  background-color: var(--bgLayerColor);
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.Alert-message {
+  font-weight: 650;
+}
+
+.Alert-message:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.Alert-details li {
+  list-style-type: disc;
+  list-style-position: inside;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.Alert.danger {
+  color: var(--dangerColor);
+  background-color: var(--dangerBg);
+  border-color: var(--dangerBorder);
+}
+
+.Alert.success {
+  color: var(--successColor);
+  background-color: var(--successBg);
+  border-color: var(--successBorder);
+}
