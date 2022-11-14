@@ -1,0 +1,244 @@
+/* Form Styling based off of Bulma Form Styling from https://github.com/jgthms/bulma/blob/master/css/bulma.css */
+.Form-container {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+}
+
+input, textarea, select {
+  box-sizing: border-box;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow:0 0 0 50px var(--bgLayerColor) inset;
+  -webkit-text-fill-color: var(--fgColor);
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px var(--bgLayerColor) inset;/*your box-shadow*/
+  -webkit-text-fill-color: var(--fgColor);
+  border: 1px solid transparent;
+} 
+
+.label:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.field-label .label {
+  font-size: inherit;
+}
+
+.field.is-grouped {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.field.is-grouped > .control {
+  flex-shrink: 0;
+}
+
+.field.is-grouped > .control:not(:last-child) {
+  margin-bottom: 0;
+  margin-right: 0.75rem;
+}
+
+.control {
+  box-sizing: border-box;
+  clear: both;
+  font-size: 1rem;
+  position: relative;
+  text-align: inherit;
+  margin-bottom: 0.75rem;
+}
+
+.button {
+  color: var(--fgColor);
+  background-color: var(--cta);
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: var(--ctaDark);
+}
+
+.button:active {
+  background-color: var(--ctaLight);
+}
+
+.button.full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button:hover {
+  
+}
+
+.button:active, .button:focus {
+  
+}
+
+.button.danger {
+  
+}
+
+.button.danger:hover {
+  
+}
+
+.button.danger:active, .button.danger:focus {
+  
+}
+
+.button, .input, .textarea, .select select, .date input[type="date"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+  position: relative;
+  vertical-align: top;
+}
+
+.button:focus, .input:focus, .textarea:focus, .select select:focus, .date input[type="date"]:focus,
+.button:active, .input:active, .textarea:active, .select select:active, .date input[type="date"]:active {
+  outline: none;
+}
+
+.button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+  border: 3px solid transparent;
+  border-radius: 2px;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: 0.625em;
+  margin-top: -0.4375em;
+  pointer-events: none;
+  position: absolute;
+  top: 45%;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: 0.625em;
+}
+
+.input, .textarea, .select select {
+  background-color: var(--bgLayerColor);
+  border-radius: 4px;
+  color: var(--fgColor);
+}
+
+.input::-moz-placeholder, .textarea::-moz-placeholder, .select select::-moz-placeholder {
+  color: rgba(54, 54, 54, 0.3);
+}
+
+.input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder, .select select::-webkit-input-placeholder, .date input[type="date"]::-webkit-input-placeholder {
+  color: rgba(54, 54, 54, 0.3);
+}
+
+.input:hover, .textarea:hover, .select select:hover, .date input[type="date"]:hover {
+  border-color: #b5b5b5;
+}
+
+.input:focus, .textarea:focus, .select select:focus, .date input[type="date"]:focus {
+  border-color: var(--fg);
+  box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+}
+
+.input, .textarea {
+  box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  max-width: 100%;
+  width: 100%;
+}
+
+.textarea {
+  display: block;
+  max-width: 100%;
+  min-width: 100%;
+  padding: calc(0.75em - 1px);
+  resize: vertical;
+  font: inherit;
+}
+
+.textarea:not([rows]) {
+  max-height: 40em;
+  min-height: 8em;
+}
+
+.textarea[rows] {
+  height: initial;
+}
+
+.select, .date {
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+  vertical-align: top;
+}
+
+.select:not(.is-multiple), .date {
+  height: 2.5em;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #485fc7;
+  right: 1.125em;
+  z-index: 4;
+}
+
+.select select, .date input[type="date"] {
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  max-width: 100%;
+  outline: none;
+}
+
+.select select::-ms-expand {
+  display: none;
+}
+
+.select select:not([multiple]) {
+  padding-right: 2.5em;
+}
+
+.select select[multiple] {
+  height: auto;
+  padding: 0;
+}
+
+.select:not(.is-multiple):not(.is-loading):hover::after {
+  border-color: #363636;
+}
