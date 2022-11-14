@@ -22,7 +22,10 @@ function Navbar() {
       </Link>
       { currentUser ? 
         <a href="/login" onClick={logOut}>Logout</a> :
-        <Link to="/login">Login</Link>
+        <div className="Nav-links">
+          <Link to="/register" className="Nav-link">Sign up</Link>
+          <Link to="/login" className="Nav-link">Login</Link>
+        </div>
       }
     </nav>
   );
