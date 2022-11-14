@@ -7,11 +7,15 @@
   align-items: center;
   width: 100%;
   position: fixed;
-  border-bottom: 2px solid #44475A;
+  border-bottom: 2px solid var(--bgLayerColor);
   z-index: 1;
 }
 
 .Nav-logo {
   height: 2rem;
   width: auto;
+}
+
+.Nav-link:not(:last-child) {
+  margin-right: 1rem;
 }
