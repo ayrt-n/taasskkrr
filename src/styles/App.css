@@ -3,7 +3,11 @@
   --fontSize: 15px;
   --lineHeight: calc((var(--fontSize) * 1.5));
   --bgColor: #282A36;
+  --bgLayerColor: #44475A;
+  --bgLightLayerColor: #505262;
+  --bgDarkLayerColor: #3d4051;
   --fgColor: #F8F8F2;
+  --white: #fff;
   --blue: #8be9fd;
   --green: #50fa7b;
   --red: #ff5555;
@@ -11,6 +15,15 @@
   --pink: #ff79c6;
   --yellow: #f1fa8c;
   --purple: #bd93f9;
+  --cta: #5865F2;
+  --ctaDark: #4a57e4;
+  --ctaLight: #6470f3;
+  --dangerColor: #ff4d4f;
+  --dangerBg: #301923;
+  --dangerBorder: #8c0e2e;
+  --successColor: #0be881;
+  --successBg: #17312a;
+  --successBorder: #0d8951;
 }
 
 @supports (font-variation-settings: normal) {
@@ -28,6 +41,7 @@ body {
 	background-color: var(--bgColor);
 	color: var(--fgColor);
   height: 100%;
+  caret-color: var(--fgColor);
 }
 
 h1 {
@@ -50,6 +64,14 @@ h3 {
 
 p {
   line-height: 1.5rem;
+}
+
+a {
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--white)
 }
 
 .App-main-content {
