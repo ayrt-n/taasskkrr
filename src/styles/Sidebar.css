@@ -3,10 +3,9 @@
   overflow-y: auto;
   width: 280px;
   min-height: calc(100vh - 60px);
-  background-color: #282A36;
   padding: 2rem 1.5rem;
 
-  border-right: 2px solid #44475A;
+  border-right: 2px solid var(--bgLayerColor);
 }
 
 .SidebarItem {
@@ -26,7 +25,7 @@
 }
 
 .SidebarItem:hover {
-  background-color: #44475A;
+  background-color: var(--bgLayerColor);
   color: #FFFFFF;
 }
 
@@ -43,8 +42,4 @@
 .collapsed .Sidebar-collapsable-items {
   max-height: 0;
   overflow: hidden;
-}
-
-.test {
-  color: #282A36,#F8F8F2,#44475A,#F8F8F2,#FF5555,#FFFFFF, #8be9fd, #50fa7b;
 }
