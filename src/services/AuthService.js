@@ -32,7 +32,7 @@ class AuthService {
     })
     .then(data => {
       console.log(data);
-      return data
+      return data;
     });
   }
 
@@ -45,11 +45,20 @@ class AuthService {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: {
-        email,
-        password,
-        passwordConfirmation
-      }
+      body: JSON.stringify({
+        'user': {
+          'email': email,
+          'password': password,
+          'password_confirmation': passwordConfirmation
+        }
+      })
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      return data;
     });
   }
 
