@@ -69,7 +69,7 @@ function Register(props) {
               <label htmlFor="password" className="label">Password</label>
               <input type="password" id="password" className="input" {...formik.getFieldProps("password")} />
               {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
+                <div className="Form-error-message">{formik.errors.password}</div>
               ) : null}
             </div>
 
@@ -77,7 +77,7 @@ function Register(props) {
               <label htmlFor="passwordConfirmation" className="label">Confirm Password</label>
               <input type="password" id="passwordConfirmation" className="input" {...formik.getFieldProps("passwordConfirmation")} />
               {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation ? (
-                <div>{formik.errors.passwordConfirmation}</div>
+                <div className="Form-error-message">{formik.errors.passwordConfirmation}</div>
               ) : null}
             </div>
 
