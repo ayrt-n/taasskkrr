@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import AuthService from '../services/AuthService';
-import { withRouter } from './helpers/withRouter';
 import Alert from './Alert';
 import '../styles/Form.css'
 
-function Register(props) {
+function Register() {
   const [errorMessage, setErrorMessage] = useState([]);
+  const routerNavigate = useNavigate();
 
   const validate = (values) => {
     const errors = {};
@@ -37,8 +37,8 @@ function Register(props) {
     AuthService.register(values.email, values.password, values.passwordConfirmation)
     .then((data) => {
       if (!data.error) {
-        props.router.navigate('/login');
-        // window.location.reload();
+        routerNavigate('/login');
+        window.location.reload();
       } else {
         console.log(data.error);
         setErrorMessage(data.error.details)
@@ -94,4 +94,4 @@ function Register(props) {
   );
 }
 
-export default withRouter(Register);
+export default Register;

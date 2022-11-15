@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import AuthService from '../services/AuthService';
-import { withRouter } from './helpers/withRouter';
 import Alert from './Alert';
 import '../styles/Form.css'
 
-function Login(props) {
+function Login() {
   const [errorMessage, setErrorMessage] = useState([]);
+  const routerNavigate = useNavigate();
 
   const validate = (values) => {
     const errors = {};
@@ -27,7 +27,7 @@ function Login(props) {
     AuthService.login(values.email, values.password)
     .then((data) => {
       if (!data.error) {
-        props.router.navigate('/inbox');
+        routerNavigate('/inbox');
         window.location.reload();
       } else {
         console.log(data.error);
@@ -76,4 +76,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default Login;
