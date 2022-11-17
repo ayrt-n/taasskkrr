@@ -4,7 +4,6 @@ import SidebarItem from './SidebarItem';
 
 function SidebarCollapsableList({ title, items }) {
   const [collapsed, setCollapsed] = useState(false);
-
   const collapseList = () => { setCollapsed(!collapsed) }
 
   return(
@@ -18,14 +17,14 @@ function SidebarCollapsableList({ title, items }) {
         <div className="SidebarItem-title">{title}</div>
       </div>
       <div className={"Sidebar-collapsable-items"}>
-        {items.map((project) => {
+        {items.map((item) => {
           return(
             <SidebarItem
               icon="project.svg"
-              title={project.title}
-              action={`/projects/${project.id}`}
+              title={item.title}
+              action={`/projects/${item.id}`}
               subItem={true}
-              key={project.id}
+              key={item.id}
             />
           );
         })}
