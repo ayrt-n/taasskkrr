@@ -6,10 +6,10 @@ import Today from './tasks/Today';
 import Upcoming from './tasks/Upcoming';
 import '../styles/Dashboard.css';
 
-function Dashboard({ projects }) {
+function Dashboard() {
   return (
     <div className="Dashboard-container">
-      <Sidebar projects={projects}/>
+      <Sidebar/>
       <div className="Dashboard-content">
         <Routes>
           <Route path="/inbox" element={<Project />} />
