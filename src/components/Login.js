@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import AuthService from '../services/AuthService';
 import Alert from './Alert';
+import TextInput from './form/TextInput';
+import Button from './form/Button';
 import '../styles/Form.css'
 
 function Login() {
@@ -47,25 +49,9 @@ function Login() {
       >
         {formik => (
           <form onSubmit={formik.handleSubmit}>
-             <div className="field">
-              <label htmlFor="email" className="label">Email</label>
-              <input type="text" id="email" className="input" {...formik.getFieldProps("email")} />
-              {formik.touched.email && formik.errors.email ? (
-                <div className="Form-error-message">{formik.errors.email}</div>
-              ) : null}
-            </div>
-
-            <div className="field">
-              <label htmlFor="password" className="label">Password</label>
-              <input type="password" id="password" className="input" {...formik.getFieldProps("password")} />
-              {formik.touched.password && formik.errors.password ? (
-                <div className="Form-error-message">{formik.errors.password}</div>
-              ) : null}
-            </div>
-
-            <div className="control">
-              <button className="button full" type="submit">Log in</button>
-            </div>
+            <TextInput label="Email" name="email" id="email" type="text" />
+            <TextInput label="Password" name="password" id="password" type="password" />
+            <Button label="Sign up" type="submit" fullSize />
           </form>
         )}
       </Formik>
