@@ -8,6 +8,11 @@
   width: 100%;
 }
 
+.Form-error-message {
+  font-size: 0.9rem;
+  color: var(--dangerColor);
+}
+
 input, textarea, select {
   box-sizing: border-box;
 }
