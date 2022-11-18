@@ -15,7 +15,8 @@ function Dashboard() {
           <Route path="/inbox" element={<Project />} />
           <Route path="/today" element={<Today />} />
           <Route path="/upcoming" element={<Upcoming />} />
-          <Route path="/" element={<Project />} />
+          <Route path="/projects/:projectId" element={<Project />} />
+          <Route path="/" element={<Today />} />
         </Routes>
       </div>
     </div>
