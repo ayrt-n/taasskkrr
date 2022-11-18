@@ -17,6 +17,20 @@ class UserService {
     });
   }
 
+  getProjectTasks(projectId) {
+    return fetch(`${API_URL}/projects/${projectId}`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      }
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
+
   getUserTasks() {
     return fetch(`${API_URL}tasks`, {
       method: 'GET',
