@@ -31,11 +31,24 @@ function Project() {
     }
   };
 
+  const deleteTask = (deletedTask, section=null) => {
+    if (section) {
+      console.log('TOOD');
+    } else {
+      setProject(
+        {
+          ...project,
+          tasks: project.tasks.filter((task) => (task.id !== deletedTask.id))
+        }
+      )
+    }
+  }
+
   return (
     <div className="Tasks">
       <h1>{project.title}</h1>
       <div className="Tasks-container">
-        {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} />)}
+        {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} handleDelete={deleteTask} />)}
       </div>
     </div>
   );
