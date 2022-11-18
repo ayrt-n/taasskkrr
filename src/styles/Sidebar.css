@@ -2,6 +2,7 @@
   box-sizing: border-box;
   overflow-y: auto;
   width: 280px;
+  position: fixed;
   min-height: calc(100vh - 60px);
   padding: 2rem 1.5rem;
 
