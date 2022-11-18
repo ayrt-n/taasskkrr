@@ -1,0 +1,40 @@
+.Tasks h1 {
+  margin-bottom: 1rem;
+}
+
+.Tasks h2 {
+  margin-bottom: 1rem;
+}
+
+.Task {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 3px;
+  margin-bottom: 0.25rem;
+}
+
+.Task:hover {
+  background-color: var(--bgLayerColor);
+}
+
+.Task-right, .Task-left {
+  width: 2rem;
+}
+
+.Task-main {
+  width: 100%;
+  margin: 0 1rem;
+}
+
+.Task-checkbox {
+  box-sizing: border-box;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.Task-checkbox.completed {
+  background-color: var(--successColor);
+}
