@@ -21,6 +21,20 @@ class TaskService {
       return response.json();
     });
   }
+
+  destroyTask(taskId) {
+    return fetch(`${API_URL}/tasks/${taskId}`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      }
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
 }
 
 export default new TaskService();
