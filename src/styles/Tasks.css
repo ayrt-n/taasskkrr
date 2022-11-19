@@ -18,6 +18,16 @@
   background-color: var(--bgLayerColor);
 }
 
+.Task:hover .Task-checkbox {
+  border: 3px solid var(--bgColor);
+  background-color: var(--bgColor);
+}
+
+.Task:hover .Task-checkbox.completed {
+  border: 3px solid var(--bgColor);
+  background-color: var(--green);
+}
+
 .Task-right, .Task-left {
   width: 2rem;
 }
@@ -41,7 +51,8 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid var(--bgLayerColor);
+  background-color: var(--bgLayerColor);
   cursor: pointer;
 }
 
