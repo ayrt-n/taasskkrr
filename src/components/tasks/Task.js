@@ -3,9 +3,9 @@ import TaskCheckbox from './TaskCheckbox';
 import DeleteTaskButton from './DeleteTaskButton';
 import '../../styles/Tasks.css';
 
-function Task({ title, id, description, priority, due_date, status, handleUpdate, handleDelete }) {
+function Task({ title, id, description, priority, due_date, status, handleUpdate, handleDelete, handleClick }) {
   return (
-    <div className="Task">
+    <div className="Task" onClick={() => handleClick({title, id, description, priority, due_date, status})}>
       <div className="Task-left">
         <TaskCheckbox id={id} status={status} handleUpdate={handleUpdate} />
       </div>
