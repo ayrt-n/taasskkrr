@@ -59,7 +59,7 @@ function Project() {
 
   return (
     <div className="Tasks">
-      <TaskModal {...taskModal} isOpen={modalIsOpen} closeModal={closeTaskModal} />
+      <TaskModal task={taskModal} isOpen={modalIsOpen} closeModal={closeTaskModal} updateTask={updateTask} />
       <h1>{project.title}</h1>
       <div className="Tasks-container">
         {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} handleDelete={deleteTask} handleClick={openTaskModal} />)}
