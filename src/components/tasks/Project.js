@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom';
 import UserService from '../../services/UserService';
 import Task from './Task';
 import '../../styles/Tasks.css';
+import TaskModal from './TaskModal';
 
 function Project() {
   let { projectId } = useParams();
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
+  const [taskModal, setTaskModal] = useState({});
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   useEffect(() => {
     setLoading(true);
@@ -44,11 +47,22 @@ function Project() {
     }
   }
 
+  const openTaskModal = (task) => {
+    setTaskModal(task);
+    setModalIsOpen(true);
+  }
+
+  const closeTaskModal = () => {
+    setTaskModal({});
+    setModalIsOpen(false);
+  }
+
   return (
     <div className="Tasks">
+      <TaskModal {...taskModal} isOpen={modalIsOpen} closeModal={closeTaskModal} />
       <h1>{project.title}</h1>
       <div className="Tasks-container">
-        {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} handleDelete={deleteTask} />)}
+        {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} handleDelete={deleteTask} handleClick={openTaskModal} />)}
       </div>
     </div>
   );
