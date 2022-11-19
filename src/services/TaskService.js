@@ -35,6 +35,29 @@ class TaskService {
       return response.json();
     });
   }
+
+  updateTask(task) {
+    return fetch(`${API_URL}/tasks/${task.id}`, {
+      method: 'PATCH',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      },
+      body: JSON.stringify({
+        'task': {
+          'title': task.title,
+          'description': task.description,
+          'priority': task.priority,
+          'due_date': task.due_date,
+          'status': task.status
+        }
+      })
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
 }
 
 export default new TaskService();
