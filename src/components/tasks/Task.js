@@ -5,11 +5,11 @@ import '../../styles/Tasks.css';
 
 function Task({ title, id, description, priority, due_date, status, handleUpdate, handleDelete, handleClick }) {
   return (
-    <div className="Task" onClick={() => handleClick({title, id, description, priority, due_date, status})}>
+    <div className="Task">
       <div className="Task-left">
         <TaskCheckbox id={id} status={status} handleUpdate={handleUpdate} />
       </div>
-      <div className="Task-main">
+      <div className="Task-main" onClick={() => handleClick({title, id, description, priority, due_date, status})}>
         <div className="Task-title">{title}</div>
         <div className="Task-subtitle">{due_date}</div>
       </div>
