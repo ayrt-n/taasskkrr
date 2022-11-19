@@ -51,7 +51,7 @@ function Login() {
           <form onSubmit={formik.handleSubmit}>
             <TextInput label="Email" name="email" id="email" type="text" />
             <TextInput label="Password" name="password" id="password" type="password" />
-            <Button label="Sign up" type="submit" fullSize />
+            <Button label="Sign up" primary type="submit" fullSize />
           </form>
         )}
       </Formik>
