@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
-import closeIcon from '../../assets/icons/close.svg';
-import Priority from './Priority';
+import TaskDetails from './TaskDetails';
+import TaskForm from './TaskForm';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 
-function TaskModal({ title, id, description, priority, due_date, status, isOpen, closeModal }) {
+function TaskModal({ task, isOpen, closeModal, updateTask }) {
+  const [editMode, setEditMode] = useState(false);
+
   const modalStyles = {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -21,30 +23,17 @@ function TaskModal({ title, id, description, priority, due_date, status, isOpen,
   };
 
   return (
-    <Modal isOpen={isOpen} style={modalStyles} onRequestClose={closeModal} shouldCloseOnOverlayClick={true}>
-      <div className="Modal-header-container">
-        <h2>{title}</h2>
-        <button className="Close-modal-button" onClick={closeModal}>
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
-      <div className="Modal-content-container">
-        <div className="field">
-          <p className="label">Description</p>
-          <p>{description}</p>
-        </div>
-        <div className="field">
-          <p className="label">Priority</p>
-          <Priority priorityEnum={priority} />
-        </div>
-        <div className="field">
-          <p className="label">Due Date</p>
-          <p>{due_date}</p>
-        </div>
-        <div style={{marginBottom: "0"}}  className="control">
-          <button className="button">Edit Task</button>
-        </div>
-      </div>
+    <Modal
+      isOpen={isOpen}
+      style={modalStyles}
+      onRequestClose={closeModal}
+      shouldCloseOnOverlayClick={true}
+      onAfterClose={() => { setEditMode(false) }}
+    >
+      {editMode ?
+        <TaskForm task={task} closeModal={closeModal} afterSubmit={updateTask} /> :
+        <TaskDetails task={task} closeModal={closeModal} editTask={() => { setEditMode(true) }} />
+      }
     </Modal>
   );
 }
