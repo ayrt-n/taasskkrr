@@ -18,6 +18,8 @@ function TaskForm({ task, closeModal, afterSubmit }) {
     if (!values.title) {
       errors.title = 'Required';
     }
+
+    return errors;
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -29,6 +31,7 @@ function TaskForm({ task, closeModal, afterSubmit }) {
         } else {
           console.log(data.error);
           setErrorMessage(data.error);
+          // TODO NEED TO DISPLAY ERRORS
         }
         setSubmitting(false);
       });
@@ -36,20 +39,20 @@ function TaskForm({ task, closeModal, afterSubmit }) {
   };
 
   return (
-    <Formik
-      initialValues={{...task}}
-      validate={validate}
-      onSubmit={handleSubmit}
-    >
-      {formik => (
-        <>
-          <div className="Modal-header-container">
-            <h2>Edit Task</h2>
-            <button className="Close-modal-button" onClick={closeModal}>
-              <img src={closeIcon} alt="" />
-            </button>
-          </div>
-          <div className="Modal-content-container">
+    <>
+      <div className="Modal-header-container">
+        <h2>Edit Task</h2>
+        <button className="Close-modal-button" onClick={closeModal}>
+          <img src={closeIcon} alt="" />
+        </button>
+      </div>
+      <div className="Modal-content-container">
+        <Formik
+          initialValues={{...task}}
+          validate={validate}
+          onSubmit={handleSubmit}
+        >
+          {formik => (
             <form onSubmit={formik.handleSubmit}>
               <TextInput label="Title" name="title" id="title" type="text"/>
               <TextInput label="Description" name="description" id="description" type="text"/>
@@ -69,10 +72,10 @@ function TaskForm({ task, closeModal, afterSubmit }) {
                 <Button label="Cancel" onClick={closeModal}/>
               </div>
             </form>
-          </div>
-        </>
-      )}
-    </Formik>
+          )}
+        </Formik>
+      </div>
+    </>
   );
 }
 
