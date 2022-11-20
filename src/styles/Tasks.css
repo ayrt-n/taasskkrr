@@ -111,3 +111,39 @@
 .High svg {
   color: var(--red);
 }
+
+.New-task-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--fgColor);
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.New-task-button svg {
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: auto;
+  color: var(--fgColor);
+}
+
+.New-task-button:hover svg {
+  background-color: var(--cta);
+  border-radius: 50%;
+}
+
+.New-task-button:hover {
+  color: var(--cta);
+}
+
+.New-task-button:active {
+  color: var(--ctaDark);
+}
+
+.New-task-button:active svg {
+  background-color: var(--ctaDark);
+  border-radius: 50%;
+}
