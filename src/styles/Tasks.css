@@ -147,3 +147,42 @@
   background-color: var(--ctaDark);
   border-radius: 50%;
 }
+
+.New-section-button {
+  border: none;
+  background: none;
+  color: var(--bgColor);
+  font-size: 1rem;
+  width: 100%;
+  transition: color 200ms;
+  height: 1rem;
+}
+
+.New-section-button p {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--bgColor);
+  line-height: 0.1em;
+  transition: border-color 200ms;
+}
+
+.New-section-button span {
+  background-color: var(--bgColor);
+  padding: 0 10px;
+}
+
+.New-section-button:hover {
+  color: var(--fgColor);
+}
+
+.New-section-button:hover p {
+  border-color: var(--fgColor);
+}
+
+.New-section-button:active {
+  color: var(--fgColor);
+}
+
+.New-section-button:active p {
+  border-color: var(--fgColor);
+}
