@@ -46,8 +46,6 @@ function Project() {
   };
 
   const deleteTask = (deletedTask, sectionId=null) => {
-    console.log(sectionId)
-    console.log(deletedTask)
     if (sectionId) {
       setProject(
         {
