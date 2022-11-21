@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import UserService from '../../services/UserService';
 import Task from './Task';
-import '../../styles/Tasks.css';
 import TaskModal from './TaskModal';
+import NewSectionButton from './NewSectionButton';
+import NewTaskButton from './NewTaskButton';
+import '../../styles/Tasks.css';
 
 function Project() {
   let { projectId } = useParams();
@@ -63,6 +65,8 @@ function Project() {
       <h1>{project.title}</h1>
       <div className="Tasks-container">
         {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} handleDelete={deleteTask} handleClick={openTaskModal} />)}
+        <NewTaskButton />
+        <NewSectionButton />
       </div>
     </div>
   );
