@@ -1,7 +1,7 @@
 .Dashboard-content {
   box-sizing: border-box;
   padding: 2.75rem;
-  position: fixed;
+  position: relative;
   left: 280px;
   width: calc(100% - 280px);
   max-width: 900px;
