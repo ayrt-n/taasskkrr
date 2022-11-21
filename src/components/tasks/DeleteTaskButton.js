@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ConfirmationModal from '../ConfirmationModal';
 import TaskService from '../../services/TaskService';
 import trashIcon from '../../assets/icons/trash-can.svg';
 import '../../styles/Tasks.css';
 
 function DeleteTaskButton({ id, sectionId, handleDelete }) {
-  const handleClick = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const deleteTask = () => {
     TaskService.destroyTask(id).then((data) => {
       if (!data.error) {
         handleDelete(data, sectionId);
@@ -14,10 +17,24 @@ function DeleteTaskButton({ id, sectionId, handleDelete }) {
     });
   };
 
+  const openConfirmationModal = () => {
+    setModalIsOpen(true);
+  }
+
   return (
-    <button className="Task-icon-button" onClick={handleClick}>
-      <img src={trashIcon} alt="" />
-    </button>
+    <div>
+      <ConfirmationModal
+        header="Confirm Delete"
+        message="Are you sure you want to permanently delete this task?"
+        buttonText="Delete"
+        confirmCallback={deleteTask}
+        isOpen={modalIsOpen}
+        closeModal={() => setModalIsOpen(false)}
+      />
+      <button className="Task-icon-button" onClick={openConfirmationModal}>
+        <img src={trashIcon} alt="" />
+      </button>
+    </div>
   );
 }
 
