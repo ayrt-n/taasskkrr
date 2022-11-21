@@ -3,11 +3,11 @@ import TaskService from '../../services/TaskService';
 import trashIcon from '../../assets/icons/trash-can.svg';
 import '../../styles/Tasks.css';
 
-function DeleteTaskButton({ id, handleDelete }) {
+function DeleteTaskButton({ id, sectionId, handleDelete }) {
   const handleClick = () => {
     TaskService.destroyTask(id).then((data) => {
       if (!data.error) {
-        handleDelete(data);
+        handleDelete(data, sectionId);
       } else {
         // TODO HANDLE ERROR IN DELETE
       }

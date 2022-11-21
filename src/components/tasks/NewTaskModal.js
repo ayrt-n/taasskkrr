@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
-import TaskDetails from './TaskDetails';
 import TaskForm from './TaskForm';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 
-function TaskModal({ task, sectionId, isOpen, closeModal, updateTask }) {
-  const [editMode, setEditMode] = useState(false);
-
+function TaskModal({ task, isOpen, closeModal, addTask }) {
   const modalStyles = {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -28,12 +25,8 @@ function TaskModal({ task, sectionId, isOpen, closeModal, updateTask }) {
       style={modalStyles}
       onRequestClose={closeModal}
       shouldCloseOnOverlayClick={true}
-      onAfterClose={() => { setEditMode(false) }}
     >
-      {editMode ?
-        <TaskForm task={task} sectionId={sectionId} closeModal={closeModal} afterSubmit={updateTask} /> :
-        <TaskDetails task={task} closeModal={closeModal} editTask={() => { setEditMode(true) }} />
-      }
+      <TaskForm task={task} closeModal={closeModal} afterSubmit={addTask} /> :
     </Modal>
   );
 }
