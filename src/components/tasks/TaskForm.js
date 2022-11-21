@@ -35,6 +35,17 @@ function TaskForm({ task, closeModal, afterSubmit }) {
         }
         setSubmitting(false);
       });
+    } else {
+      TaskService.createTask(values).then((data) => {
+        if (!data.error) {
+          afterSubmit(data);
+          closeModal();
+        } else {
+          console.log(data.error);
+          setErrorMessage(data.error);
+          // TODO NEED TO DISPLAY ERRORS
+        }
+      })
     }
   };
 
