@@ -75,12 +75,12 @@ input:-webkit-autofill:focus {
 }
 
 .button:hover {
-  background-color: var(--bgLightLayerColor);
+  background-color: var(--bgDarkLayerColor);
 }
 
 .button:active {
   color: var(--fgColor);
-  background-color: var(--bgDarkLayerColor);
+  background-color: var(--bgLightLayerColor);
   font-weight: 600;
 }
 
@@ -95,6 +95,19 @@ input:-webkit-autofill:focus {
 
 .button.is-primary:active {
   background-color: var(--ctaLight);
+}
+
+.button.is-danger {
+  background-color: var(--dangerColor);
+  font-weight: 600;
+}
+
+.button.is-danger:hover {
+  background-color: var(--darkRed);
+}
+
+.button.is-danger:active {
+  background-color: var(--lightRed);
 }
 
 .button.full {
