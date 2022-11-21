@@ -3,7 +3,8 @@
   overflow-y: auto;
   width: 280px;
   position: fixed;
-  min-height: calc(100vh - 60px);
+  top: 60px;
+  bottom: 0;
   padding: 2rem 1.5rem;
 
   border-right: 2px solid var(--bgLayerColor);
