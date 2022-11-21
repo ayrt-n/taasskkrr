@@ -77,6 +77,25 @@ class TaskService {
       return response.json();
     })
   }
+
+  createProject(projectTitle) {
+    return fetch(`${API_URL}/projects/`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      },
+      body: JSON.stringify({
+        'section': {
+          'title': projectTitle
+        }
+      })
+    })
+    .then(response => {
+      return response.json();
+    })
+  }
 }
 
 export default new TaskService();
