@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Button({ label, primary, fullSize, ...props }) {
+function Button({ label, primary, danger, fullSize, ...props }) {
   return (
     <div className="control">
       <button
-        className={`button ${primary ? 'is-primary' : ''} ${fullSize ? 'full' : ''}`} 
+        className={`button ${primary ? 'is-primary' : ''} ${fullSize ? 'full' : ''} ${danger ? 'is-danger' : ''}`} 
         {...props}
       >
         {label}
