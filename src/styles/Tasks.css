@@ -158,6 +158,7 @@
   width: 100%;
   transition: color 150ms;
   height: 1rem;
+  margin-bottom: 1rem;
 }
 
 .New-section-button p {
