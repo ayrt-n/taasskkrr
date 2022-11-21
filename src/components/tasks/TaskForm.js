@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Field, Formik } from 'formik';
 import TextInput from '../form/TextInput';
 import SelectInput from '../form/SelectInput';
-import DatePickerInput from '../form/DatePickerInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
 import closeIcon from '../../assets/icons/close.svg';
 import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
 
-function TaskForm({ task, sectionId, closeModal, afterSubmit }) {
+function TaskForm({ task, sectionId, switchToEditMode, closeModal, afterSubmit }) {
   const [errorMessage, setErrorMessage] = useState([]);
   
   const validate = (values) => {
@@ -27,7 +26,7 @@ function TaskForm({ task, sectionId, closeModal, afterSubmit }) {
       TaskService.updateTask(values).then((data) => {
         if (!data.error) {
           afterSubmit(data, sectionId);
-          closeModal();
+          switchToEditMode();
         } else {
           console.log(data.error);
           setErrorMessage(data.error);
@@ -39,7 +38,7 @@ function TaskForm({ task, sectionId, closeModal, afterSubmit }) {
       TaskService.createTask(values).then((data) => {
         if (!data.error) {
           afterSubmit(data, sectionId);
-          closeModal();
+          switchToEditMode();
         } else {
           console.log(data.error);
           setErrorMessage(data.error);

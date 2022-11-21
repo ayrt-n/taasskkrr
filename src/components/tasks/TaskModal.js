@@ -5,7 +5,7 @@ import TaskForm from './TaskForm';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 
-function TaskModal({ task, sectionId, isOpen, closeModal, updateTask }) {
+function TaskModal({ task, sectionId, isOpen, closeModal, handleUpdate }) {
   const [editMode, setEditMode] = useState(false);
 
   const modalStyles = {
@@ -31,8 +31,18 @@ function TaskModal({ task, sectionId, isOpen, closeModal, updateTask }) {
       onAfterClose={() => { setEditMode(false) }}
     >
       {editMode ?
-        <TaskForm task={task} sectionId={sectionId} closeModal={closeModal} afterSubmit={updateTask} /> :
-        <TaskDetails task={task} closeModal={closeModal} editTask={() => { setEditMode(true) }} />
+        <TaskForm
+          task={task}
+          sectionId={sectionId}
+          closeModal={closeModal}
+          afterSubmit={handleUpdate}
+          switchToEditMode={() => { setEditMode(false) }}
+        /> :
+        <TaskDetails
+          task={task}
+          closeModal={closeModal}
+          editTask={() => { setEditMode(true) }}
+        />
       }
     </Modal>
   );
