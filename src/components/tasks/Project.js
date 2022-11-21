@@ -12,6 +12,7 @@ function Project() {
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
   const [taskModal, setTaskModal] = useState({});
+  const [sectionModal, setSectionModal] = useState(null)
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   useEffect(() => {
@@ -23,9 +24,21 @@ function Project() {
     });
   }, [projectId]);
 
-  const updateTask = (updatedTask, section=null) => {
-    if (section) {
-      console.log('TODO');
+  const updateTask = (updatedTask, sectionId=null) => {
+    if (sectionId) {
+      setProject(
+        {
+          ...project,
+          sections: project.sections.map((section) => (
+            section.id === sectionId ?
+            {
+              ...section,
+              tasks: section.tasks.map((task) => (updatedTask.id === task.id ? updatedTask : task))
+            } :
+            section
+          ))
+        }
+      )
     } else {
       setProject(
         {
@@ -36,38 +49,64 @@ function Project() {
     }
   };
 
-  const deleteTask = (deletedTask, section=null) => {
-    if (section) {
-      console.log('TOOD');
+  const deleteTask = (deletedTask, sectionId=null) => {
+    console.log(sectionId)
+    console.log(deletedTask)
+    if (sectionId) {
+      setProject(
+        {
+          ...project,
+          sections: project.sections.map((section) => (
+            section.id === sectionId ?
+            {
+              ...section,
+              tasks: section.tasks.filter((task) => (task.id !== deletedTask.id))
+            } :
+            section
+          ))
+        }
+      );
     } else {
       setProject(
         {
           ...project,
           tasks: project.tasks.filter((task) => (task.id !== deletedTask.id))
         }
-      )
+      );
     }
   }
 
-  const openTaskModal = (task) => {
+  const openTaskModal = (task, sectionId) => {
     setTaskModal(task);
+    setSectionModal(sectionId);
     setModalIsOpen(true);
   }
 
   const closeTaskModal = () => {
     setTaskModal({});
+    setSectionModal(null);
     setModalIsOpen(false);
   }
 
   return (
     <div className="Tasks">
-      <TaskModal task={taskModal} isOpen={modalIsOpen} closeModal={closeTaskModal} updateTask={updateTask} />
+      <TaskModal task={taskModal} sectionId={sectionModal} isOpen={modalIsOpen} closeModal={closeTaskModal} updateTask={updateTask} />
       <h1>{project.title}</h1>
       <div className="Tasks-container">
         {!loading && project.tasks.map((task) => <Task key={task.id} {...task} handleUpdate={updateTask} handleDelete={deleteTask} handleClick={openTaskModal} />)}
         <NewTaskButton />
         <NewSectionButton />
       </div>
+      {!loading && project.sections.map((section) => {
+        return(
+          <div className="Tasks-container" key={section.id}>
+            <h2>{section.title}</h2>
+            {section.tasks.map((task) => <Task key={task.id} {...task} sectionId={section.id} handleUpdate={updateTask} handleDelete={deleteTask} handleClick={openTaskModal} />)}
+            <NewTaskButton />
+            <NewSectionButton />
+          </div>
+        );
+      })}
     </div>
   );
 }
