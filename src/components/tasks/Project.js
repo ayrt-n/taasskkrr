@@ -34,7 +34,7 @@ function Project() {
             section
           ))
         }
-      )
+      );
     } else {
       setProject(
         {
@@ -68,19 +68,45 @@ function Project() {
         }
       );
     }
-  }
+  };
+
+  const addTask = (newTask, sectionId=null) => {
+    if (sectionId) {
+      setProject(
+        {
+          ...project,
+          sections: project.sections.map((section) => (
+            section.id === sectionId ?
+            {
+              ...section,
+              tasks: section.tasks.concat(newTask)
+            } :
+            section
+          ))
+        }
+      );
+    } else {
+      setProject(
+        {
+          ...project,
+          tasks: project.tasks.concat(newTask)
+        }
+      );
+    }
+  };
 
   return (
+    loading ?
+    null :
     <div className="Tasks">
       <h1>{project.title}</h1>
       <div className="Tasks-container">
-        {!loading && project.tasks.map((task) => (
+        {project.tasks.map((task) => (
           <Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} />)
         )}
-        <NewTaskButton />
-        <NewSectionButton />
+        <NewTaskButton projectId={projectId} sectionId={null} afterSubmit={addTask} />
       </div>
-      {!loading && project.sections.map((section) => {
+      {project.sections.map((section) => {
         return(
           <div className="Tasks-container" key={section.id}>
             <h2>{section.title}</h2>
@@ -93,11 +119,11 @@ function Project() {
                 handleDelete={deleteTask}
               />)
             )}
-            <NewTaskButton />
-            <NewSectionButton />
+            <NewTaskButton sectionId={section.id} projectId={projectId} afterSubmit={addTask} />
           </div>
         );
       })}
+      <NewSectionButton />
     </div>
   );
 }
