@@ -4,7 +4,7 @@ import TaskForm from './TaskForm';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 
-function TaskModal({ task, isOpen, closeModal, addTask }) {
+function NewTaskModal({ task, projectId, sectionId, isOpen, closeModal, afterSubmit }) {
   const modalStyles = {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -26,9 +26,15 @@ function TaskModal({ task, isOpen, closeModal, addTask }) {
       onRequestClose={closeModal}
       shouldCloseOnOverlayClick={true}
     >
-      <TaskForm task={task} closeModal={closeModal} afterSubmit={addTask} /> :
+      <TaskForm
+        task={task}
+        projectId={projectId}
+        sectionId={sectionId}
+        closeModal={closeModal}
+        afterSubmit={afterSubmit}
+      />
     </Modal>
   );
 }
 
-export default TaskModal;
+export default NewTaskModal;
