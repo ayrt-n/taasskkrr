@@ -8,7 +8,7 @@ import closeIcon from '../../assets/icons/close.svg';
 import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
 
-function TaskForm({ task, sectionId, switchToEditMode, closeModal, afterSubmit }) {
+function TaskForm({ task, projectId, sectionId, switchToEditMode, closeModal, afterSubmit }) {
   const [errorMessage, setErrorMessage] = useState([]);
   
   const validate = (values) => {
@@ -35,10 +35,10 @@ function TaskForm({ task, sectionId, switchToEditMode, closeModal, afterSubmit }
         setSubmitting(false);
       });
     } else {
-      TaskService.createTask(values).then((data) => {
+      TaskService.createTask(values, projectId, sectionId).then((data) => {
         if (!data.error) {
           afterSubmit(data, sectionId);
-          switchToEditMode();
+          closeModal();
         } else {
           console.log(data.error);
           setErrorMessage(data.error);
@@ -51,7 +51,7 @@ function TaskForm({ task, sectionId, switchToEditMode, closeModal, afterSubmit }
   return (
     <>
       <div className="Modal-header-container">
-        <h2>Edit Task</h2>
+        <h2>{task.id ? 'Edit Task' : 'Add Task'}</h2>
         <button className="Close-modal-button" onClick={closeModal}>
           <img src={closeIcon} alt="" />
         </button>
@@ -78,7 +78,10 @@ function TaskForm({ task, sectionId, switchToEditMode, closeModal, afterSubmit }
                 </option>
               </SelectInput>
               <div className="field is-grouped">
-                <Button label="Save Changes" primary type="submit"/>
+                {task.id ? 
+                  <Button label="Save Changes" primary type="submit"/> :
+                  <Button label="Add Task" primary type="submit"/>
+                }
                 <Button label="Cancel" onClick={closeModal}/>
               </div>
             </form>
