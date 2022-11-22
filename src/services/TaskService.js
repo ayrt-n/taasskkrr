@@ -59,6 +59,33 @@ class TaskService {
     });
   }
 
+  createTask(task, projectId, sectionId=null) {
+    const addTaskUrl = sectionId ?
+                       `${API_URL}/sections/${sectionId}/tasks` :
+                       `${API_URL}/projects/${projectId}/tasks`
+
+    return fetch(addTaskUrl, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      },
+      body: JSON.stringify({
+        'task': {
+          'title': task.title,
+          'description': task.description,
+          'priority': task.priority,
+          'due_date': task.due_date,
+          'status': task.status
+        }
+      })
+    })
+    .then(response => {
+      return response.json();
+    })
+  }
+
   createSection(projectId, sectionTitle) {
     return fetch(`${API_URL}/projects/${projectId}/sections`, {
       method: 'POST',
