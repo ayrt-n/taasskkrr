@@ -6,6 +6,10 @@
   margin-bottom: 1rem;
 }
 
+.Tasks-container {
+  margin-bottom: 2rem;
+}
+
 .Task {
   display: flex;
   align-items: center;
@@ -153,18 +157,19 @@
 .New-section-button {
   border: none;
   background: none;
-  color: var(--bgColor);
+  color: var(--bgLayerColor);
   font-size: 1rem;
   width: 100%;
   transition: color 150ms;
   height: 1rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .New-section-button p {
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid var(--bgColor);
+  border-bottom: 1px solid var(--bgLayerColor);
   line-height: 0.1em;
   transition: border-color 150ms;
 }
