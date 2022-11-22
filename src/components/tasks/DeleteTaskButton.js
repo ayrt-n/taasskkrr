@@ -17,10 +17,6 @@ function DeleteTaskButton({ id, sectionId, handleDelete }) {
     });
   };
 
-  const openConfirmationModal = () => {
-    setModalIsOpen(true);
-  }
-
   return (
     <div>
       <ConfirmationModal
@@ -31,7 +27,7 @@ function DeleteTaskButton({ id, sectionId, handleDelete }) {
         isOpen={modalIsOpen}
         closeModal={() => setModalIsOpen(false)}
       />
-      <button className="Task-icon-button" onClick={openConfirmationModal}>
+      <button className="Task-icon-button" onClick={() => setModalIsOpen(true)}>
         <img src={trashIcon} alt="" />
       </button>
     </div>
