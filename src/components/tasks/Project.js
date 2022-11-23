@@ -10,6 +10,7 @@ function Project() {
   let { projectId } = useParams();
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -95,6 +96,15 @@ function Project() {
     }
   };
 
+  const addSection = (newSection) => {
+    setProject(
+      {
+        ...project,
+        sections: project.sections.concat({...newSection, tasks: []})
+      }
+    )
+  }
+
   return (
     loading ?
     null :
@@ -123,7 +133,7 @@ function Project() {
           </div>
         );
       })}
-      <NewSectionButton />
+      <NewSectionButton projectId={projectId} afterSubmit={addSection} />
     </div>
   );
 }

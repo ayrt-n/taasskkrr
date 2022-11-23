@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/Tasks.css';
+import NewSectionModal from './NewSectionModal';
 
-function NewSectionButton({ handleClick }) {
+function NewSectionButton({ projectId, afterSubmit }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
-    <button onClick={handleClick} className="New-section-button">
-      <p>
-        <span>
-          Add Section
-        </span>
-      </p>
-    </button>
+    <div>
+      <NewSectionModal
+        section={{title: ''}}
+        projectId={projectId}
+        afterSubmit={afterSubmit}
+        closeModal={() => setModalIsOpen(false)}
+        isOpen={modalIsOpen}
+      />
+      <button onClick={() => setModalIsOpen(true)} className="New-section-button">
+        <p>
+          <span>
+            Add Section
+          </span>
+        </p>
+      </button>
+    </div>
   );
 }
 
