@@ -8,7 +8,7 @@ function NewTaskButton({ projectId, sectionId, afterSubmit }) {
   return (
     <div>
       <NewTaskModal
-        task={{}}
+        task={{title: ''}}
         projectId={projectId}
         sectionId={sectionId}
         afterSubmit={afterSubmit}
