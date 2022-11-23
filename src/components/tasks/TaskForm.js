@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import TextInput from '../form/TextInput';
+import TextArea from '../form/TextArea';
 import SelectInput from '../form/SelectInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
@@ -66,7 +67,7 @@ function TaskForm({ task, projectId, sectionId, switchToEditMode, closeModal, af
           {formik => (
             <form onSubmit={formik.handleSubmit}>
               <TextInput label="Title" name="title" id="title" type="text" autoFocus/>
-              <TextInput label="Description" name="description" id="description" type="text"/>
+              <TextArea label="Description" name="description" id="description" type="text"/>
               <SelectInput label="Priority" name="priority" id="priority">
                 <option value={0}>
                   Low
