@@ -44,7 +44,8 @@ function TaskForm({ task, projectId, sectionId, switchToEditMode, closeModal, af
           setErrorMessage(data.error);
           // TODO NEED TO DISPLAY ERRORS
         }
-      })
+        setSubmitting(false);
+      });
     }
   };
 
@@ -64,7 +65,7 @@ function TaskForm({ task, projectId, sectionId, switchToEditMode, closeModal, af
         >
           {formik => (
             <form onSubmit={formik.handleSubmit}>
-              <TextInput label="Title" name="title" id="title" type="text"/>
+              <TextInput label="Title" name="title" id="title" type="text" autoFocus/>
               <TextInput label="Description" name="description" id="description" type="text"/>
               <SelectInput label="Priority" name="priority" id="priority">
                 <option value={0}>
