@@ -5,6 +5,7 @@ import Task from './Task';
 import NewSectionButton from './NewSectionButton';
 import NewTaskButton from './NewTaskButton';
 import ProjectModal from './ProjectModal';
+import SectionHeader from './SectionHeader';
 import '../../styles/Tasks.css';
 
 function Project() {
@@ -135,7 +136,7 @@ function Project() {
         isOpen={modal.isOpen}
         closeModal={closeModal}
       />
-      <h1>{project.title}</h1>
+      <SectionHeader title={project.title} headingLevel="h1" name="project" />
       <div className="Tasks-container">
         {project.tasks.map((task) => (
           <Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} openModal={openModal} />)
@@ -145,7 +146,7 @@ function Project() {
       {project.sections.map((section) => {
         return(
           <div className="Tasks-container" key={section.id}>
-            <h2>{section.title}</h2>
+            <SectionHeader title={section.title} headingLevel="h2" name="section" />
             {section.tasks.map((task) => (
               <Task
                 key={task.id}
