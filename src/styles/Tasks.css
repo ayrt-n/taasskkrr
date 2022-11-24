@@ -7,6 +7,15 @@
   margin-bottom: 1rem;
 }
 
+.Section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+  border-bottom: 1px solid var(--bgLayerColor);
+  margin-bottom: 1rem;
+}
+
 .Tasks-container {
   margin-bottom: 2rem;
 }
