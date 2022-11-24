@@ -4,13 +4,14 @@ import UserService from '../../services/UserService';
 import Task from './Task';
 import NewSectionButton from './NewSectionButton';
 import NewTaskButton from './NewTaskButton';
+import ProjectModal from './ProjectModal';
 import '../../styles/Tasks.css';
 
 function Project() {
   let { projectId } = useParams();
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
-  const [projectModalOpen, setProjectModalOpen] = useState(false);
+  const [modal, setModal] = useState({isOpen: false, action: '', data: {}})
 
   useEffect(() => {
     setLoading(true);
@@ -105,16 +106,41 @@ function Project() {
     )
   }
 
+  const openModal = (action, data) => {
+    setModal(
+      {
+        isOpen: true,
+        action: action,
+        data: data
+      }
+    )
+  };
+
+  const closeModal = () => {
+    setModal(
+      {
+        ...modal,
+        isOpen: false,
+      }
+    )
+  }
+
   return (
     loading ?
     null :
     <div className="Tasks">
+      <ProjectModal
+        action={modal.action}
+        data={modal.data}
+        isOpen={modal.isOpen}
+        closeModal={closeModal}
+      />
       <h1>{project.title}</h1>
       <div className="Tasks-container">
         {project.tasks.map((task) => (
-          <Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} />)
+          <Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} openModal={openModal} />)
         )}
-        <NewTaskButton projectId={projectId} sectionId={null} afterSubmit={addTask} />
+        <NewTaskButton projectId={projectId} openModal={openModal} afterSubmit={addTask} />
       </div>
       {project.sections.map((section) => {
         return(
@@ -125,15 +151,16 @@ function Project() {
                 key={task.id}
                 task={task}
                 sectionId={section.id}
+                openModal={openModal}
                 handleUpdate={updateTask}
                 handleDelete={deleteTask}
               />)
             )}
-            <NewTaskButton sectionId={section.id} projectId={projectId} afterSubmit={addTask} />
+            <NewTaskButton openModal={openModal} sectionId={section.id} projectId={projectId} afterSubmit={addTask} />
           </div>
         );
       })}
-      <NewSectionButton projectId={projectId} afterSubmit={addSection} />
+      <NewSectionButton projectId={projectId} openModal={openModal} afterSubmit={addSection} />
     </div>
   );
 }

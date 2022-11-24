@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TaskCheckbox from './TaskCheckbox';
 import DeleteTaskButton from './DeleteTaskButton';
-import TaskModal from './TaskModal';
 import '../../styles/Tasks.css';
 
-function Task({ task, sectionId, handleUpdate, handleDelete }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+function Task({ task, sectionId, handleUpdate, handleDelete, openModal }) {
+  const openTaskModal = () => {
+    openModal('viewTask', {task, sectionId, callback: handleUpdate});
+  }
 
   return (
     <div className="Task">
-      <TaskModal
-        task={task}
-        sectionId={sectionId}
-        isOpen={modalIsOpen}
-        closeModal={() => setModalIsOpen(false)}
-        handleUpdate={handleUpdate}
-      />
       <div className="Task-left">
         <TaskCheckbox
           id={task.id}
@@ -24,12 +18,12 @@ function Task({ task, sectionId, handleUpdate, handleDelete }) {
           handleUpdate={handleUpdate}
         />
       </div>
-      <div className="Task-main" onClick={() => setModalIsOpen(true)}>
+      <div className="Task-main" onClick={openTaskModal}>
         <div className="Task-title">{task.title}</div>
         <div className="Task-subtitle">{task.due_date}</div>
       </div>
       <div className="Task-right">
-        <DeleteTaskButton id={task.id} sectionId={sectionId} handleDelete={handleDelete} />
+        <DeleteTaskButton id={task.id} sectionId={sectionId} openModal={openModal} handleDelete={handleDelete} />
       </div>
     </div>
   );
