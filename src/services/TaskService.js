@@ -86,6 +86,23 @@ class TaskService {
     })
   }
 
+  updateSection(sectionTitle, sectionId) {
+    return fetch(`${API_URL}/sections/${sectionId}`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      },
+      body: JSON.stringify({
+        'section': sectionTitle
+      })
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
+
   createSection(projectId, sectionTitle) {
     return fetch(`${API_URL}/projects/${projectId}/sections`, {
       method: 'POST',
@@ -103,6 +120,23 @@ class TaskService {
     .then(response => {
       return response.json();
     })
+  }
+
+  updateProject(projectTitle, projectId) {
+    return fetch(`${API_URL}/sections/${projectId}`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      },
+      body: JSON.stringify({
+        'section': projectTitle
+      })
+    })
+    .then(response => {
+      return response.json();
+    });
   }
 
   createProject(projectTitle) {
