@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Modal from 'react-modal';
 import TaskDetails from './TaskDetails';
 import TaskForm from './TaskForm';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 
-function TaskModal({ task, sectionId, isOpen, closeModal, handleUpdate }) {
+function TaskModal({ task, sectionId, closeModal, afterSubmit }) {
   const [editMode, setEditMode] = useState(false);
 
   const modalStyles = {
@@ -23,20 +22,13 @@ function TaskModal({ task, sectionId, isOpen, closeModal, handleUpdate }) {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      style={modalStyles}
-      onRequestClose={closeModal}
-      shouldCloseOnOverlayClick={true}
-      onAfterClose={() => { setEditMode(false) }}
-    >
+    <>
       {editMode ?
         <TaskForm
           task={task}
           sectionId={sectionId}
           closeModal={closeModal}
-          afterSubmit={handleUpdate}
-          switchToEditMode={() => { setEditMode(false) }}
+          afterSubmit={afterSubmit}
         /> :
         <TaskDetails
           task={task}
@@ -44,7 +36,7 @@ function TaskModal({ task, sectionId, isOpen, closeModal, handleUpdate }) {
           editTask={() => { setEditMode(true) }}
         />
       }
-    </Modal>
+    </>
   );
 }
 

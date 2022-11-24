@@ -9,7 +9,7 @@ import closeIcon from '../../assets/icons/close.svg';
 import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
 
-function TaskForm({ task, projectId, sectionId, switchToEditMode, closeModal, afterSubmit }) {
+function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
   const [errorMessage, setErrorMessage] = useState([]);
   
   const validate = (values) => {
@@ -27,7 +27,7 @@ function TaskForm({ task, projectId, sectionId, switchToEditMode, closeModal, af
       TaskService.updateTask(values).then((data) => {
         if (!data.error) {
           afterSubmit(data, sectionId);
-          switchToEditMode();
+          closeModal();
         } else {
           console.log(data.error);
           setErrorMessage(data.error);
