@@ -107,7 +107,7 @@ function Project() {
     )
   }
 
-  const editSection = (newSection) => {
+  const updateSection = (newSection) => {
     setProject(
       {
         ...project,
@@ -123,7 +123,16 @@ function Project() {
     )
   }
 
-  const editProject = (newProject) => {
+  const deleteSection = (deletedSection) => {
+    setProject(
+      {
+        ...project,
+        sections: project.sections.filter((section) => section.id !== deletedSection.id)
+      }
+    );
+  };
+
+  const updateProject = (newProject) => {
     setProject(
       {
         ...project,
@@ -166,7 +175,7 @@ function Project() {
         headingLevel="h1"
         name="project"
         projectId={projectId}
-        handleEdit={editProject}
+        handleUpdate={updateProject}
         openModal={openModal}
       />
       <div className="Tasks-container">
@@ -184,16 +193,17 @@ function Project() {
               name="section"
               projectId={projectId}
               sectionId={section.id}
-              handleEdit={editSection}
+              handleUpdate={updateSection}
+              handleDelete={deleteSection}
               openModal={openModal}
             />
             {section.tasks.map((task) => (
               <Task
                 key={task.id}
                 task={task}
-                section={section}
+                sectionId={section.id}
                 openModal={openModal}
-                handleEdit={updateTask}
+                handleUpdate={updateTask}
                 handleDelete={deleteTask}
               />)
             )}

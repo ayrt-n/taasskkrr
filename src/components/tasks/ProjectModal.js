@@ -82,6 +82,14 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           closeModal={closeModal}
           afterSubmit={data.callback}
         /> :
+        action === 'deleteSection' ?
+        <ConfirmationModal
+          header="Confirm Delete"
+          message="Are you sure you want to permanently delete this section?"
+          buttonText="Delete"
+          confirmCallback={data.callback}
+          closeModal={closeModal}
+        /> :
         null
       }
     </Modal>
