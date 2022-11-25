@@ -21,17 +21,31 @@ function SectionForm({ section, projectId, closeModal, afterSubmit }) {
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
-    TaskService.createSection(projectId, values.title).then((data) => {
-      if (!data.error) {
-        afterSubmit(data);
-        closeModal();
-      } else {
-        console.log(data.error);
-        setErrorMessage(data.error);
-        // TODO NEED TO DISPLAY ERRORS
-      }
-      setSubmitting(false);
-    });
+    if (section.id) {
+      TaskService.updateSection(values.title, section.id).then((data) => {
+        if (!data.error) {
+          afterSubmit(data);
+          closeModal();
+        } else {
+          console.log(data.error);
+          setErrorMessage(data.error);
+          // TODO NEED TO DISPLAY ERRORS
+        }
+        setSubmitting(false);
+      });
+    } else {
+      TaskService.createSection(values.title, projectId).then((data) => {
+        if (!data.error) {
+          afterSubmit(data);
+          closeModal();
+        } else {
+          console.log(data.error);
+          setErrorMessage(data.error);
+          // TODO NEED TO DISPLAY ERRORS
+        }
+        setSubmitting(false);
+      });
+    }
   };
 
   return (
