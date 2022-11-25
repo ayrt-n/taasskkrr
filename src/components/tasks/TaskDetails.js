@@ -23,7 +23,7 @@ function TaskDetails({ task, closeModal, editTask }) {
         </div>
         <div className="field">
           <p className="label">Due Date</p>
-          <p>{task.due_date}</p>
+          <p>{task.due_date || "N/A"}</p>
         </div>
         <Button label="Edit Task" primary onClick={editTask}/>
       </div>
