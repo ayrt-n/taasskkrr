@@ -254,3 +254,15 @@ input:-webkit-autofill:focus {
 .select:not(.is-multiple):not(.is-loading):hover::after {
   border-color: var(--ctaDark);
 }
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+input[type="date"] {
+  background-color: var(--bgLayerColor);
+  color: var(--fgColor);
+  font-size: inherit;
+  font-family: inherit;
+}
