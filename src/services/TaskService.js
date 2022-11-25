@@ -88,14 +88,16 @@ class TaskService {
 
   updateSection(sectionTitle, sectionId) {
     return fetch(`${API_URL}/sections/${sectionId}`, {
-      method: 'POST',
+      method: 'PATCH',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
         Authorization: authHeader()
       },
       body: JSON.stringify({
-        'section': sectionTitle
+        'section': {
+          'title': sectionTitle
+        }
       })
     })
     .then(response => {
@@ -103,7 +105,21 @@ class TaskService {
     });
   }
 
-  createSection(projectId, sectionTitle) {
+  deleteSection(sectionId) {
+    return fetch(`${API_URL}/sections/${sectionId}`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      }
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
+
+  createSection(sectionTitle, projectId) {
     return fetch(`${API_URL}/projects/${projectId}/sections`, {
       method: 'POST',
       mode: 'cors',
@@ -123,15 +139,17 @@ class TaskService {
   }
 
   updateProject(projectTitle, projectId) {
-    return fetch(`${API_URL}/sections/${projectId}`, {
-      method: 'POST',
+    return fetch(`${API_URL}/projects/${projectId}`, {
+      method: 'PATCH',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
         Authorization: authHeader()
       },
       body: JSON.stringify({
-        'section': projectTitle
+        'project': {
+          'title': projectTitle
+        }
       })
     })
     .then(response => {
@@ -139,6 +157,20 @@ class TaskService {
     });
   }
 
+  deleteProject(projectId) {
+    return fetch(`${API_URL}/projects/${projectId}`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      }
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
+  
   createProject(projectTitle) {
     return fetch(`${API_URL}/projects/`, {
       method: 'POST',
