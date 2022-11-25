@@ -105,7 +105,7 @@ class TaskService {
     });
   }
 
-  deleteSection(sectionId) {
+  destroySection(sectionId) {
     return fetch(`${API_URL}/sections/${sectionId}`, {
       method: 'DELETE',
       mode: 'cors',
@@ -157,7 +157,7 @@ class TaskService {
     });
   }
 
-  deleteProject(projectId) {
+  destroyProject(projectId) {
     return fetch(`${API_URL}/projects/${projectId}`, {
       method: 'DELETE',
       mode: 'cors',
