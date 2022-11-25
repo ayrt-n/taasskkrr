@@ -11,7 +11,7 @@ function DropdownMenu({ children }) {
         </svg>
       </button>
       {isOpen ?
-        <div className="Dropdown-container">
+        <div className="Dropdown-container" onClick={() => setIsOpen(false)}>
           <ul className="Dropdown-menu">
             {children}
           </ul>
