@@ -107,6 +107,31 @@ function Project() {
     )
   }
 
+  const editSection = (newSection) => {
+    setProject(
+      {
+        ...project,
+        sections: project.sections.map((section) => (
+          newSection.id === section.id ?
+          {
+            ...section,
+            title: newSection.title
+          } :
+          section
+        ))
+      }
+    )
+  }
+
+  const editProject = (newProject) => {
+    setProject(
+      {
+        ...project,
+        title: newProject.title
+      }
+    )
+  }
+
   const openModal = (action, data) => {
     setModal(
       {
@@ -136,7 +161,14 @@ function Project() {
         isOpen={modal.isOpen}
         closeModal={closeModal}
       />
-      <SectionHeader title={project.title} headingLevel="h1" name="project" />
+      <SectionHeader
+        title={project.title}
+        headingLevel="h1"
+        name="project"
+        projectId={projectId}
+        handleEdit={editProject}
+        openModal={openModal}
+      />
       <div className="Tasks-container">
         {project.tasks.map((task) => (
           <Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} openModal={openModal} />)
@@ -146,14 +178,22 @@ function Project() {
       {project.sections.map((section) => {
         return(
           <div className="Tasks-container" key={section.id}>
-            <SectionHeader title={section.title} headingLevel="h2" name="section" />
+            <SectionHeader
+              title={section.title}
+              headingLevel="h2"
+              name="section"
+              projectId={projectId}
+              sectionId={section.id}
+              handleEdit={editSection}
+              openModal={openModal}
+            />
             {section.tasks.map((task) => (
               <Task
                 key={task.id}
                 task={task}
-                sectionId={section.id}
+                section={section}
                 openModal={openModal}
-                handleUpdate={updateTask}
+                handleEdit={updateTask}
                 handleDelete={deleteTask}
               />)
             )}

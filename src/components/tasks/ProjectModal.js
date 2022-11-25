@@ -3,9 +3,11 @@ import Modal from 'react-modal';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 import TaskModal from './TaskModal';
-import NewSectionModal from './NewSectionModal';
 import TaskForm from './TaskForm';
 import ConfirmationModal from '../ConfirmationModal';
+import SectionForm from './SectionForm';
+import ProjectForm from './ProjectForm';
+import SectionHeader from './SectionHeader';
 
 function ProjectModal({ action, data, isOpen, closeModal }) {
   const modalStyles = {
@@ -37,7 +39,7 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           afterSubmit={data.callback}
         /> :
         action === 'newSection' ?
-        <NewSectionModal
+        <SectionForm
           section={data.section}
           projectId={data.projectId}
           closeModal={closeModal}
@@ -58,6 +60,27 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           buttonText="Delete"
           confirmCallback={data.callback}
           closeModal={closeModal}
+        /> :
+        action === 'editProject' ?
+        <ProjectForm
+          project={data.project}
+          closeModal={closeModal}
+          afterSubmit={data.callback}
+        /> :
+        action === 'deleteProject' ?
+        <ConfirmationModal
+          header="Confirm Delete"
+          message="Are you sure you want to permanently delete this task?"
+          buttonText="Delete"
+          confirmCallback={data.callback}
+          closeModal={closeModal}
+        /> :
+        action ==='editSection' ?
+        <SectionForm
+          section={data.section}
+          projectId={data.projectId}
+          closeModal={closeModal}
+          afterSubmit={data.callback}
         /> :
         null
       }
