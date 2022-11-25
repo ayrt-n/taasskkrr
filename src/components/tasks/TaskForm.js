@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import TextInput from '../form/TextInput';
 import TextArea from '../form/TextArea';
 import SelectInput from '../form/SelectInput';
+import DateInput from '../form/DateInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
 import closeIcon from '../../assets/icons/close.svg';
@@ -79,6 +80,7 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
                   High
                 </option>
               </SelectInput>
+              <DateInput label="Due Date" name="due_date" id="due_date" />
               <div className="field is-grouped">
                 {task.id ? 
                   <Button label="Save Changes" primary type="submit"/> :
