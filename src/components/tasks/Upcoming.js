@@ -11,6 +11,7 @@ function Upcoming() {
   const [upcoming, setUpcoming] = useState([])
 
   useEffect(() => {
+    document.title = "Upcoming"
     UserService.getUpcomingTasks().then((userTasks) => {
       console.log(userTasks.tasks);
       setUpcoming(userTasks.tasks);

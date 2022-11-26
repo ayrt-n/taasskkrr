@@ -8,6 +8,7 @@ function Today() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
+    document.title = "Today"
     UserService.getTodayTasks().then((userTasks) => {
       setTasks(userTasks.tasks);
     });

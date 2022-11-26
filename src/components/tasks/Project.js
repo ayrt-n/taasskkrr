@@ -20,6 +20,7 @@ function Project() {
       console.log(data);
       setProject(data);
       setLoading(false);
+      document.title = data.title
     });
   }, [projectId]);
 
