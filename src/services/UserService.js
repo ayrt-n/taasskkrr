@@ -32,7 +32,21 @@ class UserService {
   }
 
   getUserTasks() {
-    return fetch(`${API_URL}tasks`, {
+    return fetch(`${API_URL}/tasks`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      }
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
+
+  getUpcomingTasks() {
+    return fetch(`${API_URL}/tasks?upcoming=true`, {
       method: 'GET',
       mode: 'cors',
       headers: {
