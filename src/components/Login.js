@@ -56,7 +56,7 @@ function Login() {
         )}
       </Formik>
       <div style={{'textAlign': 'center'}}>
-        Already have an account? <Link to="/login">Log in</Link>
+        Don't have an account? <Link to="/register">Sign up</Link>
       </div>
     </div>
   );
