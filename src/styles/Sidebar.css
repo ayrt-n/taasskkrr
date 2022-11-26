@@ -26,6 +26,34 @@
   user-select: none; /* Non-prefixed version, currently */
 }
 
+.SidebarItem.list-header {
+  justify-content: space-between;
+}
+
+.SidebarItem-button {
+  background: none;
+  border: none;
+  color: var(--bgLightLayerColor);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 150ms;
+  font-size: 1rem;
+}
+
+.SidebarItem-button:hover {
+  color: var(--fgColor);
+}
+
+.SidebarItem-button:active {
+  color: var(--bgLayerColor);
+}
+
+.SidebarItem.no-hover:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
 .SidebarItem.SubItem .SidebarItem-icon {
   margin-left: 1.125rem;
 }
