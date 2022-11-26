@@ -13,6 +13,10 @@
   color: var(--dangerColor);
 }
 
+.Form-container form {
+  margin-bottom: 0.75rem;
+}
+
 input, textarea, select {
   box-sizing: border-box;
 }
