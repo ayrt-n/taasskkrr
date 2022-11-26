@@ -5,11 +5,11 @@ function NewTaskButton({ projectId, sectionId, afterSubmit, openModal }) {
   const emptyTask = {
     title: '',
     description: ''
-  }
+  };
 
   const openNewTaskModal = () => {
     openModal('newTask', {task: emptyTask, projectId, sectionId, callback: afterSubmit});
-  }
+  };
 
   return (
     <div>
