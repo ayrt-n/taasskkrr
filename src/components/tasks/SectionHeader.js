@@ -4,7 +4,7 @@ import TaskService from '../../services/TaskService';
 import '../../styles/DropdownMenu.css'
 
 
-function SectionHeader({ title, headingLevel, name, projectId, sectionId, openModal, handleUpdate, handleDelete }) {
+function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId, openModal, handleUpdate, handleDelete }) {
   const Title = headingLevel;
 
   const deleteSection = () => {
@@ -36,14 +36,17 @@ function SectionHeader({ title, headingLevel, name, projectId, sectionId, openMo
   return (
     <div className="Section-header">
       <Title>{title}</Title>
-      <DropdownMenu>
-        <li className="Dropdown-item">
-          <button onClick={openEditModal}>Edit {name}</button>
-        </li>
-        <li className="Dropdown-item">
-          <button onClick={openDeleteModal}>Delete {name}</button>
-        </li>
-      </DropdownMenu>
+      {inbox ?
+        null :
+        <DropdownMenu>
+          <li className="Dropdown-item">
+            <button onClick={openEditModal}>Edit {name}</button>
+          </li>
+          <li className="Dropdown-item">
+            <button onClick={openDeleteModal}>Delete {name}</button>
+          </li>
+        </DropdownMenu>
+      }
     </div>
   );
 }

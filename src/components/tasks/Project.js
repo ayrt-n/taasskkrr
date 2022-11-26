@@ -174,6 +174,7 @@ function Project() {
         title={project.title}
         headingLevel="h1"
         name="project"
+        inbox={project.inbox}
         projectId={projectId}
         handleUpdate={updateProject}
         openModal={openModal}
