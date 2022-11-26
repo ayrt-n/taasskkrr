@@ -7,7 +7,6 @@ import TaskForm from './TaskForm';
 import ConfirmationModal from '../ConfirmationModal';
 import SectionForm from './SectionForm';
 import ProjectForm from './ProjectForm';
-import SectionHeader from './SectionHeader';
 
 function ProjectModal({ action, data, isOpen, closeModal }) {
   const modalStyles = {
@@ -61,7 +60,7 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           confirmCallback={data.callback}
           closeModal={closeModal}
         /> :
-        action === 'editProject' ?
+        action === 'editProject' || action === 'newProject' ?
         <ProjectForm
           project={data.project}
           closeModal={closeModal}
