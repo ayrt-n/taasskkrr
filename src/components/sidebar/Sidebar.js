@@ -7,12 +7,14 @@ import ProjectModal from '../tasks/ProjectModal';
 import NewProjectButton from './NewProjectButton';
 
 function Sidebar() {
+  const [inbox, setInbox] = useState([]);
   const [projects, setProjects] = useState([]);
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
 
   useEffect(() => {
     UserService.getUserProjects().then((userProjects) => {
-      setProjects(userProjects)
+      setInbox(userProjects.filter(project => project.inbox)[0]);
+      setProjects(userProjects.filter(project => !project.inbox));
     });
   }, []);
 
@@ -47,7 +49,7 @@ function Sidebar() {
         isOpen={modal.isOpen}
         closeModal={closeModal}
       />
-      <SidebarItem icon="inbox.svg" title="Inbox" action="/inbox" />
+      <SidebarItem icon="inbox.svg" title="Inbox" action={`/projects/${inbox.id}`} />
       <SidebarItem icon="today.svg" title="Today" action="/today" />
       <SidebarItem icon="upcoming.svg" title="Upcoming" action="/upcoming" />
       <SidebarCollapsableList title="Projects" items={projects} handleAdd={addProject} />
