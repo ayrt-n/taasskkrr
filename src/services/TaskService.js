@@ -180,7 +180,7 @@ class TaskService {
         Authorization: authHeader()
       },
       body: JSON.stringify({
-        'section': {
+        'project': {
           'title': projectTitle
         }
       })
