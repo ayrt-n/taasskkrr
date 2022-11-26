@@ -58,6 +58,20 @@ class UserService {
       return response.json();
     });
   }
+
+  getTodayTasks() {
+    return fetch(`${API_URL}/tasks?today=true`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+      }
+    })
+    .then(response => {
+      return response.json();
+    });
+  }
 }
 
 export default new UserService();
