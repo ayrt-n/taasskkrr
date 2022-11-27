@@ -51,7 +51,7 @@ function Register() {
 
   return (
     <div className="Form-container">
-      {errorMessage.length > 0 && <Alert type="danger" message="One or more errors prevented us from creating your account:" details={errorMessage} />}
+      {errorMessage.length > 0 && <Alert type="danger" message="Sign up failed:" details={errorMessage} />}
       <Formik
         initialValues={{email: '', password: '', passwordConfirmation: ''}}
         validate={validate}
