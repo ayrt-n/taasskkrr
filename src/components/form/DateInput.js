@@ -5,6 +5,10 @@ import '../../styles/Form.css';
 function DateInput({ label, ...props }) {
   const [field, meta] = useField(props);
 
+  if (field.value == null) {
+    field.value = ''
+  }
+
   return (
     <div className="field">
       <label htmlFor={props.id || props.name} className="label">{label}</label>
