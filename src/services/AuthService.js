@@ -31,7 +31,6 @@ class AuthService {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       return data;
     });
   }
