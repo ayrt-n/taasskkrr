@@ -9,6 +9,7 @@ import Alert from '../Alert';
 import closeIcon from '../../assets/icons/close.svg';
 import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
+import eventBus from '../common/EventBus';
 
 function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
   const [errorMessage, setErrorMessage] = useState([]);
@@ -30,9 +31,11 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
           afterSubmit(data, sectionId);
           closeModal();
         } else {
-          console.log(data.error);
-          setErrorMessage(data.error);
-          // TODO NEED TO DISPLAY ERRORS
+          if (data.error.details === "Signature has expired") {
+            eventBus.dispatch('logout');
+          } else {
+            setErrorMessage(data.error.details);
+          }
         }
         setSubmitting(false);
       });
@@ -42,9 +45,11 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
           afterSubmit(data, sectionId);
           closeModal();
         } else {
-          console.log(data.error);
-          setErrorMessage(data.error);
-          // TODO NEED TO DISPLAY ERRORS
+          if (data.error.details[0] === "Signature has expired") {
+            eventBus.dispatch('logout');
+          } else {
+            setErrorMessage(data.error.details);
+          }
         }
         setSubmitting(false);
       });
