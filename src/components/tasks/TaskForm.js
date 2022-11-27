@@ -65,6 +65,7 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
         </button>
       </div>
       <div className="Modal-content-container">
+        {errorMessage.length > 0 && <Alert type="danger" message="Unable to save task:" details={errorMessage} />}
         <Formik
           initialValues={{...task}}
           validate={validate}

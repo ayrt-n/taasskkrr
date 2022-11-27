@@ -62,6 +62,7 @@ function SectionForm({ section, projectId, closeModal, afterSubmit }) {
         </button>
       </div>
       <div className="Modal-content-container">
+        {errorMessage.length > 0 && <Alert type="danger" message="Unable to save section:" details={errorMessage} />}
         <Formik
           initialValues={{title: section.title}}
           validate={validate}
