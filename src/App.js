@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
 import AuthService from './services/AuthService';
+import AuthVerify from './components/common/AuthVerify';
 import './styles/App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <Navbar currentUser={currentUser} logOut={logOut} />
+
       <div className="App-main-content">
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -33,6 +35,8 @@ function App() {
           }
         </Routes>
       </div>
+      
+      <AuthVerify logOut={logOut} />
     </div>
   );
 }
