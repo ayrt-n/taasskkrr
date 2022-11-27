@@ -29,7 +29,7 @@ function Login() {
     AuthService.login(values.email, values.password)
     .then((data) => {
       if (!data.error) {
-        routerNavigate('/inbox');
+        routerNavigate('/');
         window.location.reload();
       } else {
         setErrorMessage(data.error.details);
