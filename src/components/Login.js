@@ -32,8 +32,7 @@ function Login() {
         routerNavigate('/inbox');
         window.location.reload();
       } else {
-        console.log(data.error);
-        setErrorMessage([data.error]);
+        setErrorMessage(data.error.details);
       }
       setSubmitting(false);
     })
@@ -41,7 +40,7 @@ function Login() {
 
   return (
     <div className="Form-container">
-      {errorMessage.length > 0 && <Alert type="danger" message="Error attempting to sign in:" details={errorMessage} />}
+      {errorMessage.length > 0 && <Alert type="danger" message="Login failed:" details={errorMessage} />}
       <Formik
         initialValues={{email: '', password: ''}}
         validate={validate}
