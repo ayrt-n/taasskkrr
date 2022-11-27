@@ -9,7 +9,7 @@ function Alert({ type, message, details }) {
         <ul className="Alert-details">
           {details.map((detail) => {
             return(
-              <li>
+              <li key={detail}>
                 {detail}
               </li>
             );
