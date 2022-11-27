@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Dashboard from './components/Dashboard';
 import Navbar from './components/navbar/Navbar';
 import Login from './components/Login';
@@ -11,6 +11,7 @@ import './styles/App.css'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const routerNavigate = useNavigate();
 
   useEffect(() => {
     setCurrentUser(AuthService.getCurrentUser())
@@ -19,6 +20,8 @@ function App() {
   const logOut = () => {
     AuthService.logout();
     setCurrentUser(null);
+    routerNavigate('/login');
+    window.location.reload();
   }
 
   return (
