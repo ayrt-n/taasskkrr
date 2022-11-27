@@ -1,20 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthService from '../../services/AuthService';
 import logoSVG from '../../assets/icons/logo.svg';
 import '../../styles/Nav.css'
 
-function Navbar() {
-  const [currentUser, setCurrentUser] = useState(null);
-  useEffect(() => {
-    setCurrentUser(AuthService.getCurrentUser());
-  }, [])
-
-  const logOut = () => {
-    AuthService.logout();
-    setCurrentUser(null);
-  }
-
+function Navbar({ currentUser, logOut }) {
   return (
     <nav className="Nav">
       <Link to="/">

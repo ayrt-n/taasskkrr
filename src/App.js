@@ -15,15 +15,20 @@ function App() {
     setCurrentUser(AuthService.getCurrentUser())
   }, [])
 
+  const logOut = () => {
+    AuthService.logout();
+    setCurrentUser(null);
+  }
+
   return (
     <div className="App">
-      <Navbar currentUser={currentUser} />
+      <Navbar currentUser={currentUser} logOut={logOut} />
       <div className="App-main-content">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           {currentUser ?
-            <Route path="/*" element={<Dashboard projects={[]} />} /> :
+            <Route path="/*" element={<Dashboard />} /> :
             <Route path="/" element={<HomePage />} />
           }
         </Routes>
