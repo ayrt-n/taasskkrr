@@ -75,6 +75,9 @@
 
 .SidebarItem-title {
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .collapsed .Sidebar-collapsable-items {
