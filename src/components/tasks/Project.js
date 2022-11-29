@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import UserService from '../../services/UserService';
 import Task from './Task';
 import NewSectionButton from './NewSectionButton';
@@ -8,8 +8,9 @@ import ProjectModal from './ProjectModal';
 import SectionHeader from './SectionHeader';
 import '../../styles/Tasks.css';
 
-function Project() {
-  let { projectId } = useParams();
+function Project({ updateSidebarProject, deleteSidebarProject, ...props }) {
+  let { projectId } = useParams() || props;
+  const routerNavigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}})
@@ -140,7 +141,13 @@ function Project() {
         title: newProject.title
       }
     )
+    updateSidebarProject(newProject);
   }
+
+  const deleteProject = (deletedProject) => {
+    deleteSidebarProject(deletedProject);
+    routerNavigate('/');
+  };
 
   const openModal = (action, data) => {
     setModal(
@@ -178,6 +185,7 @@ function Project() {
         inbox={project.inbox}
         projectId={projectId}
         handleUpdate={updateProject}
+        handleDelete={deleteProject}
         openModal={openModal}
       />
       <div className="Tasks-container">
