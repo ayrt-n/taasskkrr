@@ -1,8 +1,7 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import '../../styles/Sidebar.css'
 import SidebarItem from './SidebarItem'
 import SidebarCollapsableList from './SidebarCollapsableList';
-import UserService from '../../services/UserService';
 import ProjectModal from '../tasks/ProjectModal';
 import NewProjectButton from './NewProjectButton';
 
