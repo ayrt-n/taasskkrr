@@ -1,6 +1,7 @@
 import React from 'react';
 import DropdownMenu from '../DropdownMenu';
 import TaskService from '../../services/TaskService';
+import eventBus from '../common/EventBus';
 import '../../styles/DropdownMenu.css'
 
 
@@ -12,7 +13,9 @@ function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId,
       if (!data.error) {
         handleDelete(data, sectionId);
       } else {
-        // TODO HANDLE ERROR IN DELETE
+        if (data.error.details[0] === "Signature has expired") {
+          eventBus.dispatch('logout');
+        }
       }
     });
   };
@@ -22,7 +25,9 @@ function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId,
       if (!data.error) {
         handleDelete(data, projectId);
       } else {
-        // TODO HANDLE ERROR IN DELETE
+        if (data.error.details[0] === "Signature has expired") {
+          eventBus.dispatch('logout');
+        }
       }
     });
   };
