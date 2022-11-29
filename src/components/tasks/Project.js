@@ -18,7 +18,6 @@ function Project({ updateSidebarProject, deleteSidebarProject, ...props }) {
   useEffect(() => {
     setLoading(true);
     UserService.getProjectTasks(projectId).then((data) => {
-      console.log(data);
       setProject(data);
       setLoading(false);
       document.title = data.title
