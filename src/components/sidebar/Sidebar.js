@@ -6,21 +6,10 @@ import UserService from '../../services/UserService';
 import ProjectModal from '../tasks/ProjectModal';
 import NewProjectButton from './NewProjectButton';
 
-function Sidebar() {
-  const [inbox, setInbox] = useState([]);
-  const [projects, setProjects] = useState([]);
+function Sidebar({ userProjects, addProject }) {
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
-
-  useEffect(() => {
-    UserService.getUserProjects().then((userProjects) => {
-      setInbox(userProjects.filter(project => project.inbox)[0]);
-      setProjects(userProjects.filter(project => !project.inbox));
-    });
-  }, []);
-
-  const addProject = (newProject) => {
-    setProjects(projects.concat(newProject));
-  };
+  const inbox = userProjects.filter((project) => (project.inbox))[0];
+  const projects = userProjects.filter((project) => (!project.inbox));
 
   const openModal = (action, data) => {
     setModal(
