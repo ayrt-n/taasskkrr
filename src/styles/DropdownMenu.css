@@ -34,6 +34,8 @@
   color: inherit;
   font-size: inherit;
   cursor: pointer;
+  width: 100%;
+  text-align: left;
 }
 
 .Dropdown-item:hover {
