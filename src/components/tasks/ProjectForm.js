@@ -11,8 +11,6 @@ import eventBus from '../common/EventBus';
 function SectionForm({ project, closeModal, afterSubmit }) {
   const [errorMessage, setErrorMessage] = useState([]);
 
-  console.log(project);
-  
   const validate = (values) => {
     const errors = {};
 
