@@ -6,7 +6,10 @@
   top: 60px;
   bottom: 0;
   padding: 2rem 1.5rem;
+  background-color: var(--bgColor);
+  z-index: 1;
 
+  border-top: 2px solid var(--bgLayerColor);;
   border-right: 2px solid var(--bgLayerColor);
 }
 
