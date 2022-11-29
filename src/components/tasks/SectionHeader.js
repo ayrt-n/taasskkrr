@@ -17,6 +17,16 @@ function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId,
     });
   };
 
+  const deleteProject = () => {
+    TaskService.destroyProject(projectId).then((data) => {
+      if (!data.error) {
+        handleDelete(data, projectId);
+      } else {
+        // TODO HANDLE ERROR IN DELETE
+      }
+    });
+  };
+
   const openEditModal = () => {
     if (sectionId) {
       openModal('editSection', {projectId, section: { title, id: sectionId }, callback: handleUpdate})
@@ -29,7 +39,7 @@ function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId,
     if (sectionId) {
       openModal('deleteSection', {callback: deleteSection})
     } else {
-      openModal('deleteProject')
+      openModal('deleteProject', {callback: deleteProject});
     }
   };
 
