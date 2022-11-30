@@ -8,8 +8,8 @@ import ProjectModal from './ProjectModal';
 import SectionHeader from './SectionHeader';
 import '../../styles/Tasks.css';
 
-function Project({ updateSidebarProject, deleteSidebarProject, ...props }) {
-  let { projectId } = useParams() || props;
+function Project({ updateSidebarProject, deleteSidebarProject }) {
+  let { projectId } = useParams()
   const routerNavigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
