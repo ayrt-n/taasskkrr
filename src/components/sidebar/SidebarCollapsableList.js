@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import chevron from '../../assets/icons/chevron-right.svg';
-import SidebarItem from './SidebarItem';
 
 function SidebarCollapsableList({ title, children }) {
   const [collapsed, setCollapsed] = useState(false);
