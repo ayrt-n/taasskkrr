@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import chevron from '../../assets/icons/chevron-right.svg';
 import SidebarItem from './SidebarItem';
 
-function SidebarCollapsableList({ title, items }) {
+function SidebarCollapsableList({ title, children }) {
   const [collapsed, setCollapsed] = useState(false);
   const collapseList = () => { setCollapsed(!collapsed) }
 
@@ -17,17 +17,7 @@ function SidebarCollapsableList({ title, items }) {
         <div className="SidebarItem-title">{title}</div>
       </div>
       <div className={"Sidebar-collapsable-items"}>
-        {items.map((item) => {
-          return(
-            <SidebarItem
-              icon="project.svg"
-              title={item.title}
-              action={`/projects/${item.id}`}
-              subItem={true}
-              key={item.id}
-            />
-          );
-        })}
+        {children}
       </div>
     </div>
   );
