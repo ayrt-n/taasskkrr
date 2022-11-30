@@ -38,7 +38,17 @@ function Sidebar({ projects, inbox, addProject }) {
       <SidebarItem icon="inbox.svg" title="Inbox" action={`/projects/${inbox.id}`} />
       <SidebarItem icon="today.svg" title="Today" action="/today" />
       <SidebarItem icon="upcoming.svg" title="Upcoming" action="/upcoming" />
-      <SidebarCollapsableList title="Projects" items={projects} handleAdd={addProject} />
+      <SidebarCollapsableList title="Projects">
+        {projects.map((project) => (
+          <SidebarItem
+            icon="project.svg"
+            title={project.title}
+            action={`/projects/${project.id}`}
+            subItem={true}
+            key={project.id}
+          />
+        ))}
+      </SidebarCollapsableList>
       <NewProjectButton openModal={openModal} afterSubmit={addProject} />
     </div>
   );
