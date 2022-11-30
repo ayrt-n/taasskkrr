@@ -42,9 +42,17 @@ function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId,
 
   const openDeleteModal = () => {
     if (sectionId) {
-      openModal('deleteSection', {callback: deleteSection})
+      openModal('deleteTask', {
+        header: "Confirm Delete",
+        message: "Are you sure you want to permanently delete this section?",
+        callback: deleteSection
+      });
     } else {
-      openModal('deleteProject', {callback: deleteProject});
+      openModal('deleteTask', {
+        header: "Confirm Delete",
+        message: "Are you sure you want to permanently delete this project?",
+        callback: deleteProject
+      });
     }
   };
 

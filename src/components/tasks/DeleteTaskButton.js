@@ -15,7 +15,11 @@ function DeleteTaskButton({ id, sectionId, openModal, handleDelete }) {
   };
 
   const openDeleteModal = () => {
-    openModal('deleteTask', {id, sectionId, callback: deleteTask});
+    openModal('deleteTask', {
+      header: "Confirm Delete",
+      message: "Are you sure you want to permanently delete this task?",
+      callback: deleteTask
+    });
   };
 
   return (
