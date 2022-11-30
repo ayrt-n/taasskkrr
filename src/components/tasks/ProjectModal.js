@@ -37,13 +37,6 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           closeModal={closeModal}
           afterSubmit={data.callback}
         /> :
-        action === 'newSection' ?
-        <SectionForm
-          section={data.section}
-          projectId={data.projectId}
-          closeModal={closeModal}
-          afterSubmit={data.callback}
-        /> :
         action === 'newTask' ?
         <TaskForm
           task={data.task}
@@ -52,13 +45,12 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           closeModal={closeModal}
           afterSubmit={data.callback}
         /> :
-        action === 'deleteTask' ?
-        <ConfirmationModal
-          header="Confirm Delete"
-          message="Are you sure you want to permanently delete this task?"
-          buttonText="Delete"
-          confirmCallback={data.callback}
+        action === 'newSection' || action === 'editSection' ?
+        <SectionForm
+          section={data.section}
+          projectId={data.projectId}
           closeModal={closeModal}
+          afterSubmit={data.callback}
         /> :
         action === 'editProject' || action === 'newProject' ?
         <ProjectForm
@@ -66,25 +58,12 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           closeModal={closeModal}
           afterSubmit={data.callback}
         /> :
-        action === 'deleteProject' ?
-        <ConfirmationModal
-          header="Confirm Delete"
-          message="Are you sure you want to permanently delete this project?"
-          buttonText="Delete"
-          confirmCallback={data.callback}
-          closeModal={closeModal}
-        /> :
-        action ==='editSection' ?
-        <SectionForm
-          section={data.section}
-          projectId={data.projectId}
-          closeModal={closeModal}
-          afterSubmit={data.callback}
-        /> :
+        action === 'deleteTask' ||
+        action === 'deleteProject' ||
         action === 'deleteSection' ?
         <ConfirmationModal
-          header="Confirm Delete"
-          message="Are you sure you want to permanently delete this section?"
+          header={data.header}
+          message={data.message}
           buttonText="Delete"
           confirmCallback={data.callback}
           closeModal={closeModal}
