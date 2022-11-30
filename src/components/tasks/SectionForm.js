@@ -73,8 +73,8 @@ function SectionForm({ section, projectId, closeModal, afterSubmit }) {
               <TextInput label="Title" name="title" id="title" type="text" autoFocus/>
               <div className="field is-grouped">
                 {section.id ? 
-                  <Button label="Save Changes" primary type="submit"/> :
-                  <Button label="Add Section" primary type="submit"/>
+                  <Button label="Save Changes" buttonStyles="is-primary" type="submit"/> :
+                  <Button label="Add Section" buttonStyles="is-primary" type="submit"/>
                 }
                 <Button label="Cancel" onClick={closeModal}/>
               </div>

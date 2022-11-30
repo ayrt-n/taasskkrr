@@ -89,8 +89,8 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
               <DateInput label="Due Date" name="due_date" id="due_date" />
               <div className="field is-grouped">
                 {task.id ? 
-                  <Button label="Save Changes" primary type="submit"/> :
-                  <Button label="Add Task" primary type="submit"/>
+                  <Button label="Save Changes" buttonStyles="is-primary" type="submit"/> :
+                  <Button label="Add Task" buttonStyles="is-primary" type="submit"/>
                 }
                 <Button label="Cancel" onClick={closeModal}/>
               </div>

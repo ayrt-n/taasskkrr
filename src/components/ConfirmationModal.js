@@ -21,7 +21,7 @@ function ConfirmationModal({ header, message, buttonText, closeModal, confirmCal
       <div>
         <p className="Modal-message">{message}</p>
         <div className="field is-grouped">
-          <Button onClick={handleConfirmation} label={buttonText} danger />
+          <Button onClick={handleConfirmation} label={buttonText} buttonStyles="is-danger" />
           <Button onClick={closeModal} label="Cancel" />
         </div>
       </div>

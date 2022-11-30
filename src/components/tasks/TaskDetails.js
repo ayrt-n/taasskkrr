@@ -25,7 +25,7 @@ function TaskDetails({ task, closeModal, editTask }) {
           <p className="label">Due Date</p>
           <p>{task.due_date || "N/A"}</p>
         </div>
-        <Button label="Edit Task" primary onClick={editTask}/>
+        <Button label="Edit Task" buttonStyles="is-primary" onClick={editTask}/>
       </div>
     </>
   );

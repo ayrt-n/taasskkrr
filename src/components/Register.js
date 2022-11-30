@@ -62,7 +62,7 @@ function Register() {
             <TextInput label="Email" name="email" id="email" type="text" />
             <TextInput label="Password" name="password" id="password" type="password" />
             <TextInput label="Confirm Password" name="passwordConfirmation" id="passwordConfirmation" type="password" />
-            <Button label="Sign up" primary type="submit" fullSize />
+            <Button label="Sign up" buttonStyles="is-primary full" type="submit" />
           </form>
         )}
       </Formik>
