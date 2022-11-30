@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import Project from './tasks/Project';
 import Today from './tasks/Today';
@@ -8,11 +8,13 @@ import UserService from '../services/UserService';
 import '../styles/Dashboard.css';
 
 function Dashboard() {
+  const [inbox, setInbox] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
 
   useEffect(() => {
     UserService.getUserProjects().then((userProjects) => {
-      setUserProjects(userProjects);
+      setUserProjects(userProjects.filter(project => !project.inbox));
+      setInbox(userProjects.filter(project => project.inbox)[0]);
     });
   }, []);
 
@@ -33,11 +35,12 @@ function Dashboard() {
   };
 
   return (
-    <div className="Dashboard-container">
-      {userProjects && <Sidebar userProjects={userProjects} addProject={addProject} />}
+    userProjects &&
+    (<div className="Dashboard-container">
+      <Sidebar projects={userProjects} inbox={inbox} addProject={addProject} />
       <div className="Dashboard-content">
         <Routes>
-          <Route path="/inbox" element={<Project />} />
+          <Route path="/" element={<Navigate to={`/projects/${inbox.id}`}/>} />
           <Route path="/today" element={<Today />} />
           <Route path="/upcoming" element={<Upcoming />} />
           <Route
@@ -47,10 +50,9 @@ function Dashboard() {
               updateSidebarProject={updateProject} />
             }
           />
-          <Route path="/" element={<Today />} />
         </Routes>
       </div>
-    </div>
+    </div>)
   );
 }
 
