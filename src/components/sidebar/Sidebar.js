@@ -5,10 +5,8 @@ import SidebarCollapsableList from './SidebarCollapsableList';
 import ProjectModal from '../tasks/ProjectModal';
 import NewProjectButton from './NewProjectButton';
 
-function Sidebar({ userProjects, addProject }) {
+function Sidebar({ projects, inbox, addProject }) {
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
-  const inbox = userProjects.filter((project) => (project.inbox))[0];
-  const projects = userProjects.filter((project) => (!project.inbox));
 
   const openModal = (action, data) => {
     setModal(
