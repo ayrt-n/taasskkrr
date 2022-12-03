@@ -1,14 +1,14 @@
 import React from 'react';
 import Modal from 'react-modal';
-import '../../styles/Modal.css';
-import '../../styles/Form.css';
-import TaskModal from './TaskModal';
-import TaskForm from './TaskForm';
-import ConfirmationModal from '../ConfirmationModal';
-import SectionForm from './SectionForm';
-import ProjectForm from './ProjectForm';
+import '../styles/Modal.css';
+import '../styles/Form.css';
+import TaskModal from './tasks/TaskModal';
+import TaskForm from './tasks/TaskForm';
+import ConfirmationModal from './ConfirmationModal';
+import SectionForm from './tasks/SectionForm';
+import ProjectForm from './tasks/ProjectForm';
 
-function ProjectModal({ action, data, isOpen, closeModal }) {
+function DashboardModal({ action, data, isOpen, closeModal }) {
   const modalStyles = {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -72,4 +72,4 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
   );
 }
 
-export default ProjectModal;
+export default DashboardModal;
