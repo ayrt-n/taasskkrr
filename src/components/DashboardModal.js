@@ -33,7 +33,6 @@ function DashboardModal({ action, data, isOpen, closeModal }) {
       {action === 'viewTask' ?
         <TaskModal
           task={data.task}
-          sectionId={data.sectionId}
           closeModal={closeModal}
           afterSubmit={data.callback}
         /> :
