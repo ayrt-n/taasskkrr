@@ -4,16 +4,14 @@ import UserService from '../../services/UserService';
 import Task from './Task';
 import NewSectionButton from './NewSectionButton';
 import NewTaskButton from './NewTaskButton';
-import ProjectModal from './ProjectModal';
 import SectionHeader from './SectionHeader';
 import '../../styles/Tasks.css';
 
-function Project({ updateSidebarProject, deleteSidebarProject }) {
+function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
   let { projectId } = useParams()
   const routerNavigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState({});
-  const [modal, setModal] = useState({isOpen: false, action: '', data: {}})
 
   useEffect(() => {
     setLoading(true);
@@ -148,35 +146,10 @@ function Project({ updateSidebarProject, deleteSidebarProject }) {
     routerNavigate('/');
   };
 
-  const openModal = (action, data) => {
-    setModal(
-      {
-        isOpen: true,
-        action: action,
-        data: data
-      }
-    )
-  };
-
-  const closeModal = () => {
-    setModal(
-      {
-        ...modal,
-        isOpen: false,
-      }
-    )
-  }
-
   return (
     loading ?
     null :
     <div className="Tasks">
-      <ProjectModal
-        action={modal.action}
-        data={modal.data}
-        isOpen={modal.isOpen}
-        closeModal={closeModal}
-      />
       <SectionHeader
         title={project.title}
         headingLevel="h1"

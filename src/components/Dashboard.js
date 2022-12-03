@@ -4,12 +4,14 @@ import Sidebar from './sidebar/Sidebar';
 import Project from './tasks/Project';
 import Today from './tasks/Today';
 import Upcoming from './tasks/Upcoming';
+import ProjectModal from './tasks/ProjectModal';
 import UserService from '../services/UserService';
 import '../styles/Dashboard.css';
 
 function Dashboard() {
   const [inbox, setInbox] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
+  const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
 
   useEffect(() => {
     UserService.getUserProjects().then((userProjects) => {
@@ -34,10 +36,35 @@ function Dashboard() {
     );
   };
 
+  const openModal = (action, data) => {
+    setModal(
+      {
+        isOpen: true,
+        action: action,
+        data: data
+      }
+    )
+  };
+
+  const closeModal = () => {
+    setModal(
+      {
+        ...modal,
+        isOpen: false,
+      }
+    )
+  }
+
   return (
     userProjects &&
     (<div className="Dashboard-container">
-      <Sidebar projects={userProjects} inbox={inbox} addProject={addProject} />
+      <ProjectModal
+        action={modal.action}
+        data={modal.data}
+        isOpen={modal.isOpen}
+        closeModal={closeModal}
+      />
+      <Sidebar projects={userProjects} inbox={inbox} addProject={addProject} openModal={openModal} />
       <div className="Dashboard-content">
         <Routes>
           <Route path="/" element={<Navigate to={`/projects/${inbox.id}`}/>} />
@@ -46,8 +73,11 @@ function Dashboard() {
           <Route
             path="/projects/:projectId"
             element={
-              <Project deleteSidebarProject={deleteProject}
-              updateSidebarProject={updateProject} />
+              <Project
+                deleteSidebarProject={deleteProject}
+                updateSidebarProject={updateProject}
+                openModal={openModal}
+              />
             }
           />
         </Routes>
