@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarItem component correctly renders sidebar item 1`] = `
+<div>
+  <a
+    href="/sidebar-action"
+  >
+    <div
+      class="SidebarItem "
+    >
+      <img
+        alt=""
+        class="SidebarItem-icon"
+        src="test-file-stub"
+      />
+      <div
+        class="SidebarItem-title"
+      >
+        Sidebar Item
+      </div>
+    </div>
+  </a>
+</div>
+`;
+
+exports[`SidebarItem component correctly renders sidebar sub-item 1`] = `
+<div>
+  <a
+    href="/sidebar-action"
+  >
+    <div
+      class="SidebarItem SubItem"
+    >
+      <img
+        alt=""
+        class="SidebarItem-icon"
+        src="test-file-stub"
+      />
+      <div
+        class="SidebarItem-title"
+      >
+        Sidebar Sub-Item
+      </div>
+    </div>
+  </a>
+</div>
+`;
