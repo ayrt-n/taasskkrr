@@ -4,7 +4,7 @@ import Sidebar from './sidebar/Sidebar';
 import Project from './tasks/Project';
 import Today from './tasks/Today';
 import Upcoming from './tasks/Upcoming';
-import ProjectModal from './tasks/ProjectModal';
+import DashboardModal from './DashboardModal';
 import UserService from '../services/UserService';
 import '../styles/Dashboard.css';
 
@@ -58,7 +58,7 @@ function Dashboard() {
   return (
     userProjects &&
     (<div className="Dashboard-container">
-      <ProjectModal
+      <DashboardModal
         action={modal.action}
         data={modal.data}
         isOpen={modal.isOpen}
