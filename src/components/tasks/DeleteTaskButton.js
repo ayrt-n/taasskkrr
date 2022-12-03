@@ -1,15 +1,18 @@
 import React from 'react';
 import TaskService from '../../services/TaskService';
 import trashIcon from '../../assets/icons/trash-can.svg';
+import eventBus from '../common/EventBus';
 import '../../styles/Tasks.css';
 
-function DeleteTaskButton({ id, sectionId, openModal, handleDelete }) {
+function DeleteTaskButton({ id, openModal, handleDelete }) {
   const deleteTask = () => {
     TaskService.destroyTask(id).then((data) => {
       if (!data.error) {
-        handleDelete(data, sectionId);
+        handleDelete(data);
       } else {
-        // TODO HANDLE ERROR IN DELETE
+        if (data.error.details === "Signature has expired") {
+          eventBus.dispatch('logout');
+        }
       }
     });
   };

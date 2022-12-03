@@ -23,7 +23,7 @@ function Task({ task, sectionId, handleUpdate, handleDelete, openModal }) {
         <div className="Task-subtitle">{task.due_date}</div>
       </div>
       <div className="Task-right">
-        <DeleteTaskButton id={task.id} sectionId={sectionId} openModal={openModal} handleDelete={handleDelete} />
+        <DeleteTaskButton id={task.id} openModal={openModal} handleDelete={handleDelete} />
       </div>
     </div>
   );

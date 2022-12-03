@@ -47,13 +47,14 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
     }
   };
 
-  const deleteTask = (deletedTask, sectionId=null) => {
-    if (sectionId) {
+  const deleteTask = (deletedTask) => {
+    console.log(deletedTask)
+    if (deletedTask.section_id) {
       setProject(
         {
           ...project,
           sections: project.sections.map((section) => (
-            section.id === sectionId ?
+            section.id === deletedTask.section_id ?
             {
               ...section,
               tasks: section.tasks.filter((task) => (task.id !== deletedTask.id))
