@@ -58,13 +58,11 @@ function ProjectModal({ action, data, isOpen, closeModal }) {
           closeModal={closeModal}
           afterSubmit={data.callback}
         /> :
-        action === 'deleteTask' ||
-        action === 'deleteProject' ||
-        action === 'deleteSection' ?
+        action === 'confirmation' ?
         <ConfirmationModal
           header={data.header}
           message={data.message}
-          buttonText="Delete"
+          buttonText={data.buttonText}
           confirmCallback={data.callback}
           closeModal={closeModal}
         /> :
