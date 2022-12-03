@@ -6,8 +6,11 @@ function SidebarCollapsableList({ title, children }) {
   const collapseList = () => { setCollapsed(!collapsed) }
 
   return(
-    <div className={`Sidebar-collapsable-list ${collapsed ? "collapsed" : ""}`}>
-      <div className="SidebarItem" onClick={collapseList}>
+    <div
+      className={`Sidebar-collapsable-list ${collapsed ? "collapsed" : ""}`}
+      data-testid="collapsable-list"
+    >
+      <div className="SidebarItem" onClick={collapseList} data-testid="collapse-list-div">
         <img
           src={chevron}
           className="SidebarItem-icon"
