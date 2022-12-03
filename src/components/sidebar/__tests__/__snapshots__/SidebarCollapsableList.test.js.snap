@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarCollapsableList component renders correctly 1`] = `
+<div>
+  <div
+    class="Sidebar-collapsable-list "
+    data-testid="collapsable-list"
+  >
+    <div
+      class="SidebarItem"
+      data-testid="collapse-list-div"
+    >
+      <img
+        alt=""
+        class="SidebarItem-icon"
+        src="test-file-stub"
+        style="transform: rotate(90deg);"
+      />
+      <div
+        class="SidebarItem-title"
+      >
+        Collapsable List
+      </div>
+    </div>
+    <div
+      class="Sidebar-collapsable-items"
+    >
+      <div>
+        Test 1
+      </div>
+      <div>
+        Test 2
+      </div>
+      <div>
+        Test 3
+      </div>
+    </div>
+  </div>
+</div>
+`;
