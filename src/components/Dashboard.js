@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import Project from './tasks/Project';
 import Today from './tasks/Today';
@@ -12,6 +12,7 @@ function Dashboard() {
   const [inbox, setInbox] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
+  const routerNavigate = useNavigate();
 
   useEffect(() => {
     UserService.getUserProjects().then((userProjects) => {
@@ -22,6 +23,7 @@ function Dashboard() {
 
   const addProject = (newProject) => {
     setUserProjects(userProjects.concat(newProject));
+    routerNavigate(`/projects/${newProject.id}`)
   }
 
   const updateProject = (updatedProject) => {
