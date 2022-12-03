@@ -73,13 +73,13 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
     }
   };
 
-  const addTask = (newTask, sectionId=null) => {
-    if (sectionId) {
+  const addTask = (newTask) => {
+    if (newTask.section_id) {
       setProject(
         {
           ...project,
           sections: project.sections.map((section) => (
-            section.id === sectionId ?
+            section.id === newTask.section_id ?
             {
               ...section,
               tasks: section.tasks.concat(newTask)

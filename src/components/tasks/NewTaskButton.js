@@ -4,11 +4,13 @@ import '../../styles/Tasks.css';
 function NewTaskButton({ projectId, sectionId, afterSubmit, openModal }) {
   const emptyTask = {
     title: '',
-    description: ''
+    description: '',
+    section_id: sectionId,
+    project_id: projectId
   };
 
   const openNewTaskModal = () => {
-    openModal('newTask', {task: emptyTask, projectId, sectionId, callback: afterSubmit});
+    openModal('newTask', {task: emptyTask, callback: afterSubmit});
   };
 
   return (
