@@ -11,7 +11,7 @@ import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
 import eventBus from '../common/EventBus';
 
-function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
+function TaskForm({ task, closeModal, afterSubmit }) {
   const [errorMessage, setErrorMessage] = useState([]);
   
   const validate = (values) => {
@@ -28,7 +28,7 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
     if (task.id) {
       TaskService.updateTask(values).then((data) => {
         if (!data.error) {
-          afterSubmit(data, sectionId);
+          afterSubmit(data);
           closeModal();
         } else {
           if (data.error.details === "Signature has expired") {
@@ -40,9 +40,9 @@ function TaskForm({ task, projectId, sectionId, closeModal, afterSubmit }) {
         setSubmitting(false);
       });
     } else {
-      TaskService.createTask(values, projectId, sectionId).then((data) => {
+      TaskService.createTask(values, task.project_id, task.section_id).then((data) => {
         if (!data.error) {
-          afterSubmit(data, sectionId);
+          afterSubmit(data);
           closeModal();
         } else {
           if (data.error.details[0] === "Signature has expired") {

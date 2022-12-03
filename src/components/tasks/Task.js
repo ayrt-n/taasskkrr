@@ -3,9 +3,9 @@ import TaskCheckbox from './TaskCheckbox';
 import DeleteTaskButton from './DeleteTaskButton';
 import '../../styles/Tasks.css';
 
-function Task({ task, sectionId, handleUpdate, handleDelete, openModal }) {
+function Task({ task, handleUpdate, handleDelete, openModal }) {
   const openTaskModal = () => {
-    openModal('viewTask', {task, sectionId, callback: handleUpdate});
+    openModal('viewTask', {task, callback: handleUpdate});
   }
 
   return (
@@ -13,7 +13,6 @@ function Task({ task, sectionId, handleUpdate, handleDelete, openModal }) {
       <div className="Task-left">
         <TaskCheckbox
           id={task.id}
-          sectionId={sectionId}
           status={task.status}
           handleUpdate={handleUpdate}
         />

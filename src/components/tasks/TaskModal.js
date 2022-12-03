@@ -4,7 +4,7 @@ import TaskForm from './TaskForm';
 import '../../styles/Modal.css';
 import '../../styles/Form.css';
 
-function TaskModal({ task, sectionId, closeModal, afterSubmit }) {
+function TaskModal({ task, closeModal, afterSubmit }) {
   const [editMode, setEditMode] = useState(false);
 
   return (
@@ -12,7 +12,6 @@ function TaskModal({ task, sectionId, closeModal, afterSubmit }) {
       {editMode ?
         <TaskForm
           task={task}
-          sectionId={sectionId}
           closeModal={closeModal}
           afterSubmit={afterSubmit}
         /> :

@@ -1,14 +1,17 @@
 import React from 'react';
+import eventBus from '../common/EventBus';
 import TaskService from '../../services/TaskService';
 
-function TaskCheckbox({ id, sectionId, status, handleUpdate }) {
+function TaskCheckbox({ id, status, handleUpdate }) {
   const handleClick = () => {
     const updatedStatus = status === 0 ? 1 : 0;
     TaskService.toggleTaskComplete(id, updatedStatus).then((data) => {
       if (!data.error) {
-        handleUpdate(data, sectionId);
+        handleUpdate(data);
       } else {
-        // TODO HANDLE ERROR IN UPDATE
+        if (data.error.details === "Signature has expired") {
+          eventBus.dispatch('logout');
+        }
       }
     });
   }

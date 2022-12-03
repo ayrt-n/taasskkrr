@@ -22,13 +22,13 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
     });
   }, [projectId]);
 
-  const updateTask = (updatedTask, sectionId=null) => {
-    if (sectionId) {
+  const updateTask = (updatedTask) => {
+    if (updatedTask.section_id) {
       setProject(
         {
           ...project,
           sections: project.sections.map((section) => (
-            section.id === sectionId ?
+            section.id === updatedTask.section_id ?
             {
               ...section,
               tasks: section.tasks.map((task) => (updatedTask.id === task.id ? updatedTask : task))
@@ -184,7 +184,6 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
               <Task
                 key={task.id}
                 task={task}
-                sectionId={section.id}
                 openModal={openModal}
                 handleUpdate={updateTask}
                 handleDelete={deleteTask}
