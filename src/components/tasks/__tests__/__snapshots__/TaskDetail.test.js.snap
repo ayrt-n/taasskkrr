@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskDetail component when not provided with a due date renders correctly 1`] = `
+<div>
+  <div
+    class="Modal-header-container"
+  >
+    <h2>
+      Test Task
+    </h2>
+    <button
+      aria-label="close modal"
+      class="Close-modal-button"
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+      />
+    </button>
+  </div>
+  <div
+    class="Modal-content-container"
+  >
+    <div
+      class="field"
+    >
+      <p
+        class="label"
+      >
+        Description
+      </p>
+      <p>
+        Test task description
+      </p>
+    </div>
+    <div
+      class="field"
+    >
+      <p
+        class="label"
+      >
+        Priority
+      </p>
+      <div>
+        0
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <p
+        class="label"
+      >
+        Due Date
+      </p>
+      <p>
+        N/A
+      </p>
+    </div>
+    <button>
+      Edit Task
+    </button>
+  </div>
+</div>
+`;
+
+exports[`TaskDetail component when provided with a due date renders correctly 1`] = `
+<div>
+  <div
+    class="Modal-header-container"
+  >
+    <h2>
+      Test Task
+    </h2>
+    <button
+      aria-label="close modal"
+      class="Close-modal-button"
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+      />
+    </button>
+  </div>
+  <div
+    class="Modal-content-container"
+  >
+    <div
+      class="field"
+    >
+      <p
+        class="label"
+      >
+        Description
+      </p>
+      <p>
+        Test task description
+      </p>
+    </div>
+    <div
+      class="field"
+    >
+      <p
+        class="label"
+      >
+        Priority
+      </p>
+      <div>
+        0
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <p
+        class="label"
+      >
+        Due Date
+      </p>
+      <p>
+        Some time in the future
+      </p>
+    </div>
+    <button>
+      Edit Task
+    </button>
+  </div>
+</div>
+`;
