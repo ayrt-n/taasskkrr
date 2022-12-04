@@ -8,7 +8,7 @@ function TaskDetails({ task, closeModal, editTask }) {
     <>
       <div className="Modal-header-container">
         <h2>{task.title}</h2>
-        <button className="Close-modal-button" onClick={closeModal}>
+        <button className="Close-modal-button" onClick={closeModal} aria-label="close modal">
           <img src={closeIcon} alt="" />
         </button>
       </div>
