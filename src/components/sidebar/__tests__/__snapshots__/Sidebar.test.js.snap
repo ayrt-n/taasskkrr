@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar component renders correctly 1`] = `
+<div>
+  <div
+    class="Sidebar"
+  >
+    <div
+      data-testid="item"
+    >
+      Inbox
+    </div>
+    <div
+      data-testid="item"
+    >
+      Today
+    </div>
+    <div
+      data-testid="item"
+    >
+      Upcoming
+    </div>
+    <div>
+      <div
+        data-testid="item"
+      >
+        Project 1
+      </div>
+      <div
+        data-testid="item"
+      >
+        Project 2
+      </div>
+    </div>
+    <button>
+      Add Project
+    </button>
+  </div>
+</div>
+`;
