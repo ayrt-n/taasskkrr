@@ -17,6 +17,11 @@
   margin-bottom: 0.75rem;
 }
 
+.Form-links {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
 input, textarea, select {
   box-sizing: border-box;
 }
