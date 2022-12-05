@@ -46,7 +46,7 @@ function EmailConfirmationForm() {
         {formik => (
           <form onSubmit={formik.handleSubmit}>
             <TextInput label="Email" name="email" id="email" type="text" />
-            <Button label="Send confirmation instructions" buttonStyles="is-primary full" type="submit" />
+            <Button label="Send Confirmation Instructions" buttonStyles="is-primary full" type="submit" />
           </form>
         )}
       </Formik>
