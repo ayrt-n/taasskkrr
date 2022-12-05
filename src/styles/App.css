@@ -27,6 +27,12 @@
   --successColor: #0be881;
   --successBg: #17312a;
   --successBorder: #0d8951;
+  --warningColor: #ffcf00;
+  --warningBg: #302c1d;
+  --warningBorder: #8e7710;
+  --primaryColor: #1890ff;
+  --primaryBg: #172636;
+  --primaryBorder: #0d518f;
 }
 
 @supports (font-variation-settings: normal) {

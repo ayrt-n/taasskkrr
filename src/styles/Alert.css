@@ -32,3 +32,15 @@
   background-color: var(--successBg);
   border-color: var(--successBorder);
 }
+
+.Alert.warning {
+  color: var(--warningColor);
+  background-color: var(--warningBg);
+  border-color: var(--warningBorder);
+}
+
+.Alert.primary {
+  color: var(--primaryColor);
+  background-color: var(--primaryBg);
+  border-color: var(--primaryBorder);
+}
