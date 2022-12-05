@@ -42,7 +42,6 @@ function Register() {
         routerNavigate('/login');
         window.location.reload();
       } else {
-        console.log(data.error);
         setErrorMessage(data.error.details)
       }
       setSubmitting(false);
