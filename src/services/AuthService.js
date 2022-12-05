@@ -60,6 +60,25 @@ class AuthService {
     });
   }
 
+  resendConfirmationEmail(email) {
+    return fetch(`${API_URL}/confirmation`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'user': {
+          'email': email
+        }
+      })
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+  }
+
   confirmEmail(confirmation_token) {
     return fetch(`${API_URL}/confirmation?confirmation_token=${confirmation_token}`, {
       method: 'GET',
