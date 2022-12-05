@@ -8,6 +8,8 @@ import HomePage from './components/HomePage';
 import AuthService from './services/AuthService';
 import EmailConfirmation from './components/EmailConfirmation';
 import EmailConfirmationForm from './components/EmailConfirmationForm';
+import ResetPasswordForm from './components/ResetPasswordForm';
+import ForgotPasswordForm from './components/ForgotPasswordForm';
 import AuthVerify from './components/common/AuthVerify';
 import eventBus from './components/common/EventBus';
 import './styles/App.css'
@@ -52,6 +54,8 @@ function App() {
           }
           <Route path="/api/v1/confirmation" element={<EmailConfirmation />} />
           <Route path="/confirmations" element={<EmailConfirmationForm />} />
+          <Route path="api/v1/password/edit" element={<ResetPasswordForm />} />
+          <Route path="/forgot_password" element={<ForgotPasswordForm />} />
         </Routes>
       </div>
       
