@@ -56,7 +56,20 @@ class AuthService {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      return data;
+    });
+  }
+
+  confirmEmail(confirmation_token) {
+    return fetch(`${API_URL}/confirmation?confirmation_token=${confirmation_token}`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
       return data;
     });
   }
