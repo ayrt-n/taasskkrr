@@ -65,7 +65,7 @@ function Register() {
           </form>
         )}
       </Formik>
-      <div style={{'textAlign': 'center'}}>
+      <div className="Form-links">
         Already have an account? <Link to="/login">Log in</Link>
       </div>
     </div>

@@ -7,7 +7,7 @@ import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
 
-function Login() {
+function Login({ message }) {
   const [errorMessage, setErrorMessage] = useState([]);
   const routerNavigate = useNavigate();
 
@@ -54,8 +54,16 @@ function Login() {
           </form>
         )}
       </Formik>
-      <div style={{'textAlign': 'center'}}>
-        Don't have an account? <Link to="/register">Sign up</Link>
+      <div className="Form-links">
+        <p>
+          Don't have an account? <Link to="/register">Sign up</Link>
+        </p>
+        <p>
+          <Link to="/register">Forgot your password?</Link>
+        </p>
+        <p>
+          <Link to="/confirmations">Didn't receive confirmation instructions?</Link>
+        </p>
       </div>
     </div>
   );
