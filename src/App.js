@@ -7,6 +7,7 @@ import Register from './components/Register';
 import HomePage from './components/HomePage';
 import AuthService from './services/AuthService';
 import EmailConfirmation from './components/EmailConfirmation';
+import EmailConfirmationForm from './components/EmailConfirmationForm';
 import AuthVerify from './components/common/AuthVerify';
 import eventBus from './components/common/EventBus';
 import './styles/App.css'
@@ -50,6 +51,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
           }
           <Route path="/api/v1/confirmation" element={<EmailConfirmation />} />
+          <Route path="/confirmations" element={<EmailConfirmationForm />} />
         </Routes>
       </div>
       
