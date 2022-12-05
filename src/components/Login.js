@@ -59,7 +59,7 @@ function Login({ message }) {
           Don't have an account? <Link to="/register">Sign up</Link>
         </p>
         <p>
-          <Link to="/register">Forgot your password?</Link>
+          <Link to="/forgot_password">Forgot your password?</Link>
         </p>
         <p>
           <Link to="/confirmations">Didn't receive confirmation instructions?</Link>
