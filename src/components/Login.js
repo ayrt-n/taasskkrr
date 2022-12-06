@@ -50,6 +50,7 @@ function Login() {
   return (
     <div className="Form-container">
       {flash ? <Alert {...flash} /> : null}
+      <h1 className="Form-header">Log in</h1>
       <Formik
         initialValues={{email: '', password: ''}}
         validate={validate}

@@ -8,7 +8,7 @@ import Button from './form/Button';
 import '../styles/Form.css'
 
 function EmailConfirmationForm() {
-  const [errorMessage, setErrorMessage] = useState([]);
+  const [flash, setFlash] = useState(null);
 
   const validate = (values) => {
     const errors = {};
@@ -22,22 +22,31 @@ function EmailConfirmationForm() {
     return errors;
   };
 
-  const handleSubmit = (values, { setSubmitting }) => {
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
     AuthService.resendConfirmationEmail(values.email)
     .then((data) => {
       if (!data.error) {
-        // TODO: HOW SHOULD WE HANDLE SUCCESSFUL SUBMITS?
-        // Could redirect to login with flash message or replace form with success alert
+        setFlash({
+          type: 'success',
+          message: 'Confirmation email sent!',
+          body: 'Check your email for instructions on how to confirm your account.'
+        })
+        resetForm();
       } else {
-        setErrorMessage(data.error.details)
+        setFlash({
+          type: 'danger',
+          message: 'Unable to send confirmation email:',
+          details: data.error.details
+        });
+        setSubmitting(false);
       }
-      setSubmitting(false);
     })
   };
 
   return (
     <div className="Form-container">
-      {errorMessage.length > 0 && <Alert type="danger" message="Unable to send confirmation email:" details={errorMessage} />}
+      {flash ? <Alert {...flash} /> : null}
+      <h1 className="Form-header">Confirm Email</h1>
       <Formik
         initialValues={{email: ''}}
         validate={validate}

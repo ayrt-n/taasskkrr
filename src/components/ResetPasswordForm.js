@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Formik } from 'formik';
 import AccountServices from '../services/AccountServices';
 import Alert from './Alert';
@@ -9,7 +9,8 @@ import '../styles/Form.css'
 
 function ResetPasswordForm() {
   const [searchParams] = useSearchParams();
-  const [errorMessage, setErrorMessage] = useState([]);
+  const routerNavigate = useNavigate();
+  const [flash, setFlash] = useState(null);
 
   const validate = (values) => {
     const errors = {};
@@ -34,11 +35,21 @@ function ResetPasswordForm() {
     AccountServices.resetPassword(values.password, values.passwordConfirmation, resetToken)
     .then((data) => {
       if (!data.error) {
-        // TODO: HOW SHOULD WE HANDLE SUCCESSFUL SUBMITS?
-        // Could redirect to login with flash message or replace form with success alert
-        console.log(data);
+        routerNavigate(
+          '/login',
+          { state: {
+              type: 'success',
+              message: 'Password reset!',
+              body: 'Your password has successfully been reset.'
+            }
+          }
+        );
       } else {
-        setErrorMessage(data.error.details)
+        setFlash({
+          type: 'danger',
+          message: 'Unable to send confirmation email:',
+          details: data.error.details
+        })
       }
       setSubmitting(false);
     })
@@ -46,7 +57,8 @@ function ResetPasswordForm() {
 
   return (
     <div className="Form-container">
-      {errorMessage.length > 0 && <Alert type="danger" message="Unable to send confirmation email:" details={errorMessage} />}
+      {flash ? <Alert {...flash} /> : null}
+      <h1 className="Form-header">Reset Password</h1>
       <Formik
         initialValues={{password: '', passwordConfirmation: ''}}
         validate={validate}

@@ -8,7 +8,7 @@ import Button from './form/Button';
 import '../styles/Form.css'
 
 function Register() {
-  const [errorMessage, setErrorMessage] = useState([]);
+  const [flash, setFlash] = useState(null);
   const routerNavigate = useNavigate();
 
   const validate = (values) => {
@@ -41,18 +41,20 @@ function Register() {
       if (!data.error) {
         routerNavigate(
           '/login',
-          {
-            state:
-              {
-                type: 'success',
-                message: 'Registration complete!',
-                body: 'Check your email for instructions on how to confirm your email.'
-              }
+          { state: {
+              type: 'success',
+              message: 'Registration complete!',
+              body: 'Check your email for instructions on how to confirm your email.'
+            }
           }
         );
         window.location.reload();
       } else {
-        setErrorMessage(data.error.details)
+        setFlash({
+          type: 'danger',
+          message: 'Sign up failed:',
+          details: data.error.details
+        })
       }
       setSubmitting(false);
     })
@@ -60,7 +62,8 @@ function Register() {
 
   return (
     <div className="Form-container">
-      {errorMessage.length > 0 && <Alert type="danger" message="Sign up failed:" details={errorMessage} />}
+      {flash ? <Alert {...flash} /> : null}
+      <h1 className="Form-header">Sign up</h1>
       <Formik
         initialValues={{email: '', password: '', passwordConfirmation: ''}}
         validate={validate}
