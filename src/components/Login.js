@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import AuthService from '../services/AuthService';
 import Alert from './Alert';
@@ -7,8 +7,11 @@ import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
 
-function Login({ message }) {
-  const [errorMessage, setErrorMessage] = useState([]);
+function Login() {
+  // Get state from useLocation if passed (set to null if no state is passed)
+  const { state } = useLocation();
+  // Set flash using state from useLocation hook
+  const [flash, setFlash] = useState(state);
   const routerNavigate = useNavigate();
 
   const validate = (values) => {
@@ -29,10 +32,16 @@ function Login({ message }) {
     AuthService.login(values.email, values.password)
     .then((data) => {
       if (!data.error) {
+        // If successful login (no error) redirect to home and reload
         routerNavigate('/');
         window.location.reload();
       } else {
-        setErrorMessage(data.error.details);
+        // If error logging in, set flash state to render errors
+        setFlash({
+          type: 'danger',
+          message: 'Login failed:',
+          details: data.error.details
+        })
       }
       setSubmitting(false);
     })
@@ -40,7 +49,7 @@ function Login({ message }) {
 
   return (
     <div className="Form-container">
-      {errorMessage.length > 0 && <Alert type="danger" message="Login failed:" details={errorMessage} />}
+      {flash ? <Alert {...flash} /> : null}
       <Formik
         initialValues={{email: '', password: ''}}
         validate={validate}
