@@ -39,7 +39,17 @@ function Register() {
     AuthService.register(values.email, values.password, values.passwordConfirmation)
     .then((data) => {
       if (!data.error) {
-        routerNavigate('/login');
+        routerNavigate(
+          '/login',
+          {
+            state:
+              {
+                type: 'success',
+                message: 'Registration complete!',
+                body: 'Check your email for instructions on how to confirm your email.'
+              }
+          }
+        );
         window.location.reload();
       } else {
         setErrorMessage(data.error.details)
