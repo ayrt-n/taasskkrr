@@ -6,7 +6,6 @@ import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
-import ResetPasswordForm from './ResetPasswordForm';
 
 function ForgotPasswordForm() {
   const [flash, setFlash] = useState(null);
