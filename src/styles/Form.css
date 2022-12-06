@@ -22,6 +22,14 @@
   font-size: 0.9rem;
 }
 
+.Form-links a:hover {
+  color: var(--ctaLight);
+}
+
+.Form-links a:active {
+  color: var(--cta);
+}
+
 input, textarea, select {
   box-sizing: border-box;
 }
