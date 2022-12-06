@@ -30,6 +30,10 @@
   color: var(--cta);
 }
 
+.Form-header {
+  margin-bottom: 2rem;
+}
+
 input, textarea, select {
   box-sizing: border-box;
 }
