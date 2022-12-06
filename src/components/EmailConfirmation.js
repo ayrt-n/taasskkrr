@@ -10,10 +10,25 @@ function EmailConfirmation() {
     const confirmationToken = searchParams.get('confirmation_token');
     AuthService.confirmEmail(confirmationToken).then((data) => {
       if (!data.error) {
-        // TODO ADD SOME SORT OF INDICATION OF SUCCESS
-        routerNavigate('/login');
+        routerNavigate(
+          '/login',
+          { state: {
+              type: 'success',
+              message: 'Email confirmed!',
+              body: 'Log in and get started!'
+            }
+          }
+        );
       } else {
-        console.log(data);
+        routerNavigate(
+          '/login',
+          { state: {
+              type: 'danger',
+              message: 'Unable to confirm email:',
+              body: 'Log in and get started!'
+            }
+          }
+        );
       }
     });
   }, [searchParams, routerNavigate]);
