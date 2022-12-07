@@ -34,9 +34,9 @@ function SectionHeader({ title, headingLevel, name, inbox, projectId, sectionId,
 
   const openEditModal = () => {
     if (sectionId) {
-      openModal('editSection', {projectId, section: { title, id: sectionId }, callback: handleUpdate})
+      openModal('editSection', {header: 'Edit Section', projectId, section: { title, id: sectionId }, callback: handleUpdate})
     } else {
-      openModal('editProject', {project: { title, id: projectId }, callback: handleUpdate})
+      openModal('editProject', {header: 'Edit Project', project: { title, id: projectId }, callback: handleUpdate})
     }
   };
 

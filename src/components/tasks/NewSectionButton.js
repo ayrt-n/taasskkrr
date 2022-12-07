@@ -7,7 +7,7 @@ function NewSectionButton({ projectId, openModal, afterSubmit }) {
   }
 
   const openNewSectionModal = () => {
-    openModal('newSection', { section: emptySection, projectId: projectId, callback: afterSubmit });
+    openModal('newSection', {header: 'Add Section', section: emptySection, projectId: projectId, callback: afterSubmit });
   };
 
   return (

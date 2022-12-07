@@ -4,7 +4,7 @@ function NewProjectButton({ openModal, afterSubmit }) {
   const emptyProject = { title: '' };
 
   const openNewProjectModal = () => {
-    openModal('newProject', {project: emptyProject, callback: afterSubmit})
+    openModal('newProject', {header: 'Add Project', project: emptyProject, callback: afterSubmit})
   };
 
   return (

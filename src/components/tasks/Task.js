@@ -5,7 +5,7 @@ import '../../styles/Tasks.css';
 
 function Task({ task, handleUpdate, handleDelete, openModal }) {
   const openTaskModal = () => {
-    openModal('viewTask', {task, callback: handleUpdate});
+    openModal('viewTask', {header: task.title, task, callback: handleUpdate});
   }
 
   return (

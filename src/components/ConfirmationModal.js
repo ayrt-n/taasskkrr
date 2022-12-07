@@ -4,7 +4,7 @@ import closeIcon from '../assets/icons/close.svg';
 import '../styles/Modal.css';
 import '../styles/Form.css';
 
-function ConfirmationModal({ header, message, buttonText, closeModal, confirmCallback }) {
+function ConfirmationModal({ message, buttonText, closeModal, confirmCallback }) {
   const handleConfirmation = () => {
     confirmCallback();
     closeModal();
@@ -12,12 +12,6 @@ function ConfirmationModal({ header, message, buttonText, closeModal, confirmCal
 
   return (
     <>
-      <div className="Modal-header-container">
-        <h2>{header}</h2>
-        <button className="Close-modal-button" onClick={closeModal}>
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
       <div>
         <p className="Modal-message">{message}</p>
         <div className="field is-grouped">

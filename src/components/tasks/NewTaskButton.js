@@ -10,7 +10,7 @@ function NewTaskButton({ projectId, sectionId, afterSubmit, openModal }) {
   };
 
   const openNewTaskModal = () => {
-    openModal('newTask', {task: emptyTask, callback: afterSubmit});
+    openModal('newTask', {header: 'Add Task', task: emptyTask, callback: afterSubmit});
   };
 
   return (
