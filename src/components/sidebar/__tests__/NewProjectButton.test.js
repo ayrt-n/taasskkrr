@@ -30,6 +30,7 @@ describe('NewProjectButton component', () => {
     expect(openModalMock).toHaveBeenCalledWith(
       'newProject',
       {
+        header: 'Add Project',
         project: { title: '' },
         callback: afterSubmitMock
       }
