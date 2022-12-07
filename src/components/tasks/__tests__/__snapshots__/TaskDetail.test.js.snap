@@ -3,22 +3,6 @@
 exports[`TaskDetail component when not provided with a due date renders correctly 1`] = `
 <div>
   <div
-    class="Modal-header-container"
-  >
-    <h2>
-      Test Task
-    </h2>
-    <button
-      aria-label="close modal"
-      class="Close-modal-button"
-    >
-      <img
-        alt=""
-        src="test-file-stub"
-      />
-    </button>
-  </div>
-  <div
     class="Modal-content-container"
   >
     <div
@@ -66,22 +50,6 @@ exports[`TaskDetail component when not provided with a due date renders correctl
 
 exports[`TaskDetail component when provided with a due date renders correctly 1`] = `
 <div>
-  <div
-    class="Modal-header-container"
-  >
-    <h2>
-      Test Task
-    </h2>
-    <button
-      aria-label="close modal"
-      class="Close-modal-button"
-    >
-      <img
-        alt=""
-        src="test-file-stub"
-      />
-    </button>
-  </div>
   <div
     class="Modal-content-container"
   >
