@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar';
 
 // Mock child components
 jest.mock('../SidebarItem', () => ({ title }) => (
-  <div data-testId="item">{title}</div>
+  <div data-testid="item">{title}</div>
 ));
 
 jest.mock('../SidebarCollapsableList', () => ({ children }) => (
