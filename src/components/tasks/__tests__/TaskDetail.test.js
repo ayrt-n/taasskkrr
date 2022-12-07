@@ -30,21 +30,6 @@ const taskNoDueDate = {
 }
 
 describe('TaskDetail component', () => {
-  it('calls closeModal when close modal button clicked', () => {
-    render(
-      <TaskDetails
-        task={taskWithDueDate}
-        closeModal={closeModalMock}
-        editTask={editTaskMock}
-      />
-    );
-
-    const closeButton = screen.getByRole('button', { name: /close modal/i });
-    userEvent.click(closeButton);
-
-    expect(closeModalMock).toHaveBeenCalled();
-  });
-
   it('calls editTask when edit task button is clicked', () => {
     render(
       <TaskDetails
