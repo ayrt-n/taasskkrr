@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from './form/Button';
-import closeIcon from '../assets/icons/close.svg';
 import '../styles/Modal.css';
 import '../styles/Form.css';
 
