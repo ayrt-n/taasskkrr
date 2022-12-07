@@ -6,7 +6,6 @@ import SelectInput from '../form/SelectInput';
 import DateInput from '../form/DateInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
-import closeIcon from '../../assets/icons/close.svg';
 import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
 import eventBus from '../common/EventBus';
@@ -58,12 +57,6 @@ function TaskForm({ task, closeModal, afterSubmit }) {
 
   return (
     <>
-      <div className="Modal-header-container">
-        <h2>{task.id ? 'Edit Task' : 'Add Task'}</h2>
-        <button className="Close-modal-button" onClick={closeModal}>
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
       <div className="Modal-content-container">
         {errorMessage.length > 0 && <Alert type="danger" message="Unable to save task:" details={errorMessage} />}
         <Formik

@@ -1,17 +1,10 @@
 import React from 'react';
-import closeIcon from '../../assets/icons/close.svg';
 import Priority from './Priority';
 import Button from '../form/Button';
 
-function TaskDetails({ task, closeModal, editTask }) {
+function TaskDetails({ task, editTask }) {
   return (
     <>
-      <div className="Modal-header-container">
-        <h2>{task.title}</h2>
-        <button className="Close-modal-button" onClick={closeModal} aria-label="close modal">
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
       <div className="Modal-content-container">
         <div className="field">
           <p className="label">Description</p>

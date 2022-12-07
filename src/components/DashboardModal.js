@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import '../styles/Modal.css';
 import '../styles/Form.css';
+import closeIcon from '../assets/icons/close.svg';
 import TaskModal from './tasks/TaskModal';
 import TaskForm from './tasks/TaskForm';
 import ConfirmationModal from './ConfirmationModal';
@@ -30,6 +31,13 @@ function DashboardModal({ action, data, isOpen, closeModal }) {
       onRequestClose={closeModal}
       shouldCloseOnOverlayClick={true}
     >
+      <div className="Modal-header-container">
+        <h2>{data.header}</h2>
+        <button className="Close-modal-button" onClick={closeModal} aria-label="close modal">
+          <img src={closeIcon} alt="" />
+        </button>
+      </div>
+
       {action === 'viewTask' ?
         <TaskModal
           task={data.task}
@@ -57,7 +65,6 @@ function DashboardModal({ action, data, isOpen, closeModal }) {
         /> :
         action === 'confirmation' ?
         <ConfirmationModal
-          header={data.header}
           message={data.message}
           buttonText={data.buttonText}
           confirmCallback={data.callback}

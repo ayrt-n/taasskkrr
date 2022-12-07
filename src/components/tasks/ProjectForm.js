@@ -3,7 +3,6 @@ import { Formik } from 'formik';
 import TextInput from '../form/TextInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
-import closeIcon from '../../assets/icons/close.svg';
 import '../../styles/Form.css';
 import TaskService from '../../services/TaskService';
 import eventBus from '../common/EventBus';
@@ -55,12 +54,6 @@ function SectionForm({ project, closeModal, afterSubmit }) {
 
   return (
     <>
-      <div className="Modal-header-container">
-        <h2>{project.id ? 'Edit Project' : 'Add Project'}</h2>
-        <button className="Close-modal-button" onClick={closeModal}>
-          <img src={closeIcon} alt="" />
-        </button>
-      </div>
       <div className="Modal-content-container">
         {errorMessage.length > 0 && <Alert type="danger" message="Unable to save project:" details={errorMessage} />}
         <Formik
@@ -74,7 +67,7 @@ function SectionForm({ project, closeModal, afterSubmit }) {
               <div className="field is-grouped">
                 {project.id ? 
                   <Button label="Save Changes" buttonStyles="is-primary" type="submit"/> :
-                  <Button label="Add Section" buttonStyles="is-primary" type="submit"/>
+                  <Button label="Add Project" buttonStyles="is-primary" type="submit"/>
                 }
                 <Button label="Cancel" onClick={closeModal}/>
               </div>
