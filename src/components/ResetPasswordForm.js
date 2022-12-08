@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Formik } from 'formik';
-import AccountServices from '../services/AccountServices';
+import { resetPassword } from '../services/accountServices';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
@@ -32,7 +32,7 @@ function ResetPasswordForm() {
 
   const handleSubmit = (values, { setSubmitting }) => {
     const resetToken = searchParams.get('reset_password_token');
-    AccountServices.resetPassword(values.password, values.passwordConfirmation, resetToken)
+    resetPassword(values.password, values.passwordConfirmation, resetToken)
     .then((data) => {
       if (!data.error) {
         routerNavigate(

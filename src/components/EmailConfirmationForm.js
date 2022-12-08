@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
-import AuthService from '../services/AuthService';
+import { resendConfirmationEmail } from '../services/accountServices';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
@@ -23,7 +23,7 @@ function EmailConfirmationForm() {
   };
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    AuthService.resendConfirmationEmail(values.email)
+    resendConfirmationEmail(values.email)
     .then((data) => {
       if (!data.error) {
         setFlash({

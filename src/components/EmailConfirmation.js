@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import AuthService from '../services/AuthService';
+import { confirmEmail } from '../services/accountServices';
 
 function EmailConfirmation() {
   const [searchParams] = useSearchParams();
@@ -8,7 +8,7 @@ function EmailConfirmation() {
 
   useEffect(() => {
     const confirmationToken = searchParams.get('confirmation_token');
-    AuthService.confirmEmail(confirmationToken).then((data) => {
+    confirmEmail(confirmationToken).then((data) => {
       if (!data.error) {
         routerNavigate(
           '/login',

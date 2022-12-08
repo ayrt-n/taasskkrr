@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
-import AccountServices from '../services/AccountServices';
+import { sendPasswordReset } from '../services/accountServices';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
@@ -23,7 +23,7 @@ function ForgotPasswordForm() {
   };
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    AccountServices.sendPasswordReset(values.email)
+    sendPasswordReset(values.email)
     .then((data) => {
       if (!data.error) {
         setFlash({
