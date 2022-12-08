@@ -25,7 +25,7 @@ function EmailConfirmation() {
           { state: {
               type: 'danger',
               message: 'Unable to confirm email:',
-              body: 'Log in and get started!'
+              details: data.error.details
             }
           }
         );
