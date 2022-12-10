@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:3001/api/v1'
 
-export function resendConfirmationEmail(email) {
+function resendConfirmationEmail(email) {
   return fetch(`${API_URL}/confirmation`, {
     method: 'POST',
     mode: 'cors',
@@ -19,7 +19,7 @@ export function resendConfirmationEmail(email) {
   })
 }
 
-export function confirmEmail(confirmation_token) {
+function confirmEmail(confirmation_token) {
   return fetch(`${API_URL}/confirmation?confirmation_token=${confirmation_token}`, {
     method: 'GET',
     mode: 'cors',
@@ -33,7 +33,7 @@ export function confirmEmail(confirmation_token) {
   });
 }
 
-export function sendPasswordReset(email) {
+function sendPasswordReset(email) {
   return fetch(`${API_URL}/password`, {
     method: 'POST',
     mode: 'cors',
@@ -52,7 +52,7 @@ export function sendPasswordReset(email) {
   });
 }
 
-export function resetPassword(password, passwordConfirmation, resetToken) {
+function resetPassword(password, passwordConfirmation, resetToken) {
   return fetch(`${API_URL}/password`, {
     method: 'PATCH',
     mode: 'cors',
@@ -72,3 +72,10 @@ export function resetPassword(password, passwordConfirmation, resetToken) {
     return data;
   });
 }
+
+export {
+  resendConfirmationEmail,
+  confirmEmail,
+  sendPasswordReset,
+  resetPassword,
+};
