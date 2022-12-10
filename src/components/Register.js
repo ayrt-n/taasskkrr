@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
-import AuthService from '../services/AuthService';
+import { register } from '../services/authService';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
@@ -36,7 +36,7 @@ function Register() {
   };
 
   const handleRegister = (values, { setSubmitting }) => {
-    AuthService.register(values.email, values.password, values.passwordConfirmation)
+    register(values.email, values.password, values.passwordConfirmation)
     .then((data) => {
       if (!data.error) {
         routerNavigate(
