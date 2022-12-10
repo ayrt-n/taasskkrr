@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
-import AuthService from '../services/AuthService';
+import { login } from '../services/authService';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
@@ -29,7 +29,7 @@ function Login() {
   };
 
   const handleLogin = (values, { setSubmitting }) => {
-    AuthService.login(values.email, values.password)
+    login(values.email, values.password)
     .then((data) => {
       if (!data.error) {
         // If successful login (no error) redirect to home and reload

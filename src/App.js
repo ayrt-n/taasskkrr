@@ -5,7 +5,7 @@ import Navbar from './components/navbar/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
-import AuthService from './services/AuthService';
+import { getCurrentUser, logout } from './services/authService';
 import EmailConfirmation from './components/EmailConfirmation';
 import EmailConfirmationForm from './components/EmailConfirmationForm';
 import ResetPasswordForm from './components/ResetPasswordForm';
@@ -20,7 +20,7 @@ function App() {
 
   // THIS WASNT WORKING WHEN NAVIGATING BETWEEN URLS WITH NO API REQUESTS
   const logOut = useCallback(() => {
-    AuthService.logout();
+    logout();
     setCurrentUser(null);
     routerNavigate('/login');
     window.location.reload();
@@ -28,7 +28,7 @@ function App() {
 
   // On render, get and set currentUser using AuthService (localStorage)
   useEffect(() => {
-    setCurrentUser(AuthService.getCurrentUser())
+    setCurrentUser(getCurrentUser())
   }, [])
 
   // Set up logOut listener, fired if token has expired

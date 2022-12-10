@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import parseJwt from '../../services/parseJwt';
-import AuthService from '../../services/AuthService';
+import { getCurrentUser } from '../../services/authService';
 
 function AuthVerify({ logOut }) {
   let location = useLocation();
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = getCurrentUser();
 
     if (user) {
       const decodedJwt = parseJwt(user.authorization);
