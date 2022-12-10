@@ -10,7 +10,7 @@ function TextInput({ label, ...props }) {
       <label htmlFor={props.id || props.name} className="label">{label}</label>
       <input className="input" {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="Form-error-message">{meta.error}</div>
+        <div className="Form-error-message" data-testid="form-error">{meta.error}</div>
       ) : null}
     </div>
   );
