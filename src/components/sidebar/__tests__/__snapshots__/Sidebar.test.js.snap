@@ -3,7 +3,7 @@
 exports[`Sidebar component renders correctly 1`] = `
 <div>
   <div
-    class="Sidebar"
+    class="Sidebar "
   >
     <div
       data-testid="item"
