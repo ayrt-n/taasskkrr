@@ -16,6 +16,7 @@ import './styles/App.css'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const routerNavigate = useNavigate();
 
   // THIS WASNT WORKING WHEN NAVIGATING BETWEEN URLS WITH NO API REQUESTS
@@ -26,7 +27,7 @@ function App() {
     window.location.reload();
   }, [routerNavigate])
 
-  // On render, get and set currentUser using AuthService (localStorage)
+  // On render, get and set currentUser using authService (localStorage)
   useEffect(() => {
     setCurrentUser(getCurrentUser())
   }, [])
@@ -42,14 +43,17 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar currentUser={currentUser} logOut={logOut} />
+      <Navbar currentUser={currentUser} logOut={logOut} toggleSidebar={() => {setSidebarOpen(!sidebarOpen)}} />
 
       <div className="App-main-content">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           {currentUser ?
-            <Route path="/*" element={<Dashboard />} /> :
+            <Route
+              path="/*"
+              element={<Dashboard sidebarOpen={sidebarOpen}closeSidebar={() => {setSidebarOpen(false)}} />}
+            /> :
             <Route path="/" element={<HomePage />} />
           }
           <Route path="/api/v1/confirmation" element={<EmailConfirmation />} />

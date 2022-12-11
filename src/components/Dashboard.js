@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import Project from './tasks/Project';
 import Today from './tasks/Today';
@@ -8,18 +8,25 @@ import DashboardModal from './DashboardModal';
 import UserService from '../services/UserService';
 import '../styles/Dashboard.css';
 
-function Dashboard() {
+function Dashboard({sidebarOpen, closeSidebar}) {
   const [inbox, setInbox] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
   const routerNavigate = useNavigate();
+  let location = useLocation();
 
+  // Fetch user projects to populate the sidebar on load
   useEffect(() => {
     UserService.getUserProjects().then((userProjects) => {
       setUserProjects(userProjects.filter(project => !project.inbox));
       setInbox(userProjects.filter(project => project.inbox)[0]);
     });
   }, []);
+
+  // Close sidebar on change in location (useful when in mobile)
+  useEffect(() => {
+    closeSidebar();
+  }, [location]);
 
   const addProject = (newProject) => {
     setUserProjects(userProjects.concat(newProject));
@@ -66,7 +73,13 @@ function Dashboard() {
         isOpen={modal.isOpen}
         closeModal={closeModal}
       />
-      <Sidebar projects={userProjects} inbox={inbox} addProject={addProject} openModal={openModal} />
+      <Sidebar
+        projects={userProjects}
+        inbox={inbox}
+        addProject={addProject}
+        openModal={openModal}
+        sidebarOpen={sidebarOpen}
+      />
       <div className="Dashboard-content">
         <Routes>
           <Route path="/" element={<Navigate to={`/projects/${inbox.id}`}/>} />
