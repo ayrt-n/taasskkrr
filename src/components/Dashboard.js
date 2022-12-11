@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import Project from './tasks/Project';
@@ -12,6 +12,7 @@ function Dashboard({sidebarOpen, closeSidebar}) {
   const [inbox, setInbox] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
   const [modal, setModal] = useState({isOpen: false, action: '', data: {}});
+  const dashboardRef = useRef(null);
   const routerNavigate = useNavigate();
   let location = useLocation();
 
@@ -25,8 +26,23 @@ function Dashboard({sidebarOpen, closeSidebar}) {
 
   // Close sidebar on change in location (useful when in mobile)
   useEffect(() => {
-    closeSidebar();
+    if (sidebarOpen) { closeSidebar(); }
   }, [location]);
+
+  // Close sidebar on click in dashboard content (useful when in mobile)
+  useEffect(() => {
+    function handleClick(e) {
+      if (dashboardRef.current && dashboardRef.current.contains(e.target)) {
+        closeSidebar();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [dashboardRef])
 
   const addProject = (newProject) => {
     setUserProjects(userProjects.concat(newProject));
@@ -79,8 +95,9 @@ function Dashboard({sidebarOpen, closeSidebar}) {
         addProject={addProject}
         openModal={openModal}
         sidebarOpen={sidebarOpen}
+        closeSidebar={closeSidebar}
       />
-      <div className="Dashboard-content">
+      <div className="Dashboard-content" ref={dashboardRef}>
         <Routes>
           <Route path="/" element={<Navigate to={`/projects/${inbox.id}`}/>} />
           <Route path="/today" element={<Today />} />
