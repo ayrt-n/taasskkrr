@@ -30,3 +30,46 @@
 .Modal-message {
   margin-bottom: 1rem;
 }
+
+.Modal-overlay {
+  /* React Modal defaults */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* Custom styling */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+}
+
+.Modal-content {
+  /* React Modal defaults */
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+
+  /* Custom styling */
+  border: 2px solid var(--bgLayerColor);
+  background: var(--bgColor);
+  margin: 0 auto;
+  max-height: min-content;
+  max-width: 900px;
+}
+
+@media screen and (max-width: 425px) {
+  .Modal-content {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+}
