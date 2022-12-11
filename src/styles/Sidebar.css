@@ -9,8 +9,18 @@
   background-color: var(--bgColor);
   z-index: 1;
 
-  border-top: 2px solid var(--bgLayerColor);;
   border-right: 2px solid var(--bgLayerColor);
+  transition: transform 200ms;
+}
+
+@media screen and (max-width: 768px) {
+  .Sidebar {
+    transform: translateX(-280px);
+  }
+
+  .Sidebar.open {
+    transform: translateX(0);
+  }
 }
 
 .SidebarItem {
