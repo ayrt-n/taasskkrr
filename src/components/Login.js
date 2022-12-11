@@ -32,8 +32,8 @@ function Login() {
     login(values.email, values.password)
     .then((data) => {
       if (!data.error) {
-        // If successful login (no error) redirect to home and reload
-        routerNavigate('/');
+        // If successful login (no error) redirect to app
+        routerNavigate('/app');
         window.location.reload();
       } else {
         // If error logging in, set flash state to render errors
