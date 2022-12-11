@@ -4,7 +4,7 @@ import SidebarItem from './SidebarItem'
 import SidebarCollapsableList from './SidebarCollapsableList';
 import NewProjectButton from './NewProjectButton';
 
-function Sidebar({ projects, inbox, addProject, openModal, sidebarOpen}) {
+function Sidebar({ projects, inbox, addProject, openModal, sidebarOpen }) {
   return (
     <div className={`Sidebar ${sidebarOpen ? "open" : ""}`}>
       <SidebarItem icon="inbox.svg" title="Inbox" action={`/projects/${inbox.id}`} />

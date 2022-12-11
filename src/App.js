@@ -52,7 +52,7 @@ function App() {
           {currentUser ?
             <Route
               path="/*"
-              element={<Dashboard sidebarOpen={sidebarOpen}closeSidebar={() => {setSidebarOpen(false)}} />}
+              element={<Dashboard sidebarOpen={sidebarOpen} closeSidebar={() => {setSidebarOpen(false)}} />}
             /> :
             <Route path="/" element={<HomePage />} />
           }
