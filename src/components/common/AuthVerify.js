@@ -1,22 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import parseJwt from '../../services/parseJwt';
-import { getCurrentUser } from '../../services/authService';
+import AuthContext from '../../contexts/authentication/AuthContext';
 
-function AuthVerify({ logOut }) {
+function AuthVerify() {
   let location = useLocation();
+  const { currentUser, logOut } = useContext(AuthContext)
 
   useEffect(() => {
-    const user = getCurrentUser();
-
-    if (user) {
-      const decodedJwt = parseJwt(user.authorization);
+    if (currentUser) {
+      const decodedJwt = parseJwt(currentUser.authorization);
 
       if (decodedJwt.exp * 1000 < Date.now()) {
         logOut();
       }
     }
-  }, [location, logOut]);
+  }, [location, logOut, currentUser]);
 
   return;
 }

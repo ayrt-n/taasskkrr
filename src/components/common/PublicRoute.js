@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { getCurrentUser } from '../../services/authService';
+import AuthContext from '../../contexts/authentication/AuthContext';
 
 function PublicRoute({ children }) {
-  const auth = getCurrentUser();
-  return auth ? <Navigate to="/app" /> : children
+  const { currentUser } = useContext(AuthContext);
+  return currentUser ? <Navigate to="/app" /> : children
 }
 
 export default PublicRoute;

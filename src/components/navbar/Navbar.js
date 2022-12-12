@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logoSVG from '../../assets/icons/logo.svg';
+import AuthContext from '../../contexts/authentication/AuthContext';
 import '../../styles/Nav.css'
 
-function Navbar({ currentUser, logOut, toggleSidebar }) {
+function Navbar({ toggleSidebar }) {
+  const { currentUser, logOut } = useContext(AuthContext)
+
   return (
     <nav className="Nav">
       { currentUser ?
