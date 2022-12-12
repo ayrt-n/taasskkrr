@@ -4,12 +4,22 @@ import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import Navbar from '../Navbar';
+import AuthContext from '../../../contexts/authentication/AuthContext';
+
+// Set up helper for rendering AuthContext.Provider
+function providerValues(user, logOutMock) {
+  return {
+    currentUser: user,
+    logOut: logOutMock,
+  }
+}
 
 describe('Navbar component', () => {
   it('renders register and sign up links when not logged in', () => {
-    const currentUserMock = null
     render(
-      <Navbar currentUser={currentUserMock} />,
+      <AuthContext.Provider value={providerValues(null, null)}>
+        <Navbar />
+      </AuthContext.Provider>,
       { wrapper: MemoryRouter }
     );
 
@@ -23,9 +33,10 @@ describe('Navbar component', () => {
   });
 
   it('renders logout link when logged in', () => {
-    const currentUserMock = true
     render(
-      <Navbar currentUser={currentUserMock} />,
+      <AuthContext.Provider value={providerValues(true, null)}>
+        <Navbar />
+      </AuthContext.Provider>,
       { wrapper: MemoryRouter }
     );
 
@@ -40,9 +51,10 @@ describe('Navbar component', () => {
 
   it('calls logOut function when Logout link clicked', () => {
     const logOutMock = jest.fn();
-    const currentUserMock = true
     render(
-      <Navbar currentUser={currentUserMock} logOut={logOutMock} />,
+      <AuthContext.Provider value={providerValues(true, logOutMock)}>
+        <Navbar />
+      </AuthContext.Provider>,
       { wrapper: MemoryRouter }
     );
 
