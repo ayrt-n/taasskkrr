@@ -46,7 +46,7 @@ function Dashboard({sidebarOpen, closeSidebar}) {
 
   const addProject = (newProject) => {
     setUserProjects(userProjects.concat(newProject));
-    routerNavigate(`/projects/${newProject.id}`)
+    routerNavigate(`/app/projects/${newProject.id}`)
   }
 
   const updateProject = (updatedProject) => {
