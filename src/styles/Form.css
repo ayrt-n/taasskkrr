@@ -1,6 +1,6 @@
 /* Form Styling based off of Bulma Form Styling from https://github.com/jgthms/bulma/blob/master/css/bulma.css */
 .Form-container {
-  padding-top: 4rem;
+  padding: 4rem 1.25rem 0 1.25rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
