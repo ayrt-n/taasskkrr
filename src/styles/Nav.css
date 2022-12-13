@@ -8,7 +8,7 @@
   position: fixed;
   border-bottom: 2px solid var(--bgLayerColor);
   background-color: var(--bgColor);
-  z-index: 1;
+  z-index: 30;
 }
 
 .Nav-start {
