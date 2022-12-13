@@ -29,9 +29,9 @@ function HomePage() {
           <div className="Landing-pitch-container">
             <p className="Landing-pitch-whisper">Simplify your life</p>
             <h3>
-              <span>Add your tasks.</span>
-              <span>Organize your life.</span>
-              <span>Achieve more every day.</span>
+              <span>Create a project.</span>         
+              <span>Add your tasks.</span>              
+              <span>Conquer the day.</span>
             </h3>
             <p className="Landing-pitch">
               Break bigger tasks down and keep them organized by creating separate projects. Whether you're working on a big project at work, planning a party, or just trying to stay on top of your daily tasks, our app has you covered.
