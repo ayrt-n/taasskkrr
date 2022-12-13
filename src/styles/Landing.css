@@ -11,7 +11,27 @@
   flex-direction: column;
   align-items: center;
   padding: 0 5rem;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto;
+}
+
+.Landing-wave {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.Landing-wave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 72px;
+}
+
+.Landing-wave .shape-fill {
+  fill: var(--bgLayerColor);
 }
 
 .Landing-hero-text > *:not(:last-child) {
