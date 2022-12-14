@@ -8,6 +8,7 @@ import '../../styles/Tasks.css';
 function Today({ openModal }) {
   const [tasks, setTasks] = useState([]);
 
+  // Fetch users tasks. Returns userTasks in format { tasks: [{}, {}, {}...] }
   useEffect(() => {
     document.title = "Today"
     UserService.getTodayTasks().then((userTasks) => {
@@ -18,6 +19,8 @@ function Today({ openModal }) {
   const updateTask = (updatedTask) => {
     const currentDate = format(new Date(), 'yyyy-MM-dd');
 
+    // If updatedTask date changed from currentDate, remove it from the list
+    // Otherwise, update the list with the updated task
     if (updatedTask.due_date !== currentDate) {
       deleteTask(updatedTask);
     } else {
