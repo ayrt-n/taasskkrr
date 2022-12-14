@@ -1,26 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import UserService from '../../services/UserService';
 import parseISO from 'date-fns/parseISO';
 import format from 'date-fns/format';
 import Task from './Task';
-import SectionHeader from './SectionHeader';
 import '../../styles/Tasks.css';
 
-function Upcoming() {
+function Upcoming({ openModal }) {
   const [loading, setLoading] = useState(true);
-  const [upcoming, setUpcoming] = useState([])
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     document.title = "Upcoming"
-    UserService.getUpcomingTasks().then((userTasks) => {
+    UserService.getUserTasks().then((userTasks) => {
       console.log(userTasks.tasks);
-      setUpcoming(userTasks.tasks);
+      setTasks(userTasks.tasks.filter(task => task.due_date));
     })
     .then(() => {
       setLoading(false);
-      console.log(upcoming);
     });
   }, []);
+
+  const sortedTasks = useMemo(() => (
+    tasks.sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
+  ), [tasks]);
+
+  const upcomingTasks = useMemo(() => {
+    let dueDate;
+    const list = []
+
+    sortedTasks.map((task) => {
+      const taskDueDate = new Date(task.due_date);
+      const formattedDate = taskDueDate < Date.now() ? 'Overdue' : format(parseISO(task.due_date), 'PPP')
+
+      if (dueDate === formattedDate) {
+        list.push(<Task key={task.id} task={task} openModal={openModal} />);
+      } else {
+        list.push(<div className="Section-header"><h2>{formattedDate}</h2></div>)
+        list.push(<Task key={task.id} task={task} openModal={openModal} />);
+        dueDate = formattedDate
+      }
+    })
+
+    return list;
+  }, [sortedTasks]);
 
   return (
     // If loading show null
@@ -28,32 +50,10 @@ function Upcoming() {
     null :
     // Otherwise, render tasks in order of upcoming date
     <div className="Upcoming">
-      <SectionHeader
-        title="Upcoming"
-        headingLevel="h1"
-        inbox={true}
-      />
-      {Object.keys(upcoming).sort().map((date) => {
-        if (date === "") {
-          return null;
-        } else {
-          return (
-            <div className="Tasks-container" key={date}>
-              <SectionHeader
-                title={format(parseISO(date), 'PPP')}
-                headingLevel="h2"
-                inbox={true}
-              />
-              {upcoming[date].map((task) => (
-                <Task
-                  key={task.id}
-                  task={task}
-                /> 
-              ))}
-            </div>
-          );
-        }
-      })}
+      <div className="Section-header">
+        <h1>Upcoming</h1>
+      </div>
+      {upcomingTasks}
     </div>
   );
 }
