@@ -59,7 +59,7 @@ function HomePage() {
             alt="screenshot of mobile view of Taasskkrr app viewing Upcoming tasks"
             className="Landing-mobile-screen"
           />
-          <div className="Landing-pitch-container">
+          <div className="Landing-pitch-container text-end">
             <p className="Landing-pitch-whisper">Simplify your life</p>
             <h3>
               <span>All your tasks.</span>
@@ -70,7 +70,19 @@ function HomePage() {
             </p>
           </div>
         </div>
+
+        <div className="Landing-cta">
+          <h3>
+            <span>Stop feeling overwhelmed.</span>
+            <span>Stay organized and productive, easily with Taasskkrr.</span>
+          </h3>
+          
+          <div>
+            <Link to="/register" className="button is-primary">Get Started!</Link>
+          </div>
+        </div>
       </div>
+
 
       <section>
         <div class="Landing-wave inverted">
