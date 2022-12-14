@@ -39,7 +39,7 @@ function Upcoming({ openModal }) {
     let dueDate;
     const list = []
 
-    sortedTasks.map((task) => {
+    sortedTasks.forEach((task) => {
       const taskDueDate = new Date(task.due_date);
       const formattedDate = taskDueDate < Date.now() ? 'Overdue' : format(parseISO(task.due_date), 'PPP')
 
