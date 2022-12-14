@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import UserService from '../../services/UserService';
 import Task from './Task';
 import SectionHeader from './SectionHeader';
+import format from 'date-fns/format';
 import '../../styles/Tasks.css';
 
-function Today() {
+function Today({ openModal }) {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -13,6 +14,22 @@ function Today() {
       setTasks(userTasks.tasks);
     });
   }, []);
+
+  const updateTask = (updatedTask) => {
+    const currentDate = format(new Date(), 'yyyy-MM-dd');
+
+    if (updatedTask.due_date !== currentDate) {
+      deleteTask(updatedTask);
+    } else {
+      setTasks((prevTasks) => (prevTasks.map((task) => {
+        return task.id === updatedTask.id ? updatedTask : task;
+      })));
+    }
+  };
+
+  const deleteTask = (deletedTask) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== deletedTask.id));
+  };
 
   return (
     <div className="Tasks">
@@ -27,6 +44,9 @@ function Today() {
             <Task
               key={task.id}
               task={task}
+              openModal={openModal}
+              handleUpdate={updateTask}
+              handleDelete={deleteTask}
             />
           );
         })}
