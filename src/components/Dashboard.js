@@ -100,7 +100,7 @@ function Dashboard({sidebarOpen, closeSidebar}) {
       <div className="Dashboard-content" ref={dashboardRef}>
         <Routes>
           <Route path="/" element={<Navigate to={`/app/projects/${inbox.id}`}/>} />
-          <Route path="/today" element={<Today />} />
+          <Route path="/today" element={<Today openModal={openModal}/>} />
           <Route path="/upcoming" element={<Upcoming />} />
           <Route
             path="/projects/:projectId"
