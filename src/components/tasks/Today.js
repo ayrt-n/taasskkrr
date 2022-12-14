@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UserService from '../../services/UserService';
 import Task from './Task';
-import SectionHeader from './SectionHeader';
 import format from 'date-fns/format';
 import '../../styles/Tasks.css';
 
@@ -37,11 +36,9 @@ function Today({ openModal }) {
   return (
     <div className="Tasks">
       <div className="Tasks-container">
-        <SectionHeader
-          title="Today"
-          headingLevel="h1"
-          inbox={true}
-        />
+        <div className="Section-header">
+          <h1>Today</h1>
+        </div>
         {tasks.map((task) => {
           return (
             <Task
