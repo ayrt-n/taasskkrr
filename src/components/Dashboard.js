@@ -101,7 +101,7 @@ function Dashboard({sidebarOpen, closeSidebar}) {
         <Routes>
           <Route path="/" element={<Navigate to={`/app/projects/${inbox.id}`}/>} />
           <Route path="/today" element={<Today openModal={openModal}/>} />
-          <Route path="/upcoming" element={<Upcoming />} />
+          <Route path="/upcoming" element={<Upcoming openModal={openModal}/>} />
           <Route
             path="/projects/:projectId"
             element={
