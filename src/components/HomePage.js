@@ -3,6 +3,7 @@ import '../styles/Landing.css';
 import logo from '../assets/icons/logo.svg';
 import heroMain from '../assets/images/hero-main.png';
 import smallExample1 from '../assets/images/mobile-example1.png';
+import smallExample2 from '../assets/images/mobile-example2.png';
 import { Link } from 'react-router-dom';
 
 function HomePage() {
@@ -20,6 +21,7 @@ function HomePage() {
         </div>
       </div>
 
+      {/* Wavy page break */}
       <section>
         <div class="Landing-wave">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -33,9 +35,10 @@ function HomePage() {
         <div className="Landing-hero-container">
           <img src={heroMain} alt="screenshot of the main dashboard for Taasskkrr" className="Landing-hero-main" />
         </div>
+
         <div className="Landing-two-grid">
           <div className="Landing-pitch-container">
-            <p className="Landing-pitch-whisper">Simplify your life</p>
+            <p className="Landing-pitch-whisper">Productivity redefined</p>
             <h3>
               <span>Add your tasks.</span>
               <span>Manage your projects.</span>
@@ -46,11 +49,40 @@ function HomePage() {
             </p>
           </div>
           <img src={smallExample1}
-            alt="screenshot of mobile view of Taasskkrr app viewing more details of a task"
+            alt="screenshot of mobile view of Taasskkrr app viewing Personal project with a sub-section for Wellness"
             className="Landing-mobile-screen"
           />
         </div>
+        
+        <div className="Landing-two-grid">
+          <img src={smallExample2}
+            alt="screenshot of mobile view of Taasskkrr app viewing Upcoming tasks"
+            className="Landing-mobile-screen"
+          />
+          <div className="Landing-pitch-container">
+            <p className="Landing-pitch-whisper">Simplify your life</p>
+            <h3>
+              <span>All your tasks.</span>
+              <span>All in one place.</span>
+            </h3>
+            <p className="Landing-pitch">
+              Automatically sort and view upcoming tasks based on due date or filter by tasks for the current day. Taasskkrr makes it easy to prioritize your workload and ensure that you never miss a deadline again.
+            </p>
+          </div>
+        </div>
       </div>
+
+      <section>
+        <div class="Landing-wave inverted">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+      </section>
+
+      <footer className="Landing-footer">
+        
+      </footer>
     </div>
   );
 }
