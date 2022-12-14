@@ -4,8 +4,8 @@ import UserService from '../../services/UserService';
 import Task from './Task';
 import NewSectionButton from './NewSectionButton';
 import NewTaskButton from './NewTaskButton';
-import SectionHeader from './SectionHeader';
 import '../../styles/Tasks.css';
+import ProjectDropdownMenu from './ProjectDropdownMenu';
 
 function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
   let { projectId } = useParams()
@@ -151,16 +151,21 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
     loading ?
     null :
     <div className="Tasks">
-      <SectionHeader
-        title={project.title}
-        headingLevel="h1"
-        name="project"
-        inbox={project.inbox}
-        projectId={projectId}
-        handleUpdate={updateProject}
-        handleDelete={deleteProject}
-        openModal={openModal}
-      />
+      <div className="Section-header">
+        <h1>{project.title}</h1>
+        {project.inbox ?
+          null :
+          <ProjectDropdownMenu
+          title={project.title}
+          name="project"
+          inbox={project.inbox}
+          projectId={projectId}
+          handleUpdate={updateProject}
+          handleDelete={deleteProject}
+          openModal={openModal}
+        />
+        }
+      </div>
       <div className="Tasks-container">
         {project.tasks.map((task) => (
           <Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} openModal={openModal} />)
@@ -170,16 +175,18 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
       {project.sections.map((section) => {
         return(
           <div className="Tasks-container" key={section.id}>
-            <SectionHeader
-              title={section.title}
-              headingLevel="h2"
-              name="section"
-              projectId={projectId}
-              sectionId={section.id}
-              handleUpdate={updateSection}
-              handleDelete={deleteSection}
-              openModal={openModal}
-            />
+            <div className="Section-header">
+              <h2>{section.title}</h2>
+              <ProjectDropdownMenu
+                title={section.title}
+                name="section"
+                projectId={projectId}
+                sectionId={section.id}
+                handleUpdate={updateSection}
+                handleDelete={deleteSection}
+                openModal={openModal}
+              />
+          </div>
             {section.tasks.map((task) => (
               <Task
                 key={task.id}
