@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 5rem;
+  padding: 0 2rem;
   margin: 0 auto;
 }
 
@@ -92,11 +92,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  column-gap: 1.7rem;
+}
+
+.Landing-two-grid.reversed {
+  flex-direction: row-reverse;
 }
 
 .Landing-pitch-container {
   text-align: start;
   max-width: 450px;
+}
+
+.reversed .Landing-pitch-container {
+  text-align: end;
 }
 
 .Landing-pitch-whisper {
@@ -126,7 +136,7 @@
 .Landing-cta {
   text-align: center;
   max-width: 600px;
-  padding-top: 4rem;
+  padding: 4rem 2rem 0 2rem;
 }
 
 .Landing-cta h3 {
@@ -145,6 +155,14 @@
   align-items: center;
 }
 
-.text-end {
-  text-align: end;
+@media screen and (max-width: 768px) {
+  .Landing-two-grid {
+    justify-content: center;
+  }
+
+  .Landing-pitch-container,
+  .reversed .Landing-pitch-container {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
 }
