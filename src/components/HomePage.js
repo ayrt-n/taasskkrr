@@ -45,7 +45,7 @@ function HomePage() {
               <span>Conquer the day.</span>
             </h3>
             <p className="Landing-pitch">
-              Break bigger tasks down and keep them organized by creating separate projects and sections. Whether you're working on a big project at work, planning a party, or just trying to stay on top of your daily tasks, our app has you covered.
+              Break bigger tasks down and keep them organized by creating separate projects and sections. Whether you're working on a big project at work, planning a party, or just trying to stay on top of your daily tasks, our Taasskkrr has you covered.
             </p>
           </div>
           <img src={smallExample1}
@@ -54,12 +54,8 @@ function HomePage() {
           />
         </div>
         
-        <div className="Landing-two-grid">
-          <img src={smallExample2}
-            alt="screenshot of mobile view of Taasskkrr app viewing Upcoming tasks"
-            className="Landing-mobile-screen"
-          />
-          <div className="Landing-pitch-container text-end">
+        <div className="Landing-two-grid reversed">
+          <div className="Landing-pitch-container">
             <p className="Landing-pitch-whisper">Simplify your life</p>
             <h3>
               <span>All your tasks.</span>
@@ -69,6 +65,10 @@ function HomePage() {
               Automatically sort and view upcoming tasks based on due date or filter by tasks for the current day. Taasskkrr makes it easy to prioritize your workload and ensure that you never miss a deadline again.
             </p>
           </div>
+          <img src={smallExample2}
+            alt="screenshot of mobile view of Taasskkrr app viewing Upcoming tasks"
+            className="Landing-mobile-screen"
+          />
         </div>
 
         <div className="Landing-cta">
