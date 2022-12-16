@@ -1,12 +1,12 @@
 import React from 'react';
-import TaskService from '../../services/TaskService';
+import { destroyTask } from '../../services/taskService';
 import trashIcon from '../../assets/icons/trash-can.svg';
 import eventBus from '../common/EventBus';
 import '../../styles/Tasks.css';
 
 function DeleteTaskButton({ id, openModal, handleDelete }) {
   const deleteTask = () => {
-    TaskService.destroyTask(id).then((data) => {
+    destroyTask(id).then((data) => {
       if (!data.error) {
         handleDelete(data);
       } else {

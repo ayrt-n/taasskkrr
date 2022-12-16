@@ -4,7 +4,7 @@ import TextInput from '../form/TextInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
 import '../../styles/Form.css';
-import TaskService from '../../services/TaskService';
+import { updateSection, createSection } from '../../services/taskService';
 import eventBus from '../common/EventBus';
 
 function SectionForm({ section, projectId, closeModal, afterSubmit }) {
@@ -22,7 +22,7 @@ function SectionForm({ section, projectId, closeModal, afterSubmit }) {
 
   const handleSubmit = (values, { setSubmitting }) => {
     if (section.id) {
-      TaskService.updateSection(values.title, section.id).then((data) => {
+      updateSection(values.title, section.id).then((data) => {
         if (!data.error) {
           afterSubmit(data);
           closeModal();
@@ -36,7 +36,7 @@ function SectionForm({ section, projectId, closeModal, afterSubmit }) {
         setSubmitting(false);
       });
     } else {
-      TaskService.createSection(values.title, projectId).then((data) => {
+      createSection(values.title, projectId).then((data) => {
         if (!data.error) {
           afterSubmit(data);
           closeModal();

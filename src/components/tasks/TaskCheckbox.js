@@ -1,11 +1,11 @@
 import React from 'react';
 import eventBus from '../common/EventBus';
-import TaskService from '../../services/TaskService';
+import { toggleTaskComplete } from '../../services/taskService';
 
 function TaskCheckbox({ id, status, handleUpdate }) {
   const handleClick = () => {
     const updatedStatus = status === 0 ? 1 : 0;
-    TaskService.toggleTaskComplete(id, updatedStatus).then((data) => {
+    toggleTaskComplete(id, updatedStatus).then((data) => {
       if (!data.error) {
         handleUpdate(data);
       } else {

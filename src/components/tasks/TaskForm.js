@@ -7,7 +7,7 @@ import DateInput from '../form/DateInput';
 import Button from '../form/Button';
 import Alert from '../Alert';
 import '../../styles/Form.css';
-import TaskService from '../../services/TaskService';
+import { updateTask, createTask } from '../../services/taskService';
 import eventBus from '../common/EventBus';
 
 function TaskForm({ task, closeModal, afterSubmit }) {
@@ -25,7 +25,7 @@ function TaskForm({ task, closeModal, afterSubmit }) {
 
   const handleSubmit = (values, { setSubmitting }) => {
     if (task.id) {
-      TaskService.updateTask(values).then((data) => {
+      updateTask(values).then((data) => {
         if (!data.error) {
           afterSubmit(data);
           closeModal();
@@ -39,7 +39,7 @@ function TaskForm({ task, closeModal, afterSubmit }) {
         setSubmitting(false);
       });
     } else {
-      TaskService.createTask(values, task.project_id, task.section_id).then((data) => {
+      createTask(values, task.project_id, task.section_id).then((data) => {
         if (!data.error) {
           afterSubmit(data);
           closeModal();

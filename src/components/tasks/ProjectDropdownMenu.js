@@ -1,12 +1,12 @@
 import React from 'react';
 import DropdownMenu from '../DropdownMenu';
-import TaskService from '../../services/TaskService';
+import { destroySection, destroyProject } from '../../services/taskService';
 import eventBus from '../common/EventBus';
 import '../../styles/DropdownMenu.css'
 
 function ProjectDropdownMenu({ title, name, projectId, sectionId, openModal, handleUpdate, handleDelete}) {
   const deleteSection = () => {
-    TaskService.destroySection(sectionId).then((data) => {
+    destroySection(sectionId).then((data) => {
       if (!data.error) {
         handleDelete(data, sectionId);
       } else {
@@ -18,7 +18,7 @@ function ProjectDropdownMenu({ title, name, projectId, sectionId, openModal, han
   };
 
   const deleteProject = () => {
-    TaskService.destroyProject(projectId).then((data) => {
+    destroyProject(projectId).then((data) => {
       if (!data.error) {
         handleDelete(data, projectId);
       } else {
