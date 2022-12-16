@@ -82,6 +82,7 @@
   border: 3px solid var(--bgLayerColor);
   background-color: var(--bgLayerColor);
   cursor: pointer;
+  padding: 0;
 }
 
 .Task-checkbox:hover {
