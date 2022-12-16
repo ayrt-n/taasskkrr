@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/to-do-list-client/static/css/main.e1126a6b.css",
+    "main.css": "/to-do-list-client/static/css/main.d13e29b8.css",
     "main.js": "/to-do-list-client/static/js/main.dee755eb.js",
     "static/media/Inter.var.woff2?v=3.19": "/to-do-list-client/static/media/Inter.var.c2fe3cb2b7c746f7966a.woff2",
     "static/media/Inter-italic.var.woff2?v=3.19": "/to-do-list-client/static/media/Inter-italic.var.30807be7abc48ba8c73c.woff2",
@@ -53,11 +53,11 @@
     "static/media/trash-can.svg": "/to-do-list-client/static/media/trash-can.d6d7634d8686ecd0eeefe61cad5d1200.svg",
     "static/media/project.svg": "/to-do-list-client/static/media/project.f79c0ab0580b8a2b5075.svg",
     "static/media/chevron-right.svg": "/to-do-list-client/static/media/chevron-right.52c1b588ee7d7c2554c428bb12346cae.svg",
-    "main.e1126a6b.css.map": "/to-do-list-client/static/css/main.e1126a6b.css.map",
+    "main.d13e29b8.css.map": "/to-do-list-client/static/css/main.d13e29b8.css.map",
     "main.dee755eb.js.map": "/to-do-list-client/static/js/main.dee755eb.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1126a6b.css",
+    "static/css/main.d13e29b8.css",
     "static/js/main.dee755eb.js"
   ]
 }
