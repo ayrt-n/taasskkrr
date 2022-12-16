@@ -1,6 +1,7 @@
 import parseJwt from "./parseJwt";
+import { config } from './constants';
 
-const API_URL = 'http://localhost:3001/api/v1'
+const API_URL = config.url.API_URL
 
 function login(email, password) {
   return fetch(`${API_URL}/login`, {

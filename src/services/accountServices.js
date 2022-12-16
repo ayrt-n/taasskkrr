@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:3001/api/v1'
+import { config } from './constants';
+
+const API_URL = config.url.API_URL
 
 function resendConfirmationEmail(email) {
   return fetch(`${API_URL}/confirmation`, {
