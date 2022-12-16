@@ -5,7 +5,7 @@ import Project from './tasks/Project';
 import Today from './tasks/Today';
 import Upcoming from './tasks/Upcoming';
 import DashboardModal from './DashboardModal';
-import UserService from '../services/UserService';
+import { getUserProjects } from '../services/userService';
 import '../styles/Dashboard.css';
 
 function Dashboard({sidebarOpen, closeSidebar}) {
@@ -18,7 +18,7 @@ function Dashboard({sidebarOpen, closeSidebar}) {
 
   // Fetch user projects to populate the sidebar on load
   useEffect(() => {
-    UserService.getUserProjects().then((userProjects) => {
+    getUserProjects().then((userProjects) => {
       setUserProjects(userProjects.filter(project => !project.inbox));
       setInbox(userProjects.filter(project => project.inbox)[0]);
     });

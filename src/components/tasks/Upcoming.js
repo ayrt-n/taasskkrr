@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import UserService from '../../services/UserService';
+import { getUserTasks } from '../../services/userService';
 import parseISO from 'date-fns/parseISO';
 import format from 'date-fns/format';
 import Task from './Task';
@@ -11,7 +11,7 @@ function Upcoming({ openModal }) {
 
   useEffect(() => {
     document.title = "Upcoming"
-    UserService.getUserTasks().then((userTasks) => {
+    getUserTasks().then((userTasks) => {
       setTasks(userTasks.tasks.filter(task => task.due_date));
     })
     .then(() => {

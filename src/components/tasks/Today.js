@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UserService from '../../services/UserService';
+import { getTodayTasks } from '../../services/userService';
 import Task from './Task';
 import format from 'date-fns/format';
 import '../../styles/Tasks.css';
@@ -10,7 +10,7 @@ function Today({ openModal }) {
   // Fetch users tasks. Returns userTasks in format { tasks: [{}, {}, {}...] }
   useEffect(() => {
     document.title = "Today"
-    UserService.getTodayTasks().then((userTasks) => {
+    getTodayTasks().then((userTasks) => {
       setTasks(userTasks.tasks);
     });
   }, []);

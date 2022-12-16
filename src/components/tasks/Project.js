@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import UserService from '../../services/UserService';
+import { getProjectTasks } from '../../services/userService';
 import Task from './Task';
 import NewSectionButton from './NewSectionButton';
 import NewTaskButton from './NewTaskButton';
@@ -15,7 +15,7 @@ function Project({ updateSidebarProject, deleteSidebarProject, openModal }) {
 
   useEffect(() => {
     setLoading(true);
-    UserService.getProjectTasks(projectId).then((data) => {
+    getProjectTasks(projectId).then((data) => {
       setProject(data);
       setLoading(false);
       document.title = data.title
