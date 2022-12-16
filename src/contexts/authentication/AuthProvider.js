@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
     logout();
     setCurrentUser(null);
     routerNavigate('/login');
-    // window.location.reload();
+    window.location.reload();
   }, [routerNavigate])
 
   // Set up logOut listener, fired if token has expired
