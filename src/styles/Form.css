@@ -142,6 +142,10 @@ input:-webkit-autofill:focus {
   min-width: 167px;
 }
 
+.date input[type="date"] {
+  min-width: 167px;
+}
+
 .button, .input, .textarea, .select select, .date input[type="date"] {
   -moz-appearance: none;
   -webkit-appearance: none;
