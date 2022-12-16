@@ -46,7 +46,7 @@ function Upcoming({ openModal }) {
       if (dueDate === formattedDate) {
         list.push(<Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} openModal={openModal} />);
       } else {
-        list.push(<div className="Section-header"><h2>{formattedDate}</h2></div>)
+        list.push(<div className="Section-header" key={formattedDate}><h2>{formattedDate}</h2></div>)
         list.push(<Task key={task.id} task={task} handleUpdate={updateTask} handleDelete={deleteTask} openModal={openModal} />);
         dueDate = formattedDate
       }
