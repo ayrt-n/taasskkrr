@@ -7,9 +7,13 @@ import App from './App';
 
 Modal.setAppElement('#root');
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Given how Github pages impacts production url, set router basename based on environment
+const browserRouterBase = process.env.NODE_ENV === 'development' ? '' : '/to-do-list-client';
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/to-do-list-client" >
+    <BrowserRouter basename={browserRouterBase} >
       <App />
     </BrowserRouter>
   </React.StrictMode>
