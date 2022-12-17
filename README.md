@@ -27,7 +27,7 @@ Once you have this repo cloned (with the backend set up as per the instructions 
 
 And then navigating to http://localhost:3000
 
-## Takeaways
+## Overview
 This project provided a solid opportunity to combine everything that I have learned through The Odin Project. Generally, it was a great opportunity to start building full stack web applications which utilized a Rails backend and React frontend to build beautiful, responsive, and interactive user interfaces with a persistent backend API.
 
 From a Frontend/JavaScript/React point of view: in addition to basic react concepts like functional components, states, and props, the project offered the opportunity to use a number of other features to help keep concerns separated, and the code clear, concise, and easy to work with and refactor.
