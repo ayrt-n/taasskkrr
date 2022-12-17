@@ -149,6 +149,7 @@
 }
 
 .Landing-footer {
+  padding-top: 2rem;
   min-height: 80px;
   display: flex;
   justify-content: center;

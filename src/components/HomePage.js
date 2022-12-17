@@ -93,7 +93,7 @@ function HomePage() {
       </section>
 
       <footer className="Landing-footer">
-        
+        <span>Made with <span style={{color: "var(--red)"}}>❤️</span> by <a href="https://github.com/ayrt-n">Ayrton Parkinson</a></span>
       </footer>
     </div>
   );
