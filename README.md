@@ -7,6 +7,8 @@ The application is a relatively straight forward to-do list web application, whi
 
 The application uses Json Web Token (JWT) and React Context to authenticate and manage user permissions.
 
+This repo is for the React frontend portion of the project.
+
 ## Set up
 ### Using Web Browser
 
