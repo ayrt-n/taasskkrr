@@ -17,7 +17,7 @@ function Navbar({ toggleSidebar }) {
             </button>
           </div>
           <div className="Nav-end">
-            <a href="/login" onClick={logOut}>Logout</a>
+            <Link to="/login" onClick={logOut}>Logout</Link>
           </div>
         </> :
         <>
