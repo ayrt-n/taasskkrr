@@ -30,7 +30,7 @@ And then navigating to http://localhost:3000
 ## Takeaways
 This project provided a solid opportunity to combine everything that I have learned through The Odin Project. Generally, it was a great opportunity to start building full stack web applications which utilized a Rails backend and React frontend to build beautiful, responsive, and interactive user interfaces with a persistent backend API.
 
-In addition to basic react concepts like functional components, states, and props, it also offered the opportunity to use a number of other features to help keep concerns separated, and the code clear, concise, and easy to work with and refactor.
+From a Frontend/JavaScript/React point of view: in addition to basic react concepts like functional components, states, and props, the project offered the opportunity to use a number of other features to help keep concerns separated, and the code clear, concise, and easy to work with and refactor.
 
 Some React and JavaScript concepts used through the project include:
 - React Context to manage user Authentication and Authorization: By setting up an Authorization Context/Provider and placing it at the top level of the application, it made it easy to access and confirm that a user was logged in/valid through all levels of the application.
