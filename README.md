@@ -32,7 +32,7 @@ This project provided a solid opportunity to combine everything that I have lear
 
 From a Frontend/JavaScript/React point of view: in addition to basic react concepts like functional components, states, and props, the project offered the opportunity to use a number of other features to help keep concerns separated, and the code clear, concise, and easy to work with and refactor.
 
-Some React and JavaScript concepts used through the project include:
+Some React and JavaScript concepts used/lessons learned through the project include:
 - React Context to manage user Authentication and Authorization: By setting up an Authorization Context/Provider and placing it at the top level of the application, it made it easy to access and confirm that a user was logged in/valid through all levels of the application.
 - localStorage API to persist user session between browser sessions: Once logging in, user information (including JWT token, token expiration time, user_id, and email) was stored in localStorage making it easy to authorize users and access user details. By using localStorage, user login will persist in between browser sessions, helping to improve UX. For safety reasons, it is important to not store any potentially sensitive information in localStorage, as such, only the most basic and necessary user information is included.
 - Helper methods to easily work with backend: Through the project I was able to get a healthy amount of experience working with external APIs. To help avoid repeating myself and keep concerns separated, I created a number of services which could be imported and utilized throughout the application (userService, authService, tasksService, etc.) to make it easy for components to make fetch requests and work with external APIs.
