@@ -7,10 +7,13 @@ import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
 
+// User registration form component, used to register users for an account
 function Register() {
   const [flash, setFlash] = useState(null);
   const routerNavigate = useNavigate();
 
+  // Validate email, password, and password confirmation
+  // Return errors if present
   const validate = (values) => {
     const errors = {};
 
@@ -35,6 +38,9 @@ function Register() {
     return errors;
   };
 
+  // On submit send API request to register user
+  // If success, redirect to login with success message
+  // Otherwise, display error message
   const handleRegister = (values, { setSubmitting }) => {
     register(values.email, values.password, values.passwordConfirmation)
     .then((data) => {

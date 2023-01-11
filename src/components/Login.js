@@ -7,13 +7,17 @@ import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
 
+// Login form component used to log user in
+// Additionally, provides user with number of links to signup,
+// recover password, resend confirmation email, etc
 function Login() {
-  // Get state from useLocation if passed (set to null if no state is passed)
+  // Use state from useLocation if passed (null if no state passed) and use
+  // state to set alert/flash message
   const { state } = useLocation();
-  // Set flash using state from useLocation hook
   const [flash, setFlash] = useState(state);
   const routerNavigate = useNavigate();
 
+  // Validate email and password, return errors if present
   const validate = (values) => {
     const errors = {};
 
@@ -28,6 +32,9 @@ function Login() {
     return errors;
   };
 
+  // On submit send API request to login
+  // If success, redirect user to app
+  // Otherwise, display error messages
   const handleLogin = (values, { setSubmitting }) => {
     login(values.email, values.password)
     .then((data) => {

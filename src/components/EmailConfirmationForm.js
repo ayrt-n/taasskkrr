@@ -7,9 +7,12 @@ import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
 
+// Form to request email confirmation link
+// Successful submit should send user email link to confirm their account
 function EmailConfirmationForm() {
   const [flash, setFlash] = useState(null);
 
+  // Validate email, return errors if present
   const validate = (values) => {
     const errors = {};
 
@@ -22,6 +25,9 @@ function EmailConfirmationForm() {
     return errors;
   };
 
+  // On submit send API request to send email confirmation instructions
+  // If success, reset form and display success message
+  // Otherwise, display error message
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     resendConfirmationEmail(values.email)
     .then((data) => {

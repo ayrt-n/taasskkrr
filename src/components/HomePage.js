@@ -6,6 +6,7 @@ import smallExample1 from '../assets/images/mobile-example1.png';
 import smallExample2 from '../assets/images/mobile-example2.png';
 import { Link } from 'react-router-dom';
 
+// Static homepage containing copywrite, examples, and calls to action
 function HomePage() {
   return(
     <div className="Landing">

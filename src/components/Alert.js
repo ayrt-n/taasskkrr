@@ -1,6 +1,11 @@
 import React from 'react';
 import '../styles/Alert.css';
 
+// Alert component, used to present success/warning/danger messages to users
+// Type prop used to specify styling of alert ('danger', 'warning', 'success')
+// Message used for main title of the alert (e.g., Login Failed!)
+// Body used for plain text description of the alert (e.g., 'Account successfully created!')
+// Details used for bulleted list of details (e.g., used to display reasons for error)
 function Alert({ type, message, body, details }) {
   return(
     <div className={`Alert ${type}`} data-testid="alert">

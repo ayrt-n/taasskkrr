@@ -7,9 +7,13 @@ import TextInput from './form/TextInput';
 import Button from './form/Button';
 import '../styles/Form.css'
 
+// Form to submit request for forgotten password
+// Successful submit will result in email sent to user with instructions
+// on how to reset their password
 function ForgotPasswordForm() {
   const [flash, setFlash] = useState(null);
 
+  // Validate email field required and must be valid email address
   const validate = (values) => {
     const errors = {};
 
@@ -22,6 +26,9 @@ function ForgotPasswordForm() {
     return errors;
   };
 
+  // On submit send API request to send reset password instructions
+  // If success, reset form and display success message
+  // Otherwise, display error message
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     sendPasswordReset(values.email)
     .then((data) => {
