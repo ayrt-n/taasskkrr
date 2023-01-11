@@ -34,7 +34,6 @@ function Login() {
       if (!data.error) {
         // If successful login (no error) redirect to app
         routerNavigate('/app');
-        window.location.reload();
       } else {
         // If error logging in, set flash state to render errors
         setFlash({
