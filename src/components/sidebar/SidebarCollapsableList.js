@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import chevron from '../../assets/icons/chevron-right.svg';
 
+// Component to create collapsable list of sidebar items
+// Users can collapse/uncollapse list by clicking on the main div
 function SidebarCollapsableList({ title, children }) {
   const [collapsed, setCollapsed] = useState(false);
   const collapseList = () => { setCollapsed(!collapsed) }

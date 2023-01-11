@@ -4,6 +4,7 @@ import SidebarItem from './SidebarItem'
 import SidebarCollapsableList from './SidebarCollapsableList';
 import NewProjectButton from './NewProjectButton';
 
+// Main sidebar component
 function Sidebar({ projects, inbox, addProject, openModal, sidebarOpen }) {
   return (
     <div className={`Sidebar ${sidebarOpen ? "open" : ""}`}>

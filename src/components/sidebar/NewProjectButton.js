@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Button component to open new project modal
 function NewProjectButton({ openModal, afterSubmit }) {
   const emptyProject = { title: '' };
 
