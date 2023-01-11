@@ -4,6 +4,8 @@ import logoSVG from '../../assets/icons/logo.svg';
 import AuthContext from '../../contexts/authentication/AuthContext';
 import '../../styles/Nav.css'
 
+// Navbar component
+// Links and display dependent on whether use logged in or out
 function Navbar({ toggleSidebar }) {
   const { currentUser, logOut } = useContext(AuthContext)
 
