@@ -66,8 +66,8 @@ function ResetPasswordForm() {
       >
         {formik => (
           <form onSubmit={formik.handleSubmit}>
-            <TextInput label="Password" name="password" id="password" type="password" />
-            <TextInput label="Confirm Password" name="passwordConfirmation" id="passwordConfirmation" type="password" />
+            <TextInput label="New Password" name="password" id="password" type="password" />
+            <TextInput label="Confirm New Password" name="passwordConfirmation" id="passwordConfirmation" type="password" />
             <Button label="Reset Password" buttonStyles="is-primary full" type="submit" />
           </form>
         )}
