@@ -12,7 +12,7 @@ function HomePage() {
       {/* Main Section with Hero Text and Sign up link */}
       <div className="Landing-hero-text">
         <h1>Never miss a deadline again.</h1>
-        <h2>Stay organized, focused, and get things done with Taasskkrr. The ultimate to-do list application.</h2>
+        <h2>Stay organized, focused, and get things done with Taasskkrr. The ultimate project management and to-do list application.</h2>
         <div>
           <Link to="/register" className="button is-primary">Get Started!</Link>
         </div>
@@ -45,7 +45,7 @@ function HomePage() {
               <span>Conquer the day.</span>
             </h3>
             <p className="Landing-pitch">
-              Break bigger tasks down and keep them organized by creating separate projects and sections. Whether you're working on a big project at work, planning a party, or just trying to stay on top of your daily tasks, our Taasskkrr has you covered.
+              Break bigger tasks down and keep them organized by creating separate projects and sections. Whether you're working on a big project at work, planning a party, or just trying to stay on top of your daily tasks, Taasskkrr has you covered.
             </p>
           </div>
           <img src={smallExample1}
