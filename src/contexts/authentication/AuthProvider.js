@@ -5,14 +5,12 @@ import eventBus from '../../components/common/EventBus';
 import AuthContext from './AuthContext';
 
 const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(() => {
-    return getCurrentUser();
-  });
+  const [currentUser, setCurrentUser] = useState(null);
   const routerNavigate = useNavigate();
 
   useEffect(() => {
     setCurrentUser(getCurrentUser());
-  }, []);
+  }, [routerNavigate]);
 
   // THIS WASNT WORKING WHEN NAVIGATING BETWEEN URLS WITH NO API REQUESTS
   const logOut = useCallback(() => {
