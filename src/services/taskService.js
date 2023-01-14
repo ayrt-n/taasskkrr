@@ -3,6 +3,169 @@ import { config } from './constants';
 
 const API_URL = config.url.API_URL
 
+// Project related helpers
+function getUserProjects() {
+  return fetch(`${API_URL}/projects`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    }
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function getProjectTasks(projectId) {
+  return fetch(`${API_URL}/projects/${projectId}`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    }
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function updateProject(projectTitle, projectId) {
+  return fetch(`${API_URL}/projects/${projectId}`, {
+    method: 'PATCH',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    },
+    body: JSON.stringify({
+      'project': {
+        'title': projectTitle
+      }
+    })
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function destroyProject(projectId) {
+  return fetch(`${API_URL}/projects/${projectId}`, {
+    method: 'DELETE',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    }
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function createProject(projectTitle) {
+  return fetch(`${API_URL}/projects/`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    },
+    body: JSON.stringify({
+      'project': {
+        'title': projectTitle
+      }
+    })
+  })
+  .then(response => {
+    return response.json();
+  })
+}
+
+// Section related helpers
+function updateSection(sectionTitle, sectionId) {
+  return fetch(`${API_URL}/sections/${sectionId}`, {
+    method: 'PATCH',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    },
+    body: JSON.stringify({
+      'section': {
+        'title': sectionTitle
+      }
+    })
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function destroySection(sectionId) {
+  return fetch(`${API_URL}/sections/${sectionId}`, {
+    method: 'DELETE',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    }
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function createSection(sectionTitle, projectId) {
+  return fetch(`${API_URL}/projects/${projectId}/sections`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    },
+    body: JSON.stringify({
+      'section': {
+        'title': sectionTitle
+      }
+    })
+  })
+  .then(response => {
+    return response.json();
+  })
+}
+
+// Task related helpers
+function getUserTasks() {
+  return fetch(`${API_URL}/tasks`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    }
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
+function getTodayTasks() {
+  return fetch(`${API_URL}/tasks?today=true`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authHeader()
+    }
+  })
+  .then(response => {
+    return response.json();
+  });
+}
+
 function toggleTaskComplete(taskId, status) {
   return fetch(`${API_URL}/tasks/${taskId}`, {
     method: 'PATCH',
@@ -86,110 +249,6 @@ function createTask(task, projectId, sectionId=null) {
   })
 }
 
-function updateSection(sectionTitle, sectionId) {
-  return fetch(`${API_URL}/sections/${sectionId}`, {
-    method: 'PATCH',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: authHeader()
-    },
-    body: JSON.stringify({
-      'section': {
-        'title': sectionTitle
-      }
-    })
-  })
-  .then(response => {
-    return response.json();
-  });
-}
-
-function destroySection(sectionId) {
-  return fetch(`${API_URL}/sections/${sectionId}`, {
-    method: 'DELETE',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: authHeader()
-    }
-  })
-  .then(response => {
-    return response.json();
-  });
-}
-
-function createSection(sectionTitle, projectId) {
-  return fetch(`${API_URL}/projects/${projectId}/sections`, {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: authHeader()
-    },
-    body: JSON.stringify({
-      'section': {
-        'title': sectionTitle
-      }
-    })
-  })
-  .then(response => {
-    return response.json();
-  })
-}
-
-function updateProject(projectTitle, projectId) {
-  return fetch(`${API_URL}/projects/${projectId}`, {
-    method: 'PATCH',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: authHeader()
-    },
-    body: JSON.stringify({
-      'project': {
-        'title': projectTitle
-      }
-    })
-  })
-  .then(response => {
-    return response.json();
-  });
-}
-
-function destroyProject(projectId) {
-  return fetch(`${API_URL}/projects/${projectId}`, {
-    method: 'DELETE',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: authHeader()
-    }
-  })
-  .then(response => {
-    return response.json();
-  });
-}
-
-function createProject(projectTitle) {
-  return fetch(`${API_URL}/projects/`, {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: authHeader()
-    },
-    body: JSON.stringify({
-      'project': {
-        'title': projectTitle
-      }
-    })
-  })
-  .then(response => {
-    return response.json();
-  })
-}
-
 export {
   toggleTaskComplete,
   destroyTask,
@@ -201,4 +260,8 @@ export {
   updateProject,
   destroyProject,
   createProject,
+  getUserProjects,
+  getProjectTasks,
+  getUserTasks,
+  getTodayTasks,
 };

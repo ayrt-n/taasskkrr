@@ -5,7 +5,7 @@ import Project from './tasks/Project';
 import Today from './tasks/Today';
 import Upcoming from './tasks/Upcoming';
 import DashboardModal from './DashboardModal';
-import { getUserProjects } from '../services/userService';
+import { getUserProjects } from '../services/taskService';
 import '../styles/Dashboard.css';
 
 function Dashboard({sidebarOpen, closeSidebar}) {

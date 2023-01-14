@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { getUserTasks } from '../../services/userService';
+import { getUserTasks } from '../../services/taskService';
 import parseISO from 'date-fns/parseISO';
 import format from 'date-fns/format';
 import Task from './Task';

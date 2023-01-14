@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTodayTasks } from '../../services/userService';
+import { getTodayTasks } from '../../services/taskService';
 import Task from './Task';
 import format from 'date-fns/format';
 import '../../styles/Tasks.css';
