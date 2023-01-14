@@ -3,11 +3,11 @@ import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import EmailConfirmation from '../EmailConfirmation';
-import { confirmEmail } from '../../services/accountServices';
+import { confirmEmail } from '../../services/accountService';
 
 // Set up mock for confirmEmail
-jest.mock('../../services/accountServices', () => ({
-  ...jest.requireActual('../../services/accountServices'),
+jest.mock('../../services/accountService', () => ({
+  ...jest.requireActual('../../services/accountService'),
   confirmEmail: jest.fn()
 }));
 
