@@ -14,6 +14,7 @@ import ForgotPasswordForm from './components/ForgotPasswordForm';
 import AuthProvider from './contexts/authentication/AuthProvider';
 import AuthVerify from './components/common/AuthVerify';
 import './styles/App.css'
+import NotFound from './components/status_errors/NotFound';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -91,6 +92,12 @@ function App() {
                   <Dashboard sidebarOpen={sidebarOpen} closeSidebar={() => {setSidebarOpen(false)}} />
                 </PrivateRoute>
               }
+            />
+
+            {/* Catch all 404 - Not Found */}
+            <Route
+              path="*"
+              element = {<NotFound />}
             />
           </Routes>
         </div>
