@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Formik } from 'formik';
-import { resetPassword } from '../services/accountServices';
+import { resetPassword } from '../services/accountService';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';

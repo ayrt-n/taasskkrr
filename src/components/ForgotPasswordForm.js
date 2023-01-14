@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
-import { sendPasswordReset } from '../services/accountServices';
+import { sendPasswordReset } from '../services/accountService';
 import Alert from './Alert';
 import TextInput from './form/TextInput';
 import Button from './form/Button';
