@@ -12,14 +12,14 @@ This repo is for the React frontend portion of the project.
 ## Set up
 ### Using Web Browser
 
-The best way to view the project is live on Github at https://ayrt-n.github.io/to-do-list-client/
+The best way to view the project is live on Github at https://ayrt-n.github.io/taasskkrr/
 
 Please note that it may take 30-45 seconds for the Heroku dyno to start up if the application has been inactive for awhile.
 
 ![homepage](/src/assets/images/hero-main.png)
 
 ### Using Local Machine
-If you want to run this all locally on your own machine, you will need to clone this repo along with the backend (https://github.com/ayrt-n/to-do-list-api).
+If you want to run this all locally on your own machine, you will need to clone this repo along with the backend (https://github.com/ayrt-n/taasskkrr-api).
 
 Once you have this repo cloned (with the backend set up as per the instructions in the associated README), you can start up the application by running:
 
