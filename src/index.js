@@ -9,7 +9,7 @@ Modal.setAppElement('#root');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // Given how Github pages impacts production url, set router basename based on environment
-const browserRouterBase = process.env.NODE_ENV === 'development' ? '' : '/to-do-list-client';
+const browserRouterBase = process.env.NODE_ENV === 'development' ? '' : '/taasskkrr';
 
 root.render(
   <React.StrictMode>
